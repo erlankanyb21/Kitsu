@@ -1,40 +1,27 @@
 object Dependencies {
-
     object Kotlin {
+        private const val version = "1.6.4"
 
-        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
-        const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.20"
+        const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+        const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
 
-        object KSP {
-            const val ksp = "com.google.devtools.ksp"
-            const val version = "1.6.10-1.0.4"
-        }
     }
 
     object UIComponents {
-        const val material = "com.google.android.material:material:1.5.0"
-        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
+        const val material = "com.google.android.material:material:1.6.1"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
         const val viewBindingPropertyDelegate =
             "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6"
-        const val appCompat = "androidx.appcompat:appcompat:1.4.1"
+        const val appCompat = "androidx.appcompat:appcompat:1.6.0"
     }
 
     object Core {
-        private const val version = "1.7.0"
-
+        private const val version = "1.8.0"
         const val core = "androidx.core:core-ktx:$version"
     }
 
-    object Activity {
-        private const val version = "1.4.0"
-
-        const val activity = "androidx.activity:activity-ktx:$version"
-    }
-
-    object Fragment {
-        private const val version = "1.4.1"
-
-        const val fragment = "androidx.fragment:fragment-ktx:$version"
+    object viewpager2 {
+        const val viewpager2 = "androidx.viewpager2:viewpager2:view_pager_version"
     }
 
     object Lifecycle {
@@ -49,58 +36,67 @@ object Dependencies {
     }
 
     object Navigation {
-        private const val version = "2.4.1"
+        private const val version = "2.5.3"
 
         const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
         const val ui = "androidx.navigation:navigation-ui-ktx:$version"
-        const val safeArgsPlugin = "androidx.navigation.safeargs.kotlin"
-        const val safeArgsGradlePlugin =
-            "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
     }
-
 
     object Retrofit {
         private const val version = "2.9.0"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
-        const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
+        const val converterGson = "com.squareup.retrofit2:converter-gson:2.9.0"
+    }
+
+    object Androidx {
+
+        const val legacySupport = "androidx.legacy:legacy-support-v4:1.0.0"
+        const val junit = "junit:junit:4.13.2"
+        const val testJunit = "androidx.test.ext:junit:1.1.5"
+        const val testEspresso = "androidx.test.espresso:espresso-core:3.5.1"
+
     }
 
     object OkHttp {
         private const val version = "5.0.0-alpha.5"
 
-        const val bom = "com.squareup.okhttp3:okhttp-bom:$version"
         const val okHttp = "com.squareup.okhttp3:okhttp"
-        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor"
+        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
     }
 
     object Room {
-        private const val version = "2.4.2"
+        private const val version = "2.5.0"
 
         const val runtime = "androidx.room:room-runtime:$version"
         const val compiler = "androidx.room:room-compiler:$version"
+        const val room_ktx = "androidx.room:room-ktx:$version"
+        const val kapt = "androidx.room:room-compiler:$version"
 
-        // | optional - Kotlin Extensions and Coroutines support for Room
-        const val supportKotlinExtensionsAndCoroutines = "androidx.room:room-ktx:$version"
     }
 
     object Paging {
         private const val version = "3.1.1"
 
         const val runtime = "androidx.paging:paging-runtime-ktx:$version"
+        const val common = "androidx.paging:paging-common:3.1.1"
     }
 
     object Glide {
+        private const val version = "4.13.0"
+
         const val glide = "com.github.bumptech.glide:glide:4.13.0"
+        const val glideCompiler = "com.github.bumptech.glide:compiler:4.13.0"
     }
 
     object Koin {
-        private const val version = "3.2.0-beta-1"
+        private const val version = "2.2.3"
+
         const val koinAndroid = "io.insert-koin:koin-android:$version"
+        const val koinScope = "io.insert-koin:koin-androidx-scope:$version"
+        const val koinViewModel = "io.insert-koin:koin-androidx-viewmodel:$version"
+        const val koinFragment = "io.insert-koin:koin-androidx-fragment:$version"
 
     }
 
-    object Gradle {
-        const val gradlePlugin = "com.android.tools.build:gradle:7.1.2"
-    }
 }

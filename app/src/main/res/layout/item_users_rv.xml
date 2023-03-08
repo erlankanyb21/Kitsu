@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shadow"
+    android:layout_marginHorizontal="@dimen/element_margin"
+    android:layout_marginVertical="@dimen/element_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/element_margin"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="title"
+            style="@style/BaseMainTextView"
+            android:textStyle="bold"
+            android:id="@+id/user_name"
+            android:layout_marginTop="12dp"
+            android:paddingBottom="@dimen/small_margin_10"
+            android:textSize="@dimen/regular_txt_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/user_comment"
+            android:text="@tools:sample/lorem/random"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

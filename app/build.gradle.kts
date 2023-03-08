@@ -40,59 +40,65 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.6.0")
-//    без него xml не отрисовываются
-    implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-//    без него Fragments не будут работать
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha04")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-//   Binding delegate
-    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6")
+
+//    core
+    implementation(Dependencies.Core.core)
+
+//    ui
+    implementation(Dependencies.UIComponents.appCompat)
+    implementation(Dependencies.UIComponents.constraintLayout)
+    implementation(Dependencies.UIComponents.material)
+    implementation(Dependencies.UIComponents.viewBindingPropertyDelegate)
+
+//    androidx
+    implementation(Dependencies.Androidx.legacySupport)
+    testImplementation(Dependencies.Androidx.junit)
+    androidTestImplementation(Dependencies.Androidx.testJunit)
+    androidTestImplementation(Dependencies.Androidx.testEspresso)
 
     // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(Dependencies.Retrofit.retrofit)
+    implementation(Dependencies.Retrofit.converterGson)
 
     //Glide
-    implementation("com.github.bumptech.glide:glide:4.13.1")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.13.0")
+    implementation(Dependencies.Glide.glide)
+    annotationProcessor(Dependencies.Glide.glideCompiler)
 
     // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation(Dependencies.Lifecycle.liveData)
+    implementation(Dependencies.Lifecycle.viewModel)
+    implementation(Dependencies.Lifecycle.runtime)
 
     // okhttp-Interceptor
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+    implementation(Dependencies.OkHttp.okHttp)
+    implementation(Dependencies.OkHttp.loggingInterceptor)
 
     //room
-    val room_version = "2.5.0"
-    implementation("androidx.room:room-runtime:${room_version}")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
+    implementation(Dependencies.Room.runtime)
+    annotationProcessor(Dependencies.Room.compiler)
+    implementation(Dependencies.Room.room_ktx)
+    kapt(Dependencies.Room.kapt)
 
-    //coroutine
-    val coroutine_version = "1.6.4"
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version")
+    //Paging 3
+    implementation(Dependencies.Paging.common)
+    api(Dependencies.Paging.runtime)
+
+    //Kotlin Coroutine
+    implementation(Dependencies.Kotlin.coroutinesAndroid)
+    implementation(Dependencies.Kotlin.coroutineCore)
 
     // viewPager2
-    implementation("androidx.viewpager2:viewpager2:view_pager_version")
+    implementation(Dependencies.viewpager2.viewpager2)
 
     //Koin
-    val koin_version = "2.2.3"
-    implementation ("io.insert-koin:koin-android:$koin_version")
-    implementation ("io.insert-koin:koin-androidx-scope:$koin_version")
-    implementation ("io.insert-koin:koin-androidx-viewmodel:$koin_version")
-    implementation ("io.insert-koin:koin-androidx-fragment:$koin_version")
+    implementation (Dependencies.Koin.koinAndroid)
+    implementation (Dependencies.Koin.koinScope)
+    implementation (Dependencies.Koin.koinViewModel)
+    implementation (Dependencies.Koin.koinFragment)
 
     //navigation components
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation(Dependencies.Navigation.fragment)
+    implementation(Dependencies.Navigation.ui)
+
+    implementation(project(":domain"))
 }

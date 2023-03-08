@@ -16,7 +16,7 @@
             style="@style/BaseSearchView"
             android:layout_width="match_parent"
             android:hint="Search Users"
-            android:textColorHint="#686565"
+            android:textColorHint="@color/grey"
             android:layout_marginTop="@dimen/page_margin"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginHorizontal="@dimen/page_margin"
@@ -35,8 +35,8 @@
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 app:spanCount="2"
-                tools:listitem=""
-                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                tools:listitem="@layout/item_users_rv"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_height="match_parent"/>
 
         </androidx.core.widget.NestedScrollView>
