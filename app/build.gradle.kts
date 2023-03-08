@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -69,12 +70,12 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
-//    //room
-//    def room_version = "2.5.0"
-//    implementation("androidx.room:room-runtime:${room_version}")
-//    annotationProcessor("androidx.room:room-compiler:$room_version")
-//    implementation("androidx.room:room-ktx:$room_version")
-//    kapt("androidx.room:room-compiler:$room_version")
+    //room
+    val room_version = "2.5.0"
+    implementation("androidx.room:room-runtime:${room_version}")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
 
     //coroutine
     val coroutine_version = "1.6.4"
@@ -84,12 +85,12 @@ dependencies {
     // viewPager2
     implementation("androidx.viewpager2:viewpager2:view_pager_version")
 
-//    //Koin
-//    def koin_version = "2.2.3"
-//    implementation "io.insert-koin:koin-android:$koin_version"
-//    implementation "io.insert-koin:koin-androidx-scope:$koin_version"
-//    implementation "io.insert-koin:koin-androidx-viewmodel:$koin_version"
-//    implementation "io.insert-koin:koin-androidx-fragment:$koin_version"
+    //Koin
+    val koin_version = "2.2.3"
+    implementation ("io.insert-koin:koin-android:$koin_version")
+    implementation ("io.insert-koin:koin-androidx-scope:$koin_version")
+    implementation ("io.insert-koin:koin-androidx-viewmodel:$koin_version")
+    implementation ("io.insert-koin:koin-androidx-fragment:$koin_version")
 
     //navigation components
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")

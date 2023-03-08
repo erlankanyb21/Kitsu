@@ -90,8 +90,6 @@ object Dependencies {
         const val runtime = "androidx.paging:paging-runtime-ktx:$version"
     }
 
-
-
     object Glide {
         const val glide = "com.github.bumptech.glide:glide:4.13.0"
     }
