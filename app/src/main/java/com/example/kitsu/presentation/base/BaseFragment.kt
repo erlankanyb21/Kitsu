@@ -64,4 +64,23 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
         }
     }
 
+//    protected fun <T : Any> Flow<PagingData<T>>.collectPaging(
+//        lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
+//        action: suspend (value: PagingData<T>) -> Unit
+//    ) {
+//        safeFlowGather(lifecycleState) { this.collectLatest { action(it) } }
+//    }
+
+    fun safeFlowGather(
+        lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
+        gather: suspend () -> Unit,
+    ) {
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {
+                gather()
+            }
+
+        }}
+
 }
