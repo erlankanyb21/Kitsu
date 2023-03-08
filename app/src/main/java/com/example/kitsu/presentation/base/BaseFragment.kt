@@ -76,7 +76,6 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
         gather: suspend () -> Unit,
     ) {
         viewLifecycleOwner.lifecycleScope.launch {
-
             viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {
                 gather()
             }

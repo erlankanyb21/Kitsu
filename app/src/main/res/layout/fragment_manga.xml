@@ -15,13 +15,12 @@
             android:id="@+id/search_view_main"
             style="@style/BaseSearchView"
             android:layout_width="match_parent"
-            android:hint="Search Anime"
+            android:hint="@string/search_anime"
             android:textColorHint="#686565"
             android:layout_marginTop="@dimen/page_margin"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginHorizontal="@dimen/page_margin"
             tools:ignore="LabelFor,TextContrastCheck,TouchTargetSizeCheck" />
-
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -39,7 +38,7 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 tools:ignore="SpeakableTextPresentCheck"
-                tools:listitem="@layout/item_anime_rv" />
+                tools:listitem="@layout/item_manga_rv" />
 
         </androidx.core.widget.NestedScrollView>
 
