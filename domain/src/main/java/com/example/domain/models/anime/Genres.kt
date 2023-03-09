@@ -1,9 +1,5 @@
-package com.example.data.network.models.anime
-
-
-import com.google.gson.annotations.SerializedName
+package com.example.domain.models.anime
 
 data class Genres(
-    @SerializedName("links")
-    val links: com.example.data.network.models.anime.LinksX
+    val links: LinksX
 )

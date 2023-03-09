@@ -49,5 +49,9 @@ dependencies {
     implementation(Dependencies.Retrofit.retrofit)
     implementation(Dependencies.Retrofit.converterGson)
 
+//    okhttp-interceptor
+    implementation(Dependencies.OkHttp.okHttp)
+    implementation(Dependencies.OkHttp.loggingInterceptor)
+
     implementation(project(":domain"))
 }

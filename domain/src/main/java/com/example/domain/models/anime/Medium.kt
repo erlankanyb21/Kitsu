@@ -1,11 +1,6 @@
-package com.example.data.network.models.anime
-
-
-import com.google.gson.annotations.SerializedName
+package com.example.domain.models.anime
 
 data class Medium(
-    @SerializedName("width")
     val width: Any?,
-    @SerializedName("height")
     val height: Any?
 )

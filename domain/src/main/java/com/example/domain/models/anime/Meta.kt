@@ -1,9 +1,5 @@
-package com.example.data.network.models.anime
-
-
-import com.google.gson.annotations.SerializedName
+package com.example.domain.models.anime
 
 data class Meta(
-    @SerializedName("dimensions")
-    val dimensions: com.example.data.network.models.anime.Dimensions
+    val dimensions: Dimensions
 )
