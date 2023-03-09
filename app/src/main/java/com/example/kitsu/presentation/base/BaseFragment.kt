@@ -71,13 +71,13 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
 //        safeFlowGather(lifecycleState) { this.collectLatest { action(it) } }
 //    }
 
-    fun safeFlowGather(
+    fun safeCollectFlow(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
-        gather: suspend () -> Unit,
+        safeCollecting: suspend () -> Unit,
     ) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {
-                gather()
+                safeCollecting()
             }
 
         }}
