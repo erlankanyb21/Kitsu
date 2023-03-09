@@ -71,7 +71,7 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
 //        safeFlowGather(lifecycleState) { this.collectLatest { action(it) } }
 //    }
 
-    fun safeCollectFlow(
+  protected fun safeCollectFlow(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
         safeCollecting: suspend () -> Unit,
     ) {

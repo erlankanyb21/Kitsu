@@ -65,7 +65,6 @@ dependencies {
     annotationProcessor(Dependencies.Glide.glideCompiler)
 
     // Lifecycle
-
     implementation(Dependencies.Lifecycle.liveData)
     implementation(Dependencies.Lifecycle.viewModel)
     implementation(Dependencies.Lifecycle.runtime)
@@ -99,4 +98,5 @@ dependencies {
     implementation(Dependencies.Navigation.ui)
 
     implementation(project(":domain"))
+    implementation(project(":data"))
 }

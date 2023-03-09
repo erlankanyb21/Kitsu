@@ -14,7 +14,7 @@ abstract class BaseRepository {
         }catch (e:Exception){
             emit(Resource.Error(e.localizedMessage as String))
         }
-    }.flowOn(Dispatchers.Default)
+    }.flowOn(Dispatchers.IO)
 
 
 

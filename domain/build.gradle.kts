@@ -10,6 +10,10 @@ java {
 
 dependencies{
 
+    //koin
     implementation(Dependencies.Koin.koinCore)
+
+    //Kotlin Coroutine
+    implementation(Dependencies.Kotlin.coroutineCore)
 
 }
