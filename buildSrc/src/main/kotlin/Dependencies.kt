@@ -90,12 +90,11 @@ object Dependencies {
     }
 
     object Koin {
-        private const val version = "2.2.3"
+        private const val version = "3.3.3"
 
+        const val koinCore = "io.insert-koin:koin-core:$version"
         const val koinAndroid = "io.insert-koin:koin-android:$version"
-        const val koinScope = "io.insert-koin:koin-androidx-scope:$version"
-        const val koinViewModel = "io.insert-koin:koin-androidx-viewmodel:$version"
-        const val koinFragment = "io.insert-koin:koin-androidx-fragment:$version"
+        const val koinNav = "io.insert-koin:koin-androidx-navigation:$version"
 
     }
 

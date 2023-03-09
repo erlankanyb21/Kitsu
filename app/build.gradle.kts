@@ -92,9 +92,6 @@ dependencies {
 
     //Koin
     implementation (Dependencies.Koin.koinAndroid)
-    implementation (Dependencies.Koin.koinScope)
-    implementation (Dependencies.Koin.koinViewModel)
-    implementation (Dependencies.Koin.koinFragment)
 
     //navigation components
     implementation(Dependencies.Navigation.fragment)
