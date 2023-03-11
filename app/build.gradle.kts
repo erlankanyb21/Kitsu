@@ -1,7 +1,7 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id(Dependencies.idPlugins.application)
+    id(Dependencies.idPlugins.jetbrainsAndroid)
+    id(Dependencies.idPlugins.kapt)
 }
 
 android {
@@ -62,12 +62,12 @@ dependencies {
 
     //Glide
     implementation(Dependencies.Glide.glide)
-    annotationProcessor(Dependencies.Glide.glideCompiler)
 
     // Lifecycle
     implementation(Dependencies.Lifecycle.liveData)
     implementation(Dependencies.Lifecycle.viewModel)
     implementation(Dependencies.Lifecycle.runtime)
+    implementation(Dependencies.Lifecycle.lifecycleCommon)
 
     // okhttp-Interceptor
     implementation(Dependencies.OkHttp.okHttp)
@@ -92,6 +92,7 @@ dependencies {
 
     //Koin
     implementation (Dependencies.Koin.koinAndroid)
+    implementation(Dependencies.Koin.koinNav)
 
     //navigation components
     implementation(Dependencies.Navigation.fragment)

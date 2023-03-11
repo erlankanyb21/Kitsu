@@ -18,14 +18,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     override val viewModel: HomeViewModel by viewModels()
 
     private val fragmentList = listOf(
-        AnimeFragment(),
-        MangaFragment(),
-        UsersFragment()
+        AnimeFragment(), MangaFragment(), UsersFragment()
     )
     private val fragmentTitles = listOf(
-        "Anime",
-        "Manga",
-        "Users"
+        "Anime", "Manga", "Users"
     )
 
     override fun initialize() {
@@ -37,10 +33,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         val adapter = FragmentPagerAdapter(requireActivity(), fragmentList)
         binding.viewPagerManga.adapter = adapter
         TabLayoutMediator(
-            binding.tabLayoutManga,
-            binding.viewPagerManga
-        ) {
-                tab : TabLayout.Tab, i : Int -> tab.text = fragmentTitles[i]
+            binding.tabLayoutManga, binding.viewPagerManga
+        ) { tab: TabLayout.Tab, i: Int ->
+            tab.text = fragmentTitles[i]
         }.attach()
     }
 

@@ -1,6 +1,7 @@
-package com.example.domain.models
+package com.example.kitsu.presentation.models.anime
 
-data class AnimeModel(
+
+data class AnimeUI(
     val `data`: List<Data> = listOf(),
     val links: Links = Links(),
     val meta: Meta = Meta()

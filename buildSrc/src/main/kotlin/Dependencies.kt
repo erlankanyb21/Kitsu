@@ -4,6 +4,14 @@ object Dependencies {
 
         const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
         const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+        const val kotlin = "org.jetbrains.kotlin.android"
+
+    }
+
+    object idPlugins {
+        const val application = "com.android.application"
+        const val kapt = "kotlin-kapt"
+        const val jetbrainsAndroid = "org.jetbrains.kotlin.android"
 
     }
 
@@ -12,7 +20,7 @@ object Dependencies {
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
         const val viewBindingPropertyDelegate =
             "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6"
-        const val appCompat = "androidx.appcompat:appcompat:1.6.0"
+        const val appCompat = "androidx.appcompat:appcompat:1.6.1"
     }
 
     object Core {
@@ -25,10 +33,12 @@ object Dependencies {
     }
 
     object Lifecycle {
-        private const val version = "2.4.1"
+        private const val version = "2.6.0"
 
         // | for Lifecycles only (without ViewModel or LiveData)
         const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
+
+        const val lifecycleCommon = "androidx.lifecycle:lifecycle-common-java8:2.6.0"
 
         // | for ViewModel
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
@@ -46,7 +56,7 @@ object Dependencies {
         private const val version = "2.9.0"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
-        const val converterGson = "com.squareup.retrofit2:converter-gson:2.9.0"
+        const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
     }
 
     object Androidx {

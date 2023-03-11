@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:backgroundTint="@color/prime"
     tools:context=".presentation.fragments.home.anime.AnimeFragment">
 
@@ -15,35 +15,33 @@
             android:id="@+id/search_view_main"
             style="@style/BaseSearchView"
             android:layout_width="match_parent"
-            android:hint="Search Anime"
-            android:textColor="@color/grey"
-            android:textColorHint="@color/grey"
             android:layout_marginTop="@dimen/page_margin"
+            android:layout_marginHorizontal="@dimen/element_margin"
+            android:hint="Search Anime"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginHorizontal="@dimen/page_margin"
             tools:ignore="LabelFor,TextContrastCheck,TouchTargetSizeCheck" />
-
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:layout_marginTop="@dimen/big_height_90"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            tools:ignore="SpeakableTextPresentCheck">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/element_margin"
+                android:layout_marginTop="@dimen/big_margin_70"
+                android:layout_marginStart="4dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
+                app:spanCount="3"
                 tools:ignore="SpeakableTextPresentCheck"
                 tools:listitem="@layout/item_anime_rv" />
 
-
-        </androidx.core.widget.NestedScrollView>
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

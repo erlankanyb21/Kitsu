@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.example.kitsu.presentation.UIState
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
@@ -21,7 +22,6 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initialize()
         setupListeners()
         setupRequests()
@@ -58,6 +58,7 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
                         is UIState.Success->{
                             onSuccess(it.data)
                         }
+                        else -> {it.toString()}
                     }
                 }
             }

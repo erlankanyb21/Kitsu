@@ -18,8 +18,8 @@
             android:hint="Search Users"
             android:textColorHint="@color/grey"
             android:layout_marginTop="@dimen/page_margin"
+            android:layout_marginHorizontal="@dimen/element_margin"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginHorizontal="@dimen/page_margin"
             tools:ignore="LabelFor,TextContrastCheck,TouchTargetSizeCheck" />
 
 
