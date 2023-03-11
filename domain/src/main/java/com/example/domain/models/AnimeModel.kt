@@ -1,9 +1,7 @@
 package com.example.domain.models
 
 data class AnimeModel(
-    val `data`: List<Data> = listOf(),
-    val links: Links = Links(),
-    val meta: Meta = Meta()
+    val `data`: List<Data> = listOf(), val links: Links = Links(), val meta: Meta = Meta()
 ) {
     data class Data(
         val attributes: Attributes = Attributes(),
@@ -61,18 +59,15 @@ data class AnimeModel(
                         val tiny: Tiny = Tiny()
                     ) {
                         data class Large(
-                            val height: Int = 0,
-                            val width: Int = 0
+                            val height: Int = 0, val width: Int = 0
                         )
 
                         data class Small(
-                            val height: Int = 0,
-                            val width: Int = 0
+                            val height: Int = 0, val width: Int = 0
                         )
 
                         data class Tiny(
-                            val height: Int = 0,
-                            val width: Int = 0
+                            val height: Int = 0, val width: Int = 0
                         )
                     }
                 }
@@ -96,23 +91,19 @@ data class AnimeModel(
                         val tiny: Tiny = Tiny()
                     ) {
                         data class Large(
-                            val height: Int = 0,
-                            val width: Int = 0
+                            val height: Int = 0, val width: Int = 0
                         )
 
                         data class Medium(
-                            val height: Int = 0,
-                            val width: Int = 0
+                            val height: Int = 0, val width: Int = 0
                         )
 
                         data class Small(
-                            val height: Int = 0,
-                            val width: Int = 0
+                            val height: Int = 0, val width: Int = 0
                         )
 
                         data class Tiny(
-                            val height: Int = 0,
-                            val width: Int = 0
+                            val height: Int = 0, val width: Int = 0
                         )
                     }
                 }
@@ -192,8 +183,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -201,8 +191,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -210,8 +199,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -219,8 +207,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -228,8 +215,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -237,8 +223,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -246,8 +231,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -255,8 +239,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -264,8 +247,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -273,8 +255,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -282,8 +263,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -291,8 +271,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -300,8 +279,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -309,8 +287,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -318,8 +295,7 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
 
@@ -327,17 +303,14 @@ data class AnimeModel(
                 val links: Links = Links()
             ) {
                 data class Links(
-                    val related: String = "",
-                    val self: String = ""
+                    val related: String = "", val self: String = ""
                 )
             }
         }
     }
 
     data class Links(
-        val first: String = "",
-        val last: String = "",
-        val next: String = ""
+        val first: String = "", val last: String = "", val next: String = ""
     )
 
     data class Meta(

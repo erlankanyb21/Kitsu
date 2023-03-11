@@ -7,13 +7,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel: ViewModel() {
-    protected fun <T> Flow<Resource<T>>.collectingFlow(
+    protected fun <T> Flow<Resource<T>>.collectingStates(
         loading:() ->Unit,
         error: (message: String?) -> Unit,
         success: (data: T?) -> Unit
     ){
         viewModelScope.launch {
-            this@collectingFlow.collect {
+            this@collectingStates.collect {
                 when (it) {
                     is Resource.Loading -> {
                         loading()

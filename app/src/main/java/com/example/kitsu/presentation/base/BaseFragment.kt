@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.example.kitsu.presentation.UIState
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
@@ -71,16 +70,5 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
 //    ) {
 //        safeFlowGather(lifecycleState) { this.collectLatest { action(it) } }
 //    }
-
-  protected fun safeCollectFlow(
-        lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
-        safeCollecting: suspend () -> Unit,
-    ) {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {
-                safeCollecting()
-            }
-
-        }}
 
 }

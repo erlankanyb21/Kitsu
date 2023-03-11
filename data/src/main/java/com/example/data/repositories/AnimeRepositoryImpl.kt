@@ -24,16 +24,14 @@ class AnimeRepositoryImpl(
             emit(Resource.Loading())
             try {
                 val response = animeApiService.fetchAnimeList()
-                if (response.data!!.isNotEmpty()) {
+                if (response.data.isNotEmpty()) {
                     emit(
                         Resource.Success(
-                            data =
-                            response.toDomain()
+                            data = response.toDomain()
                         )
                     )
                     Log.e(
-                        "Kitsu",
-                        "fetchAnimeList: ${response.data}"
+                        "Kitsu", "fetchAnimeList: ${response.data}"
                     )
                 }
             } catch (e: IOException) {

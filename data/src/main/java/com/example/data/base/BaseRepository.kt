@@ -1,9 +1,8 @@
 package com.example.data.base
 
-import com.example.data.network.resource.Resource
-import kotlinx.coroutines.Dispatchers
+
+import com.example.domain.resource.Resource
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 
 abstract class BaseRepository {
 
@@ -14,8 +13,6 @@ abstract class BaseRepository {
         }catch (e:Exception){
             emit(Resource.Error(e.localizedMessage as String))
         }
-    }.flowOn(Dispatchers.IO)
-
-
+    }
 
 }

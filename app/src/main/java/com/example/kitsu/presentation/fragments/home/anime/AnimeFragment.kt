@@ -29,16 +29,15 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.anime()
             viewModel.fetchAnimeState.collectStates(
-                onLoading = { binding.progress.visibility = View.VISIBLE },
-                onSuccess = {
-                    binding.progress.visibility = View.GONE
-                    binding.recyclerview.adapter = animeAdapter
-                    animeAdapter.submitList( it.data )
-                },
-                onError = {
-                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-                }
-            )
+                onLoading = {
+                binding.progress.visibility = View.VISIBLE
+            }, onSuccess = {
+                binding.progress.visibility = View.GONE
+                binding.recyclerview.adapter = animeAdapter
+                animeAdapter.submitList(it.data)
+            }, onError = {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            })
         }
     }
 }

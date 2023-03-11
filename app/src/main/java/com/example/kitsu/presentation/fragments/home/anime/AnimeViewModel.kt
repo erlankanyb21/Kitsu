@@ -16,7 +16,7 @@ class AnimeViewModel(
     val fetchAnimeState = _fetchAnimeState.asStateFlow()
 
     fun anime() {
-        fetchAnimeUseCase.fetchAnime().collectingFlow({
+        fetchAnimeUseCase.fetchAnime().collectingStates({
             _fetchAnimeState.value = UIState.Loading()
         }, { error ->
             _fetchAnimeState.value = UIState.Error("debil")

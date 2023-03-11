@@ -5,6 +5,6 @@ import com.example.domain.resource.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface AnimeRepository {
-    fun fetchAnimeList():Flow<Resource<AnimeModel?>>
+    fun fetchAnimeList(): Flow<Resource<AnimeModel?>>
 
 }
