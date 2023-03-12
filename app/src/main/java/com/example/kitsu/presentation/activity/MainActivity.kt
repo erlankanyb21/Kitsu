@@ -19,7 +19,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     override val viewModel: MainViewModel by viewModels()
 
-
     override fun inflateViewBinding(inflater: LayoutInflater): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
@@ -33,8 +32,11 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_home, R.id.navigation_dashboard,R.id.navigation_notifications))
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -44,8 +46,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
         navController.addOnDestinationChangedListener {
                 navController: NavController,
-                navDestination:
-                NavDestination,
+                navDestination: NavDestination,
                 bundle: Bundle?,
             ->
 
@@ -61,8 +62,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 //            }
         }
     }
-
-
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         return navController.navigateUp() || super.onSupportNavigateUp()
@@ -72,6 +71,4 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         super.onDestroy()
         _binding = null
     }
-
-
 }
