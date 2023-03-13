@@ -11,6 +11,7 @@ import com.example.kitsu.databinding.FragmentAnimeBinding
 import com.example.kitsu.presentation.adapters.AnimeAdapter
 import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.mapper.toUI
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,6 +33,9 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
     override fun setupListeners() {
         lifecycleScope.launch {
             viewModel.pagingAnime().collectLatest {
+                binding.progress.visibility = View.VISIBLE
+                delay(1500)
+                binding.progress.visibility = View.GONE
                 animeAdapter.submitData(it.map { it.toUI() })
 
             }
