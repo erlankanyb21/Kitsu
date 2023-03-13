@@ -4,7 +4,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentHomeBinding
-import com.example.kitsu.presentation.adapters.FragmentPagerAdapter
+import com.example.kitsu.presentation.adapters.FragmentViewPagerAdapter
 import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.fragments.home.anime.AnimeFragment
 import com.example.kitsu.presentation.fragments.home.manga.MangaFragment
@@ -30,7 +30,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     }
 
     private fun homeTabs() {
-        val adapter = FragmentPagerAdapter(requireActivity(), fragmentList)
+        val adapter = FragmentViewPagerAdapter(requireActivity(), fragmentList)
         binding.viewPagerManga.adapter = adapter
         TabLayoutMediator(
             binding.tabLayoutManga, binding.viewPagerManga

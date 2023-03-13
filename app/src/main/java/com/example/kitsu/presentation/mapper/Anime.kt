@@ -4,7 +4,7 @@ import com.example.domain.models.AnimeModel
 import com.example.kitsu.presentation.models.anime.AnimeUI
 
 fun AnimeModel.toUI() = AnimeUI(
-    data = data.map { it.toUI() }, meta = meta.toUI(), links = links.toUI()
+    data = data?.map { it.toUI() }, meta = meta?.toUI(), links = links?.toUI()
 )
 
 fun AnimeModel.Meta.toUI() = AnimeUI.Meta(
@@ -14,37 +14,33 @@ fun AnimeModel.Meta.toUI() = AnimeUI.Meta(
 fun AnimeModel.Data.toUI() = AnimeUI.Data(
     id = id,
     type = type,
-    links = links.toUI(),
-    attributes = attributes.toUI(),
-    relationships = relationships.toUI()
+    links = links?.toUI(),
+    attributes = attributes?.toUI(),
+    relationships = relationships?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.toUI() = AnimeUI.Data.Relationships(
-    genres = genres.toUI(),
-    categories = categories.toUI(),
-    castings = castings.toUI(),
-    installments = installments.toUI(),
-    mappings = mappings.toUI(),
-    reviews = reviews.toUI(),
-    mediaRelationships = mediaRelationships.toUI(),
-    characters = characters.toUI(),
-    staff = staff.toUI(),
-    productions = productions.toUI(),
-    quotes = quotes.toUI(),
-    episodes = episodes.toUI(),
-    streamingLinks = streamingLinks.toUI(),
-    animeProductions = animeProductions.toUI(),
-    animeCharacters = animeCharacters.toUI(),
-    animeStaff = animeStaff.toUI()
+    genres = genres?.toUI(),
+    categories = categories?.toUI(),
+    castings = castings?.toUI(),
+    installments = installments?.toUI(),
+    mappings = mappings?.toUI(),
+    reviews = reviews?.toUI(),
+    mediaRelationships = mediaRelationships?.toUI(),
+    characters = characters?.toUI(),
+    staff = staff?.toUI(),
+    productions = productions?.toUI(),
+    quotes = quotes?.toUI(),
+    episodes = episodes?.toUI(),
+    streamingLinks = streamingLinks?.toUI(),
+    animeProductions = animeProductions?.toUI(),
+    animeCharacters = animeCharacters?.toUI(),
+    animeStaff = animeStaff?.toUI()
 
 )
 
-// Relationships
-
-// last 5
-
 fun AnimeModel.Data.Relationships.Episodes.toUI() = AnimeUI.Data.Relationships.Episodes(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Episodes.Links.toUI() =
@@ -54,7 +50,7 @@ fun AnimeModel.Data.Relationships.Episodes.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.StreamingLinks.toUI() =
     AnimeUI.Data.Relationships.StreamingLinks(
-        links = links.toUI()
+        links = links?.toUI()
     )
 
 fun AnimeModel.Data.Relationships.StreamingLinks.Links.toUI() =
@@ -64,7 +60,7 @@ fun AnimeModel.Data.Relationships.StreamingLinks.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.AnimeProductions.toUI() =
     AnimeUI.Data.Relationships.AnimeProductions(
-        links = links.toUI()
+        links = links?.toUI()
     )
 
 fun AnimeModel.Data.Relationships.AnimeProductions.Links.toUI() =
@@ -74,7 +70,7 @@ fun AnimeModel.Data.Relationships.AnimeProductions.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.AnimeCharacters.toUI() =
     AnimeUI.Data.Relationships.AnimeCharacters(
-        links = links.toUI()
+        links = links?.toUI()
     )
 
 fun AnimeModel.Data.Relationships.AnimeCharacters.Links.toUI() =
@@ -84,7 +80,7 @@ fun AnimeModel.Data.Relationships.AnimeCharacters.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.AnimeStaff.toUI() =
     AnimeUI.Data.Relationships.AnimeStaff(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.AnimeStaff.Links.toUI() =
@@ -92,11 +88,9 @@ fun AnimeModel.Data.Relationships.AnimeStaff.Links.toUI() =
         self = self, related = related
     )
 
-// last 5/
-
 fun AnimeModel.Data.Relationships.Genres.toUI() =
     AnimeUI.Data.Relationships.Genres(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Genres.Links.toUI() =
@@ -106,7 +100,7 @@ fun AnimeModel.Data.Relationships.Genres.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.Quotes.toUI() =
     AnimeUI.Data.Relationships.Quotes(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Quotes.Links.toUI() =
@@ -116,7 +110,7 @@ fun AnimeModel.Data.Relationships.Quotes.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.Productions.toUI() =
     AnimeUI.Data.Relationships.Productions(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Productions.Links.toUI() =
@@ -126,7 +120,7 @@ fun AnimeModel.Data.Relationships.Productions.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.Staff.toUI() =
     AnimeUI.Data.Relationships.Staff(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Staff.Links.toUI() =
@@ -136,7 +130,7 @@ fun AnimeModel.Data.Relationships.Staff.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.Categories.toUI() =
     AnimeUI.Data.Relationships.Categories(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Categories.Links.toUI() =
@@ -146,7 +140,7 @@ fun AnimeModel.Data.Relationships.Categories.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.Castings.toUI() =
     AnimeUI.Data.Relationships.Castings(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Castings.Links.toUI() =
@@ -156,7 +150,7 @@ fun AnimeModel.Data.Relationships.Castings.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.Installments.toUI() =
     AnimeUI.Data.Relationships.Installments(
-        links = links.toUI()
+        links = links?.toUI()
     )
 
 fun AnimeModel.Data.Relationships.Installments.Links.toUI() =
@@ -166,7 +160,7 @@ fun AnimeModel.Data.Relationships.Installments.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.Mappings.toUI() =
     AnimeUI.Data.Relationships.Mappings(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Mappings.Links.toUI() =
@@ -176,7 +170,7 @@ fun AnimeModel.Data.Relationships.Mappings.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.Reviews.toUI() =
     AnimeUI.Data.Relationships.Reviews(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Reviews.Links.toUI() =
@@ -186,7 +180,7 @@ fun AnimeModel.Data.Relationships.Reviews.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.MediaRelationships.toUI() =
     AnimeUI.Data.Relationships.MediaRelationships(
-        links = links.toUI()
+        links = links?.toUI()
     )
 
 fun AnimeModel.Data.Relationships.MediaRelationships.Links.toUI() =
@@ -196,15 +190,13 @@ fun AnimeModel.Data.Relationships.MediaRelationships.Links.toUI() =
 
 fun AnimeModel.Data.Relationships.Characters.toUI() =
     AnimeUI.Data.Relationships.Characters(
-    links = links.toUI()
+    links = links?.toUI()
 )
 
 fun AnimeModel.Data.Relationships.Characters.Links.toUI() =
     AnimeUI.Data.Relationships.Characters.Links(
         self = self, related = related
     )
-
-// Relationships /
 
 fun AnimeModel.Links.toUI() =
     AnimeUI.Links(
@@ -224,11 +216,11 @@ fun AnimeModel.Data.Attributes.toUI() =
     synopsis = synopsis,
     description = description,
     coverImageTopOffset = coverImageTopOffset,
-    titles = titles.toUI(),
+    titles = titles?.toUI(),
     canonicalTitle = canonicalTitle,
     abbreviatedTitles = abbreviatedTitles,
     averageRating = averageRating,
-    ratingFrequencies = ratingFrequencies.toUI(),
+    ratingFrequencies = ratingFrequencies?.toUI(),
     userCount = userCount,
     favoritesCount = favoritesCount,
     startDate = startDate,
@@ -241,7 +233,7 @@ fun AnimeModel.Data.Attributes.toUI() =
     subtype = subtype,
     status = status,
     tba = tba,
-    posterImage = posterImage.toUI(),
+    posterImage = posterImage?.toUI(),
     coverImage = coverImage?.toUI(),
     episodeCount = episodeCount,
     episodeLength = episodeLength,
@@ -276,19 +268,19 @@ fun AnimeModel.Data.Attributes.RatingFrequencies.toUI() =
 
 fun AnimeModel.Data.Attributes.CoverImage.toUI() =
     AnimeUI.Data.Attributes.CoverImage(
-    tiny = tiny, large = large, small = small, original = original, meta = meta.toUI()
+    tiny = tiny, large = large, small = small, original = original, meta = meta?.toUI()
 )
 
 fun AnimeModel.Data.Attributes.CoverImage.Meta.toUI() =
     AnimeUI.Data.Attributes.CoverImage.Meta(
-        dimensions = dimensions.toUI()
+        dimensions = dimensions?.toUI()
     )
 
 fun AnimeModel.Data.Attributes.CoverImage.Meta.Dimensions.toUI() =
     AnimeUI.Data.Attributes.CoverImage.Meta.Dimensions(
-        tiny = tiny.toUI(),
-        large = large.toUI(),
-        small = small.toUI(),
+        tiny = tiny?.toUI(),
+        large = large?.toUI(),
+        small = small?.toUI(),
     )
 
 fun AnimeModel.Data.Attributes.CoverImage.Meta.Dimensions.Tiny.toUI() =
@@ -322,20 +314,20 @@ fun AnimeModel.Data.Attributes.PosterImage.toUI() =
     small = small,
     medium = medium,
     original = original,
-    meta = meta.toUI()
+    meta = meta?.toUI()
 )
 
 fun AnimeModel.Data.Attributes.PosterImage.Meta.toUI() =
     AnimeUI.Data.Attributes.PosterImage.Meta(
-        dimensions = dimensions.toUI()
+        dimensions = dimensions?.toUI()
     )
 
 fun AnimeModel.Data.Attributes.PosterImage.Meta.Dimensions.toUI() =
     AnimeUI.Data.Attributes.PosterImage.Meta.Dimensions(
-        tiny = tiny.toUI(),
-        large = large.toUI(),
-        small = small.toUI(),
-        medium = medium.toUI()
+        tiny = tiny?.toUI(),
+        large = large?.toUI(),
+        small = small?.toUI(),
+        medium = medium?.toUI()
     )
 
 fun AnimeModel.Data.Attributes.PosterImage.Meta.Dimensions.Tiny.toUI() =

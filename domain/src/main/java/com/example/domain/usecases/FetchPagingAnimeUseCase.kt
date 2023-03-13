@@ -2,8 +2,8 @@ package com.example.domain.usecases
 
 import com.example.domain.repositories.AnimeRepository
 
-class FetchAnimeUseCase(
+class FetchPagingAnimeUseCase(
     private val animeRepository: AnimeRepository
 ) {
-    fun fetchAnime(limit:Int,offset:Int) = animeRepository.fetchAnimeList(limit, offset)
+    operator fun invoke() = animeRepository.fetchPagingAnime()
 }
