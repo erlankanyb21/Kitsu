@@ -89,14 +89,13 @@ object Dependencies {
         private const val version = "3.1.1"
 
         const val runtime = "androidx.paging:paging-runtime-ktx:$version"
-        const val common = "androidx.paging:paging-common:3.1.1"
+        const val common = "androidx.paging:paging-common:$version"
     }
 
     object Glide {
         private const val version = "4.13.0"
 
         const val glide = "com.github.bumptech.glide:glide:$version"
-        const val glideCompiler = "com.github.bumptech.glide:compiler:$version"
     }
 
     object Koin {

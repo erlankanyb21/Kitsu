@@ -81,7 +81,7 @@ dependencies {
 
     //Paging 3
     implementation(Dependencies.Paging.common)
-    api(Dependencies.Paging.runtime)
+    implementation(Dependencies.Paging.runtime)
 
     //Kotlin Coroutine
     implementation(Dependencies.Kotlin.coroutinesAndroid)
@@ -97,6 +97,7 @@ dependencies {
     //navigation components
     implementation(Dependencies.Navigation.fragment)
     implementation(Dependencies.Navigation.ui)
+
 
     implementation(project(":domain"))
     implementation(project(":data"))

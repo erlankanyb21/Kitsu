@@ -34,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -45,6 +46,7 @@ dependencies {
 //    koin
     implementation(Dependencies.Koin.koinCore)
 
+
 //    retrofit
     implementation(Dependencies.Retrofit.retrofit)
     implementation(Dependencies.Retrofit.converterGson)
@@ -53,5 +55,8 @@ dependencies {
     implementation(Dependencies.OkHttp.okHttp)
     implementation(Dependencies.OkHttp.loggingInterceptor)
 
-    implementation(project(":domain"))
+    //Paging 3
+    implementation(Dependencies.Paging.common)
+    implementation(Dependencies.Paging.runtime)
+
 }

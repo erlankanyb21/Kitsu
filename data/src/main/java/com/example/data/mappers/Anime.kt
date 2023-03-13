@@ -5,7 +5,7 @@ import com.example.domain.models.AnimeModel
 
 fun AnimeDto.toDomain() =
     AnimeModel(
-    data = data.map { it.toDomain() }, meta = meta.toDomain(), links = links.toDomain()
+    data = data?.map { it.toDomain() }, meta = meta?.toDomain(), links = links?.toDomain()
 )
 
 fun AnimeDto.Meta.toDomain() = AnimeModel.Meta(
@@ -15,28 +15,28 @@ fun AnimeDto.Meta.toDomain() = AnimeModel.Meta(
 fun AnimeDto.Data.toDomain() = AnimeModel.Data(
     id = id,
     type = type,
-    links = links.toDomain(),
-    attributes = attributes.toDomain(),
-    relationships = relationships.toDomain()
+    links = links?.toDomain(),
+    attributes = attributes?.toDomain(),
+    relationships = relationships?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.toDomain() = AnimeModel.Data.Relationships(
-    genres = genres.toDomain(),
-    categories = categories.toDomain(),
-    castings = castings.toDomain(),
-    installments = installments.toDomain(),
-    mappings = mappings.toDomain(),
-    reviews = reviews.toDomain(),
-    mediaRelationships = mediaRelationships.toDomain(),
-    characters = characters.toDomain(),
-    staff = staff.toDomain(),
-    productions = productions.toDomain(),
-    quotes = quotes.toDomain(),
-    episodes = episodes.toDomain(),
-    streamingLinks = streamingLinks.toDomain(),
-    animeProductions = animeProductions.toDomain(),
-    animeCharacters = animeCharacters.toDomain(),
-    animeStaff = animeStaff.toDomain()
+    genres = genres?.toDomain(),
+    categories = categories?.toDomain(),
+    castings = castings?.toDomain(),
+    installments = installments?.toDomain(),
+    mappings = mappings?.toDomain(),
+    reviews = reviews?.toDomain(),
+    mediaRelationships = mediaRelationships?.toDomain(),
+    characters = characters?.toDomain(),
+    staff = staff?.toDomain(),
+    productions = productions?.toDomain(),
+    quotes = quotes?.toDomain(),
+    episodes = episodes?.toDomain(),
+    streamingLinks = streamingLinks?.toDomain(),
+    animeProductions = animeProductions?.toDomain(),
+    animeCharacters = animeCharacters?.toDomain(),
+    animeStaff = animeStaff?.toDomain()
 
 )
 
@@ -45,7 +45,7 @@ fun AnimeDto.Data.Relationships.toDomain() = AnimeModel.Data.Relationships(
 // last 5
 
 fun AnimeDto.Data.Relationships.Episodes.toDomain() = AnimeModel.Data.Relationships.Episodes(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Episodes.Links.toDomain() =
@@ -55,7 +55,7 @@ fun AnimeDto.Data.Relationships.Episodes.Links.toDomain() =
 
 fun AnimeDto.Data.Relationships.StreamingLinks.toDomain() =
     AnimeModel.Data.Relationships.StreamingLinks(
-        links = links.toDomain()
+        links = links?.toDomain()
     )
 
 fun AnimeDto.Data.Relationships.StreamingLinks.Links.toDomain() =
@@ -65,7 +65,7 @@ fun AnimeDto.Data.Relationships.StreamingLinks.Links.toDomain() =
 
 fun AnimeDto.Data.Relationships.AnimeProductions.toDomain() =
     AnimeModel.Data.Relationships.AnimeProductions(
-        links = links.toDomain()
+        links = links?.toDomain()
     )
 
 fun AnimeDto.Data.Relationships.AnimeProductions.Links.toDomain() =
@@ -75,7 +75,7 @@ fun AnimeDto.Data.Relationships.AnimeProductions.Links.toDomain() =
 
 fun AnimeDto.Data.Relationships.AnimeCharacters.toDomain() =
     AnimeModel.Data.Relationships.AnimeCharacters(
-        links = links.toDomain()
+        links = links?.toDomain()
     )
 
 fun AnimeDto.Data.Relationships.AnimeCharacters.Links.toDomain() =
@@ -84,7 +84,7 @@ fun AnimeDto.Data.Relationships.AnimeCharacters.Links.toDomain() =
     )
 
 fun AnimeDto.Data.Relationships.AnimeStaff.toDomain() = AnimeModel.Data.Relationships.AnimeStaff(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.AnimeStaff.Links.toDomain() =
@@ -95,7 +95,7 @@ fun AnimeDto.Data.Relationships.AnimeStaff.Links.toDomain() =
 // last 5/
 
 fun AnimeDto.Data.Relationships.Genres.toDomain() = AnimeModel.Data.Relationships.Genres(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Genres.Links.toDomain() =
@@ -104,7 +104,7 @@ fun AnimeDto.Data.Relationships.Genres.Links.toDomain() =
     )
 
 fun AnimeDto.Data.Relationships.Quotes.toDomain() = AnimeModel.Data.Relationships.Quotes(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Quotes.Links.toDomain() =
@@ -113,7 +113,7 @@ fun AnimeDto.Data.Relationships.Quotes.Links.toDomain() =
     )
 
 fun AnimeDto.Data.Relationships.Productions.toDomain() = AnimeModel.Data.Relationships.Productions(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Productions.Links.toDomain() =
@@ -122,7 +122,7 @@ fun AnimeDto.Data.Relationships.Productions.Links.toDomain() =
     )
 
 fun AnimeDto.Data.Relationships.Staff.toDomain() = AnimeModel.Data.Relationships.Staff(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Staff.Links.toDomain() = AnimeModel.Data.Relationships.Staff.Links(
@@ -130,7 +130,7 @@ fun AnimeDto.Data.Relationships.Staff.Links.toDomain() = AnimeModel.Data.Relatio
 )
 
 fun AnimeDto.Data.Relationships.Categories.toDomain() = AnimeModel.Data.Relationships.Categories(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Categories.Links.toDomain() =
@@ -139,7 +139,7 @@ fun AnimeDto.Data.Relationships.Categories.Links.toDomain() =
     )
 
 fun AnimeDto.Data.Relationships.Castings.toDomain() = AnimeModel.Data.Relationships.Castings(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Castings.Links.toDomain() =
@@ -149,7 +149,7 @@ fun AnimeDto.Data.Relationships.Castings.Links.toDomain() =
 
 fun AnimeDto.Data.Relationships.Installments.toDomain() =
     AnimeModel.Data.Relationships.Installments(
-        links = links.toDomain()
+        links = links?.toDomain()
     )
 
 fun AnimeDto.Data.Relationships.Installments.Links.toDomain() =
@@ -158,7 +158,7 @@ fun AnimeDto.Data.Relationships.Installments.Links.toDomain() =
     )
 
 fun AnimeDto.Data.Relationships.Mappings.toDomain() = AnimeModel.Data.Relationships.Mappings(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Mappings.Links.toDomain() =
@@ -167,7 +167,7 @@ fun AnimeDto.Data.Relationships.Mappings.Links.toDomain() =
     )
 
 fun AnimeDto.Data.Relationships.Reviews.toDomain() = AnimeModel.Data.Relationships.Reviews(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Reviews.Links.toDomain() =
@@ -177,7 +177,7 @@ fun AnimeDto.Data.Relationships.Reviews.Links.toDomain() =
 
 fun AnimeDto.Data.Relationships.MediaRelationships.toDomain() =
     AnimeModel.Data.Relationships.MediaRelationships(
-        links = links.toDomain()
+        links = links?.toDomain()
     )
 
 fun AnimeDto.Data.Relationships.MediaRelationships.Links.toDomain() =
@@ -186,7 +186,7 @@ fun AnimeDto.Data.Relationships.MediaRelationships.Links.toDomain() =
     )
 
 fun AnimeDto.Data.Relationships.Characters.toDomain() = AnimeModel.Data.Relationships.Characters(
-    links = links.toDomain()
+    links = links?.toDomain()
 )
 
 fun AnimeDto.Data.Relationships.Characters.Links.toDomain() =
@@ -211,11 +211,11 @@ fun AnimeDto.Data.Attributes.toDomain() = AnimeModel.Data.Attributes(
     synopsis = synopsis,
     description = description,
     coverImageTopOffset = coverImageTopOffset,
-    titles = titles.toDomain(),
+    titles = titles?.toDomain(),
     canonicalTitle = canonicalTitle,
     abbreviatedTitles = abbreviatedTitles,
     averageRating = averageRating,
-    ratingFrequencies = ratingFrequencies.toDomain(),
+    ratingFrequencies = ratingFrequencies?.toDomain(),
     userCount = userCount,
     favoritesCount = favoritesCount,
     startDate = startDate,
@@ -228,7 +228,7 @@ fun AnimeDto.Data.Attributes.toDomain() = AnimeModel.Data.Attributes(
     subtype = subtype,
     status = status,
     tba = tba,
-    posterImage = posterImage.toDomain(),
+    posterImage = posterImage?.toDomain(),
     coverImage = coverImage?.toDomain(),
     episodeCount = episodeCount,
     episodeLength = episodeLength,
@@ -262,19 +262,19 @@ fun AnimeDto.Data.Attributes.RatingFrequencies.toDomain() =
     )
 
 fun AnimeDto.Data.Attributes.CoverImage.toDomain() = AnimeModel.Data.Attributes.CoverImage(
-    tiny = tiny, large = large, small = small, original = original, meta = meta.toDomain()
+    tiny = tiny, large = large, small = small, original = original, meta = meta?.toDomain()
 )
 
 fun AnimeDto.Data.Attributes.CoverImage.Meta.toDomain() =
     AnimeModel.Data.Attributes.CoverImage.Meta(
-        dimensions = dimensions.toDomain()
+        dimensions = dimensions?.toDomain()
     )
 
 fun AnimeDto.Data.Attributes.CoverImage.Meta.Dimensions.toDomain() =
     AnimeModel.Data.Attributes.CoverImage.Meta.Dimensions(
-        tiny = tiny.toDomain(),
-        large = large.toDomain(),
-        small = small.toDomain(),
+        tiny = tiny?.toDomain(),
+        large = large?.toDomain(),
+        small = small?.toDomain(),
     )
 
 fun AnimeDto.Data.Attributes.CoverImage.Meta.Dimensions.Tiny.toDomain() =
@@ -302,20 +302,20 @@ fun AnimeDto.Data.Attributes.PosterImage.toDomain() = AnimeModel.Data.Attributes
     small = small,
     medium = medium,
     original = original,
-    meta = meta.toDomain()
+    meta = meta?.toDomain()
 )
 
 fun AnimeDto.Data.Attributes.PosterImage.Meta.toDomain() =
     AnimeModel.Data.Attributes.PosterImage.Meta(
-        dimensions = dimensions.toDomain()
+        dimensions = dimensions?.toDomain()
     )
 
 fun AnimeDto.Data.Attributes.PosterImage.Meta.Dimensions.toDomain() =
     AnimeModel.Data.Attributes.PosterImage.Meta.Dimensions(
-        tiny = tiny.toDomain(),
-        large = large.toDomain(),
-        small = small.toDomain(),
-        medium = medium.toDomain()
+        tiny = tiny?.toDomain(),
+        large = large?.toDomain(),
+        small = small?.toDomain(),
+        medium = medium?.toDomain()
     )
 
 fun AnimeDto.Data.Attributes.PosterImage.Meta.Dimensions.Tiny.toDomain() =

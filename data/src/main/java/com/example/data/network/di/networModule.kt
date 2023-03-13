@@ -1,4 +1,4 @@
-package com.example.data.network.client
+package com.example.data.network.di
 
 import com.example.data.network.apiservice.AnimeApiService
 import com.example.data.repositories.AnimeRepositoryImpl
@@ -37,6 +37,5 @@ private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         .client(okHttpClient)
         .build()
 }
-
 private fun provideAnimeApi(retrofit: Retrofit): AnimeApiService = retrofit.create(AnimeApiService::class.java)
 private fun provideAnimeRepository(animeApiService: AnimeApiService):AnimeRepository = AnimeRepositoryImpl(animeApiService)
