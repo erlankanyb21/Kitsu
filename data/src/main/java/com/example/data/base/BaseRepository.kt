@@ -9,15 +9,6 @@ import kotlinx.coroutines.flow.flow
 
 abstract class BaseRepository {
 
-    protected fun <T> doRequest(response: T) = flow {
-        emit(Resource.Loading())
-        try {
-            emit(Resource.Success(data = response))
-        } catch (e: Exception) {
-            emit(Resource.Error(e.localizedMessage as String))
-        }
-    }
-
     protected fun <Value : Any> makePagingRequest(
         pagingSource: PagingSource<Int, Value>,
         pageSize: Int = 20,
