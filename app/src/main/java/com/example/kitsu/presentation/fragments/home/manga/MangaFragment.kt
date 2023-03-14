@@ -8,7 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentMangaBinding
 import com.example.kitsu.presentation.adapters.MangaAdapter
-import com.example.kitsu.presentation.adapters.MangaLoadStateAdapter
+import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.base.BaseFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -17,20 +17,19 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
 
     override val binding: FragmentMangaBinding by viewBinding(FragmentMangaBinding::bind)
     override val viewModel: MangaViewModel by viewModel()
-    private val mangaAdapter by lazy { MangaAdapter(this::onItemClick) }
-
-    private fun onItemClick(name: String?) {
-        Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
-    }
+    private val mangaAdapter = MangaAdapter(this::onItemClick)
 
     override fun initialize() {
         with(binding){
             recyclerview.adapter = mangaAdapter.withLoadStateHeaderAndFooter(
-                header = MangaLoadStateAdapter(),
-                footer = MangaLoadStateAdapter()
+                header = MainLoadStateAdapter(),
+                footer = MainLoadStateAdapter()
             )
         }
+    }
 
+    override fun setupListeners() {
+        super.setupListeners()
         mangaAdapter.addLoadStateListener { state->
             with(binding){
                 recyclerview.isVisible = state.refresh != LoadState.Loading
@@ -38,7 +37,6 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
             }
         }
     }
-
     override fun setupSubscribers() {
         super.setupSubscribers()
         viewModel.viewModelScope.launch {
@@ -46,5 +44,9 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
                 mangaAdapter.submitData(it)
             }
         }
+    }
+
+    private fun onItemClick(name: String?) {
+        Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
     }
 }

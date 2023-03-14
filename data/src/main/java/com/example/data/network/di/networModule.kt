@@ -2,10 +2,13 @@ package com.example.data.network.di
 
 import com.example.data.network.apiservice.AnimeApiService
 import com.example.data.network.apiservice.MangaApiService
+import com.example.data.network.apiservice.UsersApiService
 import com.example.data.repositories.AnimeRepositoryImpl
 import com.example.data.repositories.MangaRepositoryImpl
+import com.example.data.repositories.UsersRepositoryImpl
 import com.example.domain.repositories.AnimeRepository
 import com.example.domain.repositories.MangaRepository
+import com.example.domain.repositories.UsersRepository
 import com.example.domain.utils.Const
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,8 +23,10 @@ val networkModule: Module = module {
     single { provideRetrofit(get()) }
     single { provideAnimeApi(get()) }
     single { provideMangaApi(get()) }
+    single { provideUsersApi(get()) }
     single { provideAnimeRepository(get()) }
     single { provideMangaRepository(get()) }
+    single { provideUsersRepository(get()) }
 }
 private fun provideOkhttpClient(): OkHttpClient {
     val interceptor = HttpLoggingInterceptor()
@@ -41,15 +46,18 @@ private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         .client(okHttpClient)
         .build()
 }
-// api
+
 private fun provideAnimeApi(retrofit: Retrofit): AnimeApiService = retrofit.create(AnimeApiService::class.java)
 private fun provideMangaApi(retrofit: Retrofit): MangaApiService = retrofit.create(MangaApiService::class.java)
+private fun provideUsersApi(retrofit: Retrofit): UsersApiService = retrofit.create(UsersApiService::class.java)
 
-//api
 
-//repo
-private fun provideAnimeRepository(animeApiService: AnimeApiService):AnimeRepository =
+private fun provideAnimeRepository(animeApiService: AnimeApiService): AnimeRepository =
     AnimeRepositoryImpl(animeApiService = animeApiService)
-private fun provideMangaRepository(mangaApiService: MangaApiService):MangaRepository =
+
+private fun provideMangaRepository(mangaApiService: MangaApiService): MangaRepository =
     MangaRepositoryImpl(mangaApiService = mangaApiService)
-//repo
+
+private fun provideUsersRepository(usersApiService: UsersApiService): UsersRepository =
+    UsersRepositoryImpl(usersApiService = usersApiService)
+

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kitsu.databinding.ItemErrorBinding
 import com.example.kitsu.databinding.ItemProgressBinding
 
-class MangaLoadStateAdapter () : LoadStateAdapter<MangaLoadStateAdapter.ItemViewHolder>(){
+class MainLoadStateAdapter() : LoadStateAdapter<MainLoadStateAdapter.ItemViewHolder>() {
 
     override fun getStateViewType(loadState: LoadState) = when (loadState) {
         is LoadState.NotLoading -> error("Not supported")
@@ -22,7 +22,7 @@ class MangaLoadStateAdapter () : LoadStateAdapter<MangaLoadStateAdapter.ItemView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): ItemViewHolder {
-        return when(loadState) {
+        return when (loadState) {
             LoadState.Loading -> ProgressViewHolder(LayoutInflater.from(parent.context), parent)
             is LoadState.Error -> ErrorViewHolder(LayoutInflater.from(parent.context), parent)
             is LoadState.NotLoading -> error("Not supported")
@@ -40,7 +40,7 @@ class MangaLoadStateAdapter () : LoadStateAdapter<MangaLoadStateAdapter.ItemView
         abstract fun bind(loadState: LoadState)
     }
 
-     class ProgressViewHolder internal constructor(
+    class ProgressViewHolder internal constructor(
         private val binding: ItemProgressBinding
     ) : ItemViewHolder(binding.root) {
 
@@ -57,9 +57,7 @@ class MangaLoadStateAdapter () : LoadStateAdapter<MangaLoadStateAdapter.ItemView
             ): ProgressViewHolder {
                 return ProgressViewHolder(
                     ItemProgressBinding.inflate(
-                        layoutInflater,
-                        parent,
-                        attachToRoot
+                        layoutInflater, parent, attachToRoot
                     )
                 )
             }
@@ -84,9 +82,7 @@ class MangaLoadStateAdapter () : LoadStateAdapter<MangaLoadStateAdapter.ItemView
             ): ErrorViewHolder {
                 return ErrorViewHolder(
                     ItemErrorBinding.inflate(
-                        layoutInflater,
-                        parent,
-                        attachToRoot
+                        layoutInflater, parent, attachToRoot
                     )
                 )
             }
