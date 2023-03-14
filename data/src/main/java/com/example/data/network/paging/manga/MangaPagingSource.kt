@@ -17,7 +17,6 @@ class MangaPagingSource(
         return try {
             val response = mangaApiService.fetchMangaList(offset = offset)
 
-
             val data = response?.toDomain()
             val nextKey = if (data?.data!!.isEmpty()) null else offset + 20
             LoadResult.Page(
@@ -35,6 +34,4 @@ class MangaPagingSource(
                 ?: anchorPage?.nextKey?.minus(state.config.pageSize)
         }
     }
-
-
 }

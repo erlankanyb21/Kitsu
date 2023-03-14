@@ -6,5 +6,4 @@ import kotlinx.coroutines.flow.Flow
 
 interface MangaRepository {
     fun fetchPagingManga(): Flow<PagingData<MangaModel.Data>>
-
 }

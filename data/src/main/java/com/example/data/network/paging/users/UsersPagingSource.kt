@@ -1,20 +1,20 @@
-package com.example.data.network.paging.anime
+package com.example.data.network.paging.users
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.data.mappers.toDomain
-import com.example.data.network.apiservice.AnimeApiService
-import com.example.domain.models.AnimeModel
+import com.example.data.network.apiservice.UsersApiService
+import com.example.domain.models.UsersModel
 
-class AnimePagingSource(
-    private val animeApiService: AnimeApiService
-) : PagingSource<Int, AnimeModel.Data>() {
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AnimeModel.Data> {
+class UsersPagingSource(
+    private val usersApiService: UsersApiService
+) : PagingSource<Int, UsersModel.Data>(){
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UsersModel.Data> {
         val offset = params.key ?: 0
 
         return try {
-            val response = animeApiService.fetchAnimeList(offset = offset)
+            val response = usersApiService.fetchUsersList(offset = offset)
 
             val data = response?.toDomain()
             val nextKey = if (data?.data!!.isEmpty()) null else offset + 20
@@ -25,7 +25,8 @@ class AnimePagingSource(
             LoadResult.Error(exception)
         }
     }
-    override fun getRefreshKey(state: PagingState<Int, AnimeModel.Data>): Int? {
+
+    override fun getRefreshKey(state: PagingState<Int, UsersModel.Data>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(state.config.pageSize)

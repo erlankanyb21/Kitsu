@@ -5,7 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MangaApiService {
-
     @GET("api/edge/manga")
     suspend fun fetchMangaList(
         @Query("page[limit]") limit: Int = 20,
