@@ -10,5 +10,5 @@ class MangaViewModel(
     private val pagingMangaUseCase: FetchPagingMangaUseCase
 ) : BaseViewModel() {
     fun pagingManga() =
-        pagingMangaUseCase().map { it.map { it.toUI() } }
+        pagingMangaUseCase().map { pagingData -> pagingData.map { it.toUI() } }
 }

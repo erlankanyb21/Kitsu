@@ -1,16 +1,15 @@
 package com.example.kitsu.presentation.fragments.home.anime
 
-import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.map
+import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentAnimeBinding
 import com.example.kitsu.presentation.adapters.AnimeAdapter
+import com.example.kitsu.presentation.adapters.MangaLoadStateAdapter
 import com.example.kitsu.presentation.base.BaseFragment
-import com.example.kitsu.presentation.mapper.toUI
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,36 +17,35 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
 
     override val binding: FragmentAnimeBinding by viewBinding(FragmentAnimeBinding::bind)
     override val viewModel: AnimeViewModel by viewModel()
-    private val animeAdapter = AnimeAdapter(this::onItemClick)
+    private val animeAdapter by lazy { AnimeAdapter(this::onItemClick) }
 
     override fun initialize() {
-        binding.recyclerview.adapter = animeAdapter
+        with(binding){
+            recyclerview.adapter = animeAdapter.withLoadStateHeaderAndFooter(
+                header = MangaLoadStateAdapter(),
+                footer = MangaLoadStateAdapter()
+            )
+        }
+
+        animeAdapter.addLoadStateListener { state->
+            with(binding){
+                recyclerview.isVisible = state.refresh != LoadState.Loading
+                progress.isVisible = state.refresh == LoadState.Loading
+            }
+        }
     }
 
     private fun onItemClick(name: String?) {
         Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
     }
 
-    override fun setupListeners() {
+    override fun setupSubscribers() {
+        super.setupSubscribers()
+
         lifecycleScope.launch {
             viewModel.pagingAnime().collectPaging {
-                animeAdapter.submitData(it.map { it.toUI() })
+                animeAdapter.submitData(it)
             }
         }
     }
-//
-//        viewLifecycleOwner.lifecycleScope.launch {
-////            viewModel.anime(20,35)
-//            viewModel.fetchAnimeState.collectStates(
-//                onLoading = {
-//                    binding.progress.visibility = View.VISIBLE
-//                }, onSuccess = {
-//                    binding.progress.visibility = View.GONE
-//                    binding.recyclerview.adapter = animeAdapter
-//                    animeAdapter.submitList(it.data)
-//                }, onError = {
-//                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-//                })
-//        }
-//    }
 }
