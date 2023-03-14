@@ -15,7 +15,7 @@
             android:id="@+id/search_view_main"
             style="@style/BaseSearchView"
             android:layout_width="match_parent"
-            android:hint="Search Users"
+            android:hint="@string/search_users"
             android:textColorHint="@color/grey"
             android:layout_marginTop="@dimen/page_margin"
             android:layout_marginHorizontal="@dimen/element_margin"

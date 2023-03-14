@@ -1,8 +1,11 @@
 package com.example.data.network.di
 
 import com.example.data.network.apiservice.AnimeApiService
+import com.example.data.network.apiservice.MangaApiService
 import com.example.data.repositories.AnimeRepositoryImpl
+import com.example.data.repositories.MangaRepositoryImpl
 import com.example.domain.repositories.AnimeRepository
+import com.example.domain.repositories.MangaRepository
 import com.example.domain.utils.Const
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,8 +19,9 @@ val networkModule: Module = module {
     factory { provideOkhttpClient() }
     single { provideRetrofit(get()) }
     single { provideAnimeApi(get()) }
+    single { provideMangaApi(get()) }
     single { provideAnimeRepository(get()) }
-
+    single { provideMangaRepository(get()) }
 }
 private fun provideOkhttpClient(): OkHttpClient {
     val interceptor = HttpLoggingInterceptor()
@@ -37,5 +41,15 @@ private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         .client(okHttpClient)
         .build()
 }
+// api
 private fun provideAnimeApi(retrofit: Retrofit): AnimeApiService = retrofit.create(AnimeApiService::class.java)
-private fun provideAnimeRepository(animeApiService: AnimeApiService):AnimeRepository = AnimeRepositoryImpl(animeApiService)
+private fun provideMangaApi(retrofit: Retrofit): MangaApiService = retrofit.create(MangaApiService::class.java)
+
+//api
+
+//repo
+private fun provideAnimeRepository(animeApiService: AnimeApiService):AnimeRepository =
+    AnimeRepositoryImpl(animeApiService = animeApiService)
+private fun provideMangaRepository(mangaApiService: MangaApiService):MangaRepository =
+    MangaRepositoryImpl(mangaApiService = mangaApiService)
+//repo

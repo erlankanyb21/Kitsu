@@ -4,4 +4,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="search_anime">Search Anime</string>
+    <string name="search_manga">Search Manga</string>
+    <string name="search_users">Search Users</string>
 </resources>

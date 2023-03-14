@@ -8,6 +8,10 @@ object Dependencies {
 
     }
 
+    object Base_Url {
+        const val Base_Url = "https://kitsu.io/"
+    }
+
     object idPlugins {
         const val application = "com.android.application"
         const val kapt = "kotlin-kapt"
