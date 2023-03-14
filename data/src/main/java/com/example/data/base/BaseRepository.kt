@@ -4,8 +4,6 @@ package com.example.data.base
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
-import com.example.domain.resource.Resource
-import kotlinx.coroutines.flow.flow
 
 abstract class BaseRepository {
 

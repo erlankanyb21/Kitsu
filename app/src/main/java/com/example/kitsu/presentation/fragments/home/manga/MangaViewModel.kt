@@ -1,8 +1,14 @@
 package com.example.kitsu.presentation.fragments.home.manga
 
-import androidx.lifecycle.ViewModel
+import androidx.paging.map
+import com.example.domain.usecases.FetchPagingMangaUseCase
 import com.example.kitsu.presentation.base.BaseViewModel
+import com.example.kitsu.presentation.mapper.toUI
+import kotlinx.coroutines.flow.map
 
-class MangaViewModel : BaseViewModel() {
-    // TODO: Implement the ViewModel
+class MangaViewModel(
+    private val pagingMangaUseCase: FetchPagingMangaUseCase
+) : BaseViewModel() {
+    fun pagingManga() =
+        pagingMangaUseCase().map { it.map { it.toUI() } }
 }

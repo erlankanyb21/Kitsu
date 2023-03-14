@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
 //    core
     implementation(Dependencies.Core.core)
@@ -99,6 +101,4 @@ dependencies {
     implementation(Dependencies.Navigation.ui)
 
 
-    implementation(project(":domain"))
-    implementation(project(":data"))
 }

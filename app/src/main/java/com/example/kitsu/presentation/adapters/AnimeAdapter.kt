@@ -2,18 +2,16 @@ package com.example.kitsu.presentation.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kitsu.databinding.ItemAnimeRvBinding
 import com.example.kitsu.presentation.models.anime.AnimeUI
 import com.example.kitsu.presentation.utils.loadImage
 
 class AnimeAdapter(
-    private val onItemClick: (position: String?) -> Unit
+    private val onItemClick: (name: String?) -> Unit
 ) :
     PagingDataAdapter<AnimeUI.Data, AnimeAdapter.AnimeViewHolder>(Companion) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AnimeViewHolder(
@@ -33,7 +31,7 @@ class AnimeAdapter(
                 animeItemImg.loadImage(data.attributes.posterImage.medium)
             }
             itemView.setOnClickListener {
-                onItemClick(data.id)
+                onItemClick(data.attributes?.slug)
             }
         }
     }
