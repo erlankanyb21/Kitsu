@@ -31,7 +31,7 @@ class AnimeAdapter(
                 animeItemImg.loadImage(data.attributes.posterImage.medium)
             }
             itemView.setOnClickListener {
-                onItemClick(data.attributes?.slug)
+                onItemClick(data.attributes?.canonicalTitle)
             }
         }
     }
