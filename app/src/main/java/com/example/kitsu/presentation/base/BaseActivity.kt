@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseActivity<VM: BaseViewModel,VB: ViewBinding> : AppCompatActivity() {
+abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatActivity() {
 
     protected var _binding: VB? = null
     protected val binding get() = _binding!!
@@ -21,9 +21,7 @@ abstract class BaseActivity<VM: BaseViewModel,VB: ViewBinding> : AppCompatActivi
         initView()
         initViewModel()
         initListener()
-
     }
-
     open fun initView() {}
     open fun initListener() {}
     open fun initViewModel() {}

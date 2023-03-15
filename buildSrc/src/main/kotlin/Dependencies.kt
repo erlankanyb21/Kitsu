@@ -5,7 +5,6 @@ object Dependencies {
         const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
         const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val kotlin = "org.jetbrains.kotlin.android"
-
     }
 
     object Base_Url {
@@ -16,7 +15,6 @@ object Dependencies {
         const val application = "com.android.application"
         const val kapt = "kotlin-kapt"
         const val jetbrainsAndroid = "org.jetbrains.kotlin.android"
-
     }
 
     object UIComponents {

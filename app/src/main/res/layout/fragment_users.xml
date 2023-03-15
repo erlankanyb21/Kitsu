@@ -26,7 +26,7 @@
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/big_margin_70"
-                android:layout_marginHorizontal="@dimen/element_margin"
+                android:layout_marginHorizontal="8dp"
                 tools:listitem="@layout/item_users_rv"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_height="match_parent"/>

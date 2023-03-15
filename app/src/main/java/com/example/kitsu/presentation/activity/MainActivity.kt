@@ -34,12 +34,15 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home,
+                R.id.navigation_search,
+                R.id.navigation_add,
+                R.id.notificationsFragment,
+                R.id.libraryFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
 
         // для того чтобы bottom nav вверх из-за клавиатуры не съехал
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
@@ -49,7 +52,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                 navDestination: NavDestination,
                 bundle: Bundle?,
             ->
-
 //            with(binding) {
 //                val fragments = listOf(R.id.fragment_home,
 //                    R.id.commentFragment,
@@ -62,6 +64,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 //            }
         }
     }
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         return navController.navigateUp() || super.onSupportNavigateUp()

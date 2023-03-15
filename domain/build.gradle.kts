@@ -14,7 +14,6 @@ dependencies {
     implementation(Dependencies.Koin.koinCore)
     implementation(Dependencies.Paging.common)
 
-
     //Kotlin Coroutine
     implementation(Dependencies.Kotlin.coroutineCore)
 
