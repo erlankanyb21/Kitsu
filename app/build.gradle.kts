@@ -42,14 +42,13 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
-
 //    core
     implementation(Dependencies.Core.core)
 
 //    ui
     implementation(Dependencies.UIComponents.appCompat)
-    implementation(Dependencies.UIComponents.constraintLayout)
     implementation(Dependencies.UIComponents.material)
+    implementation(Dependencies.UIComponents.constraintLayout)
     implementation(Dependencies.UIComponents.viewBindingPropertyDelegate)
 
 //    androidx

@@ -9,6 +9,5 @@ import kotlinx.coroutines.flow.map
 class AnimeViewModel(
     private val fetchPagingAnimeUseCase: FetchPagingAnimeUseCase
 ) : BaseViewModel() {
-    fun pagingAnime() = fetchPagingAnimeUseCase().map { pagingData -> pagingData.map { it.toUI() } }
-
+    fun pagingAnime(text:String) = fetchPagingAnimeUseCase(text).map { pagingData -> pagingData.map { it.toUI() } }
 }

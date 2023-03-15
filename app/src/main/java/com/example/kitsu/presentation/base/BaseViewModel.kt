@@ -6,19 +6,19 @@ import com.example.domain.resource.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel: ViewModel() {
+abstract class BaseViewModel : ViewModel() {
     protected fun <T> Flow<Resource<T>>.collectingStates(
-        loading:() ->Unit,
+        loading: () -> Unit,
         error: (message: String?) -> Unit,
         success: (data: T?) -> Unit
-    ){
+    ) {
         viewModelScope.launch {
             this@collectingStates.collect {
                 when (it) {
                     is Resource.Loading -> {
                         loading()
                     }
-                    is Resource.Error ->{
+                    is Resource.Error -> {
                         error(it.message)
                     }
                     is Resource.Success -> {

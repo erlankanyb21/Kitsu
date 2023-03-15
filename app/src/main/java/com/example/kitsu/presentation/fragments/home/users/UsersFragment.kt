@@ -15,35 +15,34 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UsersFragment : BaseFragment<UsersViewModel, FragmentUsersBinding>(R.layout.fragment_users) {
 
-    override val binding: FragmentUsersBinding by viewBinding(FragmentUsersBinding::bind)
-    override val viewModel: UsersViewModel by viewModel()
+    override val binding by viewBinding(FragmentUsersBinding::bind)
+    override val viewModel by viewModel<UsersViewModel>()
     private val usersAdapter = UsersAdapter(this::onItemClick)
 
     override fun initialize() {
-        with(binding){
-            recyclerview.adapter = usersAdapter.withLoadStateHeaderAndFooter(
-                header = MainLoadStateAdapter(),
-                footer = MainLoadStateAdapter()
-            )
-        }
+        binding.recyclerview.adapter = usersAdapter.withLoadStateHeaderAndFooter(
+            header = MainLoadStateAdapter(),
+            footer = MainLoadStateAdapter()
+        )
     }
+
     override fun setupListeners() {
-        super.setupListeners()
-        usersAdapter.addLoadStateListener { state->
-            with(binding){
+        usersAdapter.addLoadStateListener { state ->
+            with(binding) {
                 recyclerview.isVisible = state.refresh != LoadState.Loading
                 progress.isVisible = state.refresh == LoadState.Loading
             }
         }
     }
+
     override fun setupSubscribers() {
-        super.setupSubscribers()
         viewModel.viewModelScope.launch {
-            viewModel.pagingUsers().collectPaging{
+            viewModel.pagingUsers().collectPaging {
                 usersAdapter.submitData(it)
             }
         }
     }
+
     private fun onItemClick(name: String?) {
         Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
     }

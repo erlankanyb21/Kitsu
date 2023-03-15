@@ -5,6 +5,5 @@ import com.example.domain.models.AnimeModel
 import kotlinx.coroutines.flow.Flow
 
 interface AnimeRepository {
-    fun fetchPagingAnime(): Flow<PagingData<AnimeModel.Data>>
-
+    fun fetchPagingAnime(text:String): Flow<PagingData<AnimeModel.Data>>
 }

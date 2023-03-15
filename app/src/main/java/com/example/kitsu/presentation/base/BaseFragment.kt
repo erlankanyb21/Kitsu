@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.PagingData
 import androidx.viewbinding.ViewBinding
-import com.example.kitsu.presentation.UIState
+import com.example.kitsu.presentation.state.UIState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -21,7 +21,6 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
 
     protected abstract val viewModel: ViewModel
     protected abstract val binding: Binding
-
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
@@ -29,23 +28,13 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
         setupRequests()
         setupSubscribers()
     }
-
-    protected open fun initialize() {
-    }
-
-    protected open fun setupListeners() {
-    }
-
-    protected open fun setupRequests() {
-    }
-
-    protected open fun setupSubscribers() {
-    }
+    protected open fun initialize() {}
+    protected open fun setupListeners() {}
+    protected open fun setupRequests() {}
+    protected open fun setupSubscribers() {}
 
     protected fun <T> StateFlow<UIState<T>>.collectStates(
-        onLoading: () -> Unit,
-        onError: (msg: String) -> Unit,
-        onSuccess: (data: T) -> Unit
+        onLoading: () -> Unit, onError: (msg: String) -> Unit, onSuccess: (data: T) -> Unit
     ) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -75,10 +64,8 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
     ) {
         safeFlowGather(lifecycleState) { this.collectLatest { action(it) } }
     }
-
     protected fun safeFlowGather(
-        lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
-        action: suspend () -> Unit
+        lifecycleState: Lifecycle.State = Lifecycle.State.STARTED, action: suspend () -> Unit
     ) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {
