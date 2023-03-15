@@ -14,18 +14,10 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.fragment_home) {
 
-    override val binding: FragmentHomeBinding by viewBinding(FragmentHomeBinding::bind)
-    override val viewModel: HomeViewModel by viewModels()
-
-    private val fragmentTitles = listOf(
-        "Anime", "Manga", "Users"
-    )
+    override val binding by viewBinding(FragmentHomeBinding::bind)
+    override val viewModel by viewModels<HomeViewModel>()
 
     override fun initialize() {
-        homeTabs()
-    }
-
-    private fun homeTabs() {
         val adapter = FragmentViewPagerAdapter(requireActivity(), listOf(
             AnimeFragment(),
             MangaFragment(),
@@ -35,8 +27,12 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         TabLayoutMediator(
             binding.tabLayoutManga, binding.viewPagerManga
         ) { tab: TabLayout.Tab, i: Int ->
-            tab.text = fragmentTitles[i]
+            tab.text = when(i){
+                0 -> "Anime"
+                1 -> "Manga"
+                2 -> "Users"
+                else -> throw IndexOutOfBoundsException("Invalid position $i")
+            }
         }.attach()
     }
-
 }

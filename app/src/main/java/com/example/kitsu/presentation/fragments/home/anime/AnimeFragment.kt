@@ -1,10 +1,12 @@
 package com.example.kitsu.presentation.fragments.home.anime
 
-import android.text.Editable
-import android.text.TextWatcher
+import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
@@ -12,6 +14,7 @@ import com.example.kitsu.databinding.FragmentAnimeBinding
 import com.example.kitsu.presentation.adapters.AnimeAdapter
 import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.base.BaseFragment
+import com.example.kitsu.presentation.fragments.dialog.FilterDialogFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,31 +34,39 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
             }
         }
     }
-
     override fun setupListeners() {
         animeAdapter.addLoadStateListener { state ->
-            with(binding) {
-                recyclerview.isVisible = state.refresh != LoadState.Loading
-                progress.isVisible = state.refresh == LoadState.Loading
-            }
+            binding.recyclerview.isVisible = state.refresh != LoadState.Loading
+            binding.progress.isVisible = state.refresh == LoadState.Loading
         }
         searchListener()
+        showFilter()
     }
 
-    private fun searchListener() {
-        binding.searchViewMain.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(text: Editable?) {
+    private fun showFilter() {
+        binding.btnFilter.setOnClickListener {
+            val filterDialogFragment = FilterDialogFragment()
+            setFragmentResultListener("bundle") { requestKey: String, bundle: Bundle ->
+                bundle.getBundle("key")
                 lifecycleScope.launch {
-                    viewModel.pagingAnime(text.toString().trim()).collectPaging {
+                    viewModel.pagingAnime(bundle.toString()).collectPaging {
                         animeAdapter.submitData(it)
                     }
                 }
             }
-        })
+            val manager = requireActivity().supportFragmentManager
+            filterDialogFragment.show(manager, "filter")
+        }
+    }
+
+    private fun searchListener() {
+        binding.searchView.addTextChangedListener{ text->
+            viewModel.viewModelScope.launch {
+                viewModel.pagingAnime(text = text.toString().trim()).collectPaging {
+                    animeAdapter.submitData(it)
+                }
+            }
+        }
     }
 
     private fun onItemClick(name: String?) {

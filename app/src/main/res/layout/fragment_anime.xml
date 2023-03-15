@@ -12,14 +12,26 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/search_view_main"
+            android:id="@+id/search_view"
             style="@style/BaseSearchView"
             android:layout_width="match_parent"
-            android:layout_marginHorizontal="@dimen/element_margin"
-            android:layout_marginTop="@dimen/page_margin"
+            android:layout_margin="16dp"
             android:hint="@string/search_anime"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="LabelFor,TextContrastCheck,TouchTargetSizeCheck" />
+            tools:ignore="LabelFor,TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <ImageButton
+            android:id="@+id/btn_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
+            android:backgroundTint="@color/dark"
+            android:src="@drawable/ic_filter"
+            app:layout_constraintBottom_toBottomOf="@+id/search_view"
+            app:layout_constraintEnd_toEndOf="@+id/search_view"
+            app:layout_constraintTop_toTopOf="@+id/search_view"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -42,6 +54,4 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

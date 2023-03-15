@@ -5,5 +5,5 @@ import com.example.domain.models.MangaModel
 import kotlinx.coroutines.flow.Flow
 
 interface MangaRepository {
-    fun fetchPagingManga(): Flow<PagingData<MangaModel.Data>>
+    fun fetchPagingManga(query:String): Flow<PagingData<MangaModel.Data>>
 }

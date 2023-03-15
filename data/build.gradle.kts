@@ -16,6 +16,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://kitsu.io/\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(

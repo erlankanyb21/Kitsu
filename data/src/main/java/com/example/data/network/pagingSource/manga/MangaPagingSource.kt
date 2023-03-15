@@ -7,14 +7,15 @@ import com.example.data.network.apiservice.MangaApiService
 import com.example.domain.models.MangaModel
 
 class MangaPagingSource(
-    private val mangaApiService: MangaApiService
+    private val mangaApiService: MangaApiService,
+    private val text:String
 ) : PagingSource<Int, MangaModel.Data>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MangaModel.Data> {
         val offset = params.key ?: 0
 
         return try {
-            val response = mangaApiService.fetchMangaList(offset = offset)
+            val response = mangaApiService.fetchMangaList(offset = offset, text = text)
 
             val data = response?.toDomain()
             val nextKey = if (data?.data!!.isEmpty()) null else offset + 20

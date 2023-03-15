@@ -1,32 +1,38 @@
 package com.example.kitsu.presentation.fragments.dialog
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.setFragmentResult
 import com.example.kitsu.R
+import com.example.kitsu.databinding.FragmentFilterDialogBinding
+import com.example.kitsu.presentation.adapters.CategoriesAdapter
+import com.example.kitsu.presentation.base.BaseDialogFragment
 
-class FilterDialogFragment : Fragment() {
+class FilterDialogFragment : BaseDialogFragment<FragmentFilterDialogBinding>() {
+    override fun inflateBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentFilterDialogBinding =
+        FragmentFilterDialogBinding.inflate(
+            inflater,
+            container,
+            false
+        )
 
-    companion object {
-        fun newInstance() = FilterDialogFragment()
+    override fun initialize() {
+        dialog?.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        val categories = resources.getStringArray(R.array.filters).toList()
+        val adapter = CategoriesAdapter(this::onItemClick,categories)
+        binding.recyclerview.adapter = adapter
     }
 
-    private lateinit var viewModel: FilterDialogViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_filter_dialog, container, false)
+    private fun onItemClick(name:String?){
+        val bundle = Bundle()
+        bundle.putString("key",name)
+        setFragmentResult("bundle",bundle)
+        dismiss()
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FilterDialogViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

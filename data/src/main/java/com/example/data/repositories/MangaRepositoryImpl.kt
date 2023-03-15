@@ -15,6 +15,6 @@ val mangaDataSourceImpl = module {
 class MangaRepositoryImpl(
     private val mangaApiService: MangaApiService
 ) : MangaRepository, BaseRepository() {
-    override fun fetchPagingManga(): Flow<PagingData<MangaModel.Data>> =
-        makePagingRequest(MangaPagingSource(mangaApiService))
+    override fun fetchPagingManga(query:String): Flow<PagingData<MangaModel.Data>> =
+        makePagingRequest(MangaPagingSource(mangaApiService = mangaApiService, text = query))
 }

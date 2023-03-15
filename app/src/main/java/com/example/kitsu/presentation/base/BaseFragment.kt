@@ -57,7 +57,6 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
             }
         }
     }
-
     protected fun <T : Any> Flow<PagingData<T>>.collectPaging(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
         action: suspend (value: PagingData<T>) -> Unit
