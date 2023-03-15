@@ -1,6 +1,5 @@
 package com.example.domain.di
 
-import com.example.domain.usecases.FetchCategoriesUseCase
 import com.example.domain.usecases.FetchPagingAnimeUseCase
 import com.example.domain.usecases.FetchPagingMangaUseCase
 import com.example.domain.usecases.FetchPagingUsersUseCase
@@ -16,7 +15,5 @@ val UseCaseModule = module {
     factory {
         FetchPagingUsersUseCase(get())
     }
-    factory {
-        FetchCategoriesUseCase(get())
-    }
+
 }

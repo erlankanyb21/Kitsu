@@ -6,4 +6,40 @@
     <string name="search_anime">Search Anime</string>
     <string name="search_manga">Search Manga</string>
     <string name="search_users">Search Users</string>
+
+    <string-array name="filters">
+        <item>Comedy</item>
+        <item>Romance</item>
+        <item>School Life</item>
+        <item>Adventure</item>
+        <item>Yaoi</item>
+        <item>Science Fictions</item>
+        <item>Sports</item>
+        <item>Japan</item>
+        <item>Mystery</item>
+        <item>Earth</item>
+        <item>Music</item>
+        <item>Kids</item>
+        <item>Psychological</item>
+        <item>SuperNatural</item>
+        <item>Historical</item>
+        <item>Ecchi</item>
+        <item>Drama</item>
+        <item>Magic</item>
+        <item>Fantasy</item>
+        <item>Harem</item>
+        <item>Super Power</item>
+        <item>Shounen</item>
+        <item>Slice of Life</item>
+        <item>Tragedy</item>
+        <item>Violence</item>
+        <item>Thriller</item>
+        <item>Horror</item>
+        <item>Asia</item>
+        <item>Mecha</item>
+        <item>Military</item>
+        <item>Martial Arts</item>
+        <item>Demon</item>
+        <item>Parody</item>
+    </string-array>
 </resources>

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import org.koin.dsl.module
 
 val usersDataSourceImpl = module {
-    single { CategoriesRepositoryImpl(get()) }
+    single { UsersRepositoryImpl(get()) }
 }
 class UsersRepositoryImpl(
     private val usersApiService: UsersApiService

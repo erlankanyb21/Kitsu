@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="AppBarTheme">
-
-        <item name="windowActionBar">true</item>
-        <item name="windowNoTitle">false</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
-        <item name="colorSurface">#d1e4ff</item>
-        <item name="colorSecondaryContainer">@color/prime</item>
-    </style>
-
     <style name="DialogAnimation">
-
-    </style>
-
-    <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
-
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 
     <style name="MyCustomTextAppearance" parent="TextAppearance.Design.Tab">
@@ -28,13 +12,6 @@
 
     <style name="BaseMainTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
-
-    </style>
-
-    <style name="BaseTextViewPrice" parent="Widget.AppCompat.TextView">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">24sp</item>
-
     </style>
 
     <style name="BaseSearchView" parent="Widget.AppCompat.EditText">
@@ -42,21 +19,19 @@
         <item name="android:drawablePadding">8dp</item>
         <item name="android:hint">Поиск</item>
         <item name="android:textColor">@color/white</item>
-        <item name="marginHorizontal">@dimen/element_margin</item>
         <item name="android:textColorHint">@color/grey</item>
         <item name="android:background">@drawable/bg_search_et</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:inputType">text</item>
     </style>
 
-
     <style name="BaseCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardElevation">10dp</item>
         <item name="cardCornerRadius">16dp</item>
         <item name="android:layout_height">190dp</item>
     </style>
-    <style name="BaseClickableText" parent="Widget.AppCompat.TextView">
 
+    <style name="BaseClickableText" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">2dp</item>
