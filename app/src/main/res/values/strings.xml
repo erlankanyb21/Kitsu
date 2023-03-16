@@ -6,6 +6,7 @@
     <string name="search_anime">Search Anime</string>
     <string name="search_manga">Search Manga</string>
     <string name="search_users">Search Users</string>
+    <string name="cancel">cancel</string>
 
     <string-array name="filters">
         <item>Comedy</item>

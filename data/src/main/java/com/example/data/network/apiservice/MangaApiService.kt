@@ -9,6 +9,6 @@ interface MangaApiService {
     suspend fun fetchMangaList(
         @Query("page[limit]") limit: Int = 20,
         @Query("page[offset]") offset: Int,
-        @Query("filter[text]") text: String
+        @Query("filter[categories]") text: String
     ): MangaDto?
 }

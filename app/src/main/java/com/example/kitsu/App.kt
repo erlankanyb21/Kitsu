@@ -4,9 +4,6 @@ package com.example.kitsu
 import android.app.Application
 import com.example.data.di.networkModule
 import com.example.data.di.repoModules
-import com.example.data.repositories.animeDataSourceImpl
-import com.example.data.repositories.mangaDataSourceImpl
-import com.example.data.repositories.usersDataSourceImpl
 import com.example.domain.di.UseCaseModule
 import com.example.kitsu.presentation.di.viewModules
 import org.koin.android.ext.koin.androidContext
@@ -23,10 +20,7 @@ class App : Application() {
                 repoModules,
                 viewModules,
                 UseCaseModule,
-                networkModule,
-                animeDataSourceImpl,
-                mangaDataSourceImpl,
-                usersDataSourceImpl,
+                networkModule
             ))
         }
     }

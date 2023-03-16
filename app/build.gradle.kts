@@ -40,8 +40,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
     implementation(project(":domain"))
+    implementation(project(":data"))
+
 //    core
     implementation(Dependencies.Core.core)
 
