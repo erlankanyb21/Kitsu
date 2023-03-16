@@ -10,5 +10,4 @@ class UsersViewModel(
     private val fetchPagingUsersUseCase: FetchPagingUsersUseCase
 ) : BaseViewModel() {
     fun pagingUsers() = fetchPagingUsersUseCase().map { pagingData -> pagingData.map { it.toUI() } }
-
 }

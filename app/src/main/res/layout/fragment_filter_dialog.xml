@@ -23,6 +23,15 @@
         android:layout_marginTop="16dp"
         android:background="@color/orange"/>
 
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/element_margin"
+        android:backgroundTint="@color/orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
@@ -31,4 +40,5 @@
         tools:listitem="@layout/item_filter_rv"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp" />
+
 </LinearLayout>

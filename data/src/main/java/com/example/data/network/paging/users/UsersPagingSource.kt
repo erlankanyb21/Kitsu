@@ -1,4 +1,4 @@
-package com.example.data.network.pagingSource.users
+package com.example.data.network.paging.users
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -9,7 +9,6 @@ import com.example.domain.models.UsersModel
 class UsersPagingSource(
     private val usersApiService: UsersApiService
 ) : PagingSource<Int, UsersModel.Data>(){
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UsersModel.Data> {
         val offset = params.key ?: 0
 

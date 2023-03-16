@@ -1,4 +1,4 @@
-package com.example.data.network.pagingSource.anime
+package com.example.data.network.paging.anime
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -8,13 +8,13 @@ import com.example.domain.models.AnimeModel
 
 class AnimePagingSource(
     private val animeApiService: AnimeApiService,
-    private val text: String
+    private val category: String
 ) : PagingSource<Int, AnimeModel.Data>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AnimeModel.Data> {
         val offset = params.key ?: 0
 
         return try {
-            val response = animeApiService.fetchAnimeList(offset = offset, text = text)
+            val response = animeApiService.fetchAnimeList(offset = offset, category = category)
 
             val data = response?.toDomain()
             val nextKey = if (data?.data!!.isEmpty()) null else offset + 20

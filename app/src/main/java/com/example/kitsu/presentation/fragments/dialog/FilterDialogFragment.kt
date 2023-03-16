@@ -1,15 +1,18 @@
 package com.example.kitsu.presentation.fragments.dialog
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.activityViewModels
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentFilterDialogBinding
 import com.example.kitsu.presentation.adapters.CategoriesAdapter
 import com.example.kitsu.presentation.base.BaseDialogFragment
+import com.example.kitsu.presentation.activity.sharedvm.SharedViewModel
 
 class FilterDialogFragment : BaseDialogFragment<FragmentFilterDialogBinding>() {
+
+    private val sharedViewModel by activityViewModels<SharedViewModel>()
+
     override fun inflateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -29,10 +32,15 @@ class FilterDialogFragment : BaseDialogFragment<FragmentFilterDialogBinding>() {
         binding.recyclerview.adapter = adapter
     }
 
+    override fun initListener() {
+        binding.btnCancel.setOnClickListener {
+          sharedViewModel.updateData("adventure")
+            dismiss()
+        }
+    }
+
     private fun onItemClick(name:String?){
-        val bundle = Bundle()
-        bundle.putString("key",name)
-        setFragmentResult("bundle",bundle)
+        sharedViewModel.updateData(name)
         dismiss()
     }
 }

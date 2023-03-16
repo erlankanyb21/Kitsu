@@ -9,6 +9,6 @@ interface AnimeApiService {
     suspend fun fetchAnimeList(
         @Query("page[limit]") limit: Int = 20,
         @Query("page[offset]") offset: Int,
-        @Query("filter[text]") text: String
+        @Query("filter[categories]") category: String,
     ): AnimeDto?
 }
