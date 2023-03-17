@@ -8,9 +8,8 @@ import com.example.kitsu.databinding.FragmentMainFlowBinding
 import com.example.kitsu.presentation.base.BaseFlowFragment
 
 class MainFlowFragment : BaseFlowFragment(
-    R.layout.fragment_main_flow, R.id.nav_host_fragment_activity_main
+    R.layout.fragment_main_flow, R.id.nav_host_fragment_main
 ) {
-
     private val binding by viewBinding(FragmentMainFlowBinding::bind)
 
     override fun setupNavigation(navController: NavController) {

@@ -10,6 +10,7 @@ import com.example.kitsu.databinding.FragmentUsersBinding
 import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.adapters.UsersAdapter
 import com.example.kitsu.presentation.base.BaseFragment
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,7 +38,8 @@ class UsersFragment : BaseFragment<UsersViewModel, FragmentUsersBinding>(R.layou
 
     override fun setupSubscribers() {
         viewModel.viewModelScope.launch {
-            viewModel.pagingUsers().collectPaging {
+            viewModel.pagingUsers()
+                .collectPaging {
                 usersAdapter.submitData(it)
             }
         }
