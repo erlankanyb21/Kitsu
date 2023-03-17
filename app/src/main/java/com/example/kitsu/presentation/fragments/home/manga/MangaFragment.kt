@@ -44,7 +44,7 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
 
     private fun showFilter() {
         binding.btnFilter.setOnClickListener {
-            AnimeDialogFragment().show(parentFragmentManager, "anime")
+            MangaDialogFragment().show(parentFragmentManager,"manga")
             lifecycleScope.launch {
                 sharedViewModel.mangaState.collect { category ->
                     viewModel.pagingManga(category.takeUnless { it.isEmpty() })

@@ -25,4 +25,8 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
     open fun initView() {}
     open fun initListener() {}
     open fun initViewModel() {}
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

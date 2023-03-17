@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.data.mappers.toDomain
 import com.example.data.network.apiservice.MangaApiService
-import com.example.domain.models.MangaModel
+import com.example.domain.models.manga.MangaModel
 
 class MangaPagingSource(
     private val mangaApiService: MangaApiService,

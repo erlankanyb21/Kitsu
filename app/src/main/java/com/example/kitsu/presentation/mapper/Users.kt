@@ -1,7 +1,7 @@
 package com.example.kitsu.presentation.mapper
 
 
-import com.example.domain.models.UsersModel
+import com.example.domain.models.users.UsersModel
 import com.example.kitsu.presentation.models.users.UsersUI
 
 fun UsersModel.toUI() = UsersUI(

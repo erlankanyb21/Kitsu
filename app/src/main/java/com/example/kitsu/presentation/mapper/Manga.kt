@@ -1,8 +1,6 @@
 package com.example.kitsu.presentation.mapper
 
-import com.example.data.mappers.toDomain
-import com.example.data.network.models.manga.MangaDto
-import com.example.domain.models.MangaModel
+import com.example.domain.models.manga.MangaModel
 import com.example.kitsu.presentation.models.manga.MangaUI
 
 fun MangaModel.toUI() = MangaUI(

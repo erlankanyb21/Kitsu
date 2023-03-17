@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.data.mappers.toDomain
 import com.example.data.network.apiservice.UsersApiService
-import com.example.domain.models.UsersModel
+import com.example.domain.models.users.UsersModel
 
 class UsersPagingSource(
     private val usersApiService: UsersApiService
