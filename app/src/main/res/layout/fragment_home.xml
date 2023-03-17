@@ -31,8 +31,8 @@
         app:tabMinWidth="20dp"
         app:tabIndicatorColor="#03AD02E0"
         app:tabIndicatorFullWidth="true"
-        app:tabPaddingStart="35dp"
-        app:tabPaddingEnd="35dp"
+        app:tabPaddingStart="30dp"
+        app:tabPaddingEnd="30dp"
         app:tabIndicatorGravity="bottom"
         app:tabIndicatorHeight="5dp"
         app:tabMode="scrollable"
@@ -54,6 +54,12 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:text="Users"
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.tabs.TabItem>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:text="Posts"
             android:layout_height="wrap_content">
 
         </com.google.android.material.tabs.TabItem>

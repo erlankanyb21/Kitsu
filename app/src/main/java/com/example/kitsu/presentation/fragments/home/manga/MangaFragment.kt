@@ -11,6 +11,7 @@ import com.example.kitsu.databinding.FragmentMangaBinding
 import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.adapters.MangaAdapter
 import com.example.kitsu.presentation.base.BaseFragment
+import com.example.kitsu.presentation.fragments.dialogs.AnimeDialogFragment
 import com.example.kitsu.presentation.fragments.dialogs.MangaDialogFragment
 import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
 import kotlinx.coroutines.launch
@@ -43,18 +44,11 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
 
     private fun showFilter() {
         binding.btnFilter.setOnClickListener {
-            MangaDialogFragment().show(parentFragmentManager, "anime")
+            AnimeDialogFragment().show(parentFragmentManager, "anime")
             lifecycleScope.launch {
-                sharedViewModel.mangaState.collect {category->
-                    if (category.isNotEmpty()){
-                        viewModel.pagingManga(category).collectPaging { data->
-                            mangaAdapter.submitData(data)
-                        }
-                    }else{
-                        viewModel.pagingManga(null).collectPaging { data->
-                            mangaAdapter.submitData(data)
-                        }
-                    }
+                sharedViewModel.mangaState.collect { category ->
+                    viewModel.pagingManga(category.takeUnless { it.isEmpty() })
+                        .collectPaging { data -> mangaAdapter.submitData(data) }
                 }
             }
         }

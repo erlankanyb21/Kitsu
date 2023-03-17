@@ -46,16 +46,9 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
         binding.btnFilter.setOnClickListener {
             AnimeDialogFragment().show(parentFragmentManager, "anime")
             lifecycleScope.launch {
-                sharedViewModel.animeState.collect {category->
-                    if (category.isNotEmpty()){
-                        viewModel.pagingAnime(category).collectPaging { data->
-                            animeAdapter.submitData(data)
-                        }
-                    }else{
-                        viewModel.pagingAnime(null).collectPaging { data->
-                            animeAdapter.submitData(data)
-                        }
-                    }
+                sharedViewModel.animeState.collect { category ->
+                    viewModel.pagingAnime(category.takeUnless { it.isEmpty() })
+                        .collectPaging { data -> animeAdapter.submitData(data) }
                 }
             }
         }
