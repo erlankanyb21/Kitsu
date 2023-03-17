@@ -28,7 +28,8 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
             footer = MainLoadStateAdapter()
         )
         lifecycleScope.launch {
-            viewModel.pagingAnime(null).collectPaging { data->
+            viewModel.pagingAnime(null)
+                .collectPaging { data->
                 animeAdapter.submitData(data)
             }
         }

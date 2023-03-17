@@ -1,7 +1,7 @@
 package com.example.kitsu.presentation.fragments.signIn
 
-import androidx.lifecycle.ViewModel
+import com.example.kitsu.presentation.base.BaseViewModel
 
-class SignInViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class SignInViewModel : BaseViewModel() {
+
 }

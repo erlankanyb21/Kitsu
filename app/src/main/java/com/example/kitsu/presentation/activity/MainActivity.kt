@@ -1,11 +1,8 @@
 package com.example.kitsu.presentation.activity
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.WindowManager
 import androidx.activity.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,6 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.kitsu.R
 import com.example.kitsu.databinding.ActivityMainBinding
 import com.example.kitsu.presentation.base.BaseActivity
+import com.example.kitsu.presentation.fragments.signIn.UserData
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
@@ -27,7 +25,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     override fun initView() {
         super.initView()
         supportActionBar?.hide()
-
 
         val navView: BottomNavigationView = binding.navView
 
@@ -48,29 +45,25 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
         // для того чтобы bottom nav вверх из-за клавиатуры не съехал
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+        setupNavigation()
     }
 
     private fun setupNavigation() {
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_sign) as NavHostFragment
-       val navController = navHostFragment.navController
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        val navGraph = navController.navInflater.inflate(R.navigation.sign_graph)
-        navGraph.setStartDestination(R.id.mainFlowFragment)
-//        when {
-//            UserData.isAuthorized -> {
-//                navGraph.setStartDestination(R.id.mainFlowFragment)
-//            }
-//            !UserData.isAuthorized -> {
-//                navGraph.setStartDestination(R.id.signInFragment)
-//            }
-//        }
+        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+
+        when {
+            UserData.isAuthorized -> {
+                navGraph.setStartDestination(R.id.mainFlowFragment)
+            }
+            !UserData.isAuthorized -> {
+                navGraph.setStartDestination(R.id.signFlowFragment)
+            }
+        }
         navController.graph = navGraph
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
     override fun onDestroy() {

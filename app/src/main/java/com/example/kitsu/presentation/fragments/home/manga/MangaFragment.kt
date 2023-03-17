@@ -14,6 +14,7 @@ import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.fragments.dialogs.AnimeDialogFragment
 import com.example.kitsu.presentation.fragments.dialogs.MangaDialogFragment
 import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,7 +29,8 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
             footer = MainLoadStateAdapter()
         )
         lifecycleScope.launch {
-            viewModel.pagingManga(null).collectPaging {
+            viewModel.pagingManga(null)
+                .collectPaging {
                 mangaAdapter.submitData(it)
             }
         }
