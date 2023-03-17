@@ -1,8 +1,8 @@
-plugins {
+ plugins {
     id(Dependencies.idPlugins.application)
     id(Dependencies.idPlugins.jetbrainsAndroid)
     id(Dependencies.idPlugins.kapt)
-}
+ }
 
 android {
     namespace = "com.example.kitsu"
@@ -54,6 +54,9 @@ dependencies {
 
 //    androidx
     implementation(Dependencies.Androidx.legacySupport)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0")
     testImplementation(Dependencies.Androidx.junit)
     androidTestImplementation(Dependencies.Androidx.testJunit)
     androidTestImplementation(Dependencies.Androidx.testEspresso)

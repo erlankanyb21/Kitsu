@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragments.auth.SignFlowFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginHorizontal="@dimen/page_margin"
+        app:endIconMode="clear_text"
+        android:id="@+id/userLayout"
+        android:layout_marginTop="@dimen/big_margin"
+        android:layout_width="match_parent"
+        app:errorEnabled="true"
+        android:hint="email"
+        app:counterMaxLength="10"
+        app:boxCornerRadiusTopStart="@dimen/element_margin"
+        app:boxCornerRadiusBottomEnd="@dimen/element_margin"
+        app:boxCornerRadiusBottomStart="@dimen/element_margin"
+        app:boxCornerRadiusTopEnd="@dimen/element_margin"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/usernameEd"
+            android:minEms="8"
+            android:maxLength="50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@+id/userLayout"
+        app:endIconMode="clear_text"
+        app:boxCornerRadiusTopStart="@dimen/element_margin"
+        app:boxCornerRadiusBottomEnd="@dimen/element_margin"
+        app:boxCornerRadiusBottomStart="@dimen/element_margin"
+        app:boxCornerRadiusTopEnd="@dimen/element_margin"
+        android:layout_marginTop="@dimen/page_margin"
+        android:layout_marginHorizontal="@dimen/page_margin"
+        android:layout_width="match_parent"
+        app:errorEnabled="true"
+        android:hint="password"
+        app:counterMaxLength="10"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordEd"
+            android:inputType="textPassword"
+            android:maxLength="50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/regular_txt_18"
+        android:id="@+id/btn_enter"
+        android:layout_marginBottom="@dimen/big_margin_135"
+        android:layout_marginHorizontal="@dimen/page_margin"
+        android:layout_width="match_parent"
+        app:cornerRadius="@dimen/small_margin_2x"
+        android:padding="@dimen/norm_btn_pad"
+        android:text="Sign in to your account"
+        android:textColor="@color/orange"
+        android:layout_height="wrap_content"
+        android:gravity="center" />
+</LinearLayout>
