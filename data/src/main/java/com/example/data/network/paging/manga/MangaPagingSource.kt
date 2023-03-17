@@ -8,7 +8,7 @@ import com.example.domain.models.MangaModel
 
 class MangaPagingSource(
     private val mangaApiService: MangaApiService,
-    private val text:String
+    private val text:String?
 ) : PagingSource<Int, MangaModel.Data>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MangaModel.Data> {

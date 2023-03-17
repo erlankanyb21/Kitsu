@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.fragments.dialog
+package com.example.kitsu.presentation.fragments.dialogs
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,12 +7,11 @@ import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentFilterDialogBinding
 import com.example.kitsu.presentation.adapters.CategoriesAdapter
 import com.example.kitsu.presentation.base.BaseDialogFragment
-import com.example.kitsu.presentation.activity.sharedvm.SharedViewModel
+import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
 
-class FilterDialogFragment : BaseDialogFragment<FragmentFilterDialogBinding>() {
+class MangaDialogFragment : BaseDialogFragment<FragmentFilterDialogBinding>() {
 
     private val sharedViewModel by activityViewModels<SharedViewModel>()
-
     override fun inflateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -24,6 +23,7 @@ class FilterDialogFragment : BaseDialogFragment<FragmentFilterDialogBinding>() {
         )
 
     override fun initialize() {
+
         dialog?.window?.attributes?.windowAnimations = R.style.DialogAnimation
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
@@ -34,13 +34,13 @@ class FilterDialogFragment : BaseDialogFragment<FragmentFilterDialogBinding>() {
 
     override fun initListener() {
         binding.btnCancel.setOnClickListener {
-          sharedViewModel.updateData("adventure")
+            sharedViewModel.mangaData(null)
             dismiss()
         }
     }
 
     private fun onItemClick(name:String?){
-        sharedViewModel.updateData(name)
+        sharedViewModel.mangaData(name)
         dismiss()
     }
 }

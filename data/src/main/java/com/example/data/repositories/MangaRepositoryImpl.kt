@@ -11,6 +11,6 @@ import kotlinx.coroutines.flow.Flow
 class MangaRepositoryImpl(
     private val mangaApiService: MangaApiService
 ) : MangaRepository, BaseRepository() {
-    override fun fetchPagingManga(query:String): Flow<PagingData<MangaModel.Data>> =
+    override fun fetchPagingManga(query:String?): Flow<PagingData<MangaModel.Data>> =
         makePagingRequest(MangaPagingSource(mangaApiService = mangaApiService, text = query))
 }

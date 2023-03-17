@@ -8,11 +8,11 @@ import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentAnimeBinding
-import com.example.kitsu.presentation.activity.sharedvm.SharedViewModel
 import com.example.kitsu.presentation.adapters.AnimeAdapter
 import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.base.BaseFragment
-import com.example.kitsu.presentation.fragments.dialog.FilterDialogFragment
+import com.example.kitsu.presentation.fragments.dialogs.AnimeDialogFragment
+import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,7 +28,7 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
             footer = MainLoadStateAdapter()
         )
         lifecycleScope.launch {
-            viewModel.pagingAnime(defaultValue).collectPaging { data->
+            viewModel.pagingAnime(null).collectPaging { data->
                 animeAdapter.submitData(data)
             }
         }
@@ -44,11 +44,17 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
 
     private fun showFilter() {
         binding.btnFilter.setOnClickListener {
-            FilterDialogFragment().show(parentFragmentManager, "anime")
+            AnimeDialogFragment().show(parentFragmentManager, "anime")
             lifecycleScope.launch {
-                sharedViewModel.data.collect {
-                    viewModel.pagingAnime(it).collectPaging {
-                        animeAdapter.submitData(it)
+                sharedViewModel.animeState.collect {category->
+                    if (category.isNotEmpty()){
+                        viewModel.pagingAnime(category).collectPaging { data->
+                            animeAdapter.submitData(data)
+                        }
+                    }else{
+                        viewModel.pagingAnime(null).collectPaging { data->
+                            animeAdapter.submitData(data)
+                        }
                     }
                 }
             }
@@ -56,8 +62,5 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
     }
     private fun onItemClick(name: String?) {
         Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
-    }
-    companion object {
-        const val defaultValue = "adventure"
     }
 }
