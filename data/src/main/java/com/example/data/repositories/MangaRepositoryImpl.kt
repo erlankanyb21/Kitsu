@@ -4,7 +4,7 @@ import androidx.paging.PagingData
 import com.example.data.base.BaseRepository
 import com.example.data.network.apiservice.MangaApiService
 import com.example.data.network.paging.manga.MangaPagingSource
-import com.example.domain.models.MangaModel
+import com.example.domain.models.manga.MangaModel
 import com.example.domain.repositories.MangaRepository
 import kotlinx.coroutines.flow.Flow
 

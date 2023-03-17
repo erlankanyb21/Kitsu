@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.fragments.auth
+package com.example.kitsu.presentation.fragments.flowFragment.auth
 
 import androidx.lifecycle.ViewModel
 

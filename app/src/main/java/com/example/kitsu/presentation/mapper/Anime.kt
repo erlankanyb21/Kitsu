@@ -1,6 +1,6 @@
 package com.example.kitsu.presentation.mapper
 
-import com.example.domain.models.AnimeModel
+import com.example.domain.models.anime.AnimeModel
 import com.example.kitsu.presentation.models.anime.AnimeUI
 
 fun AnimeModel.toUI() = AnimeUI(

@@ -1,7 +1,7 @@
 package com.example.data.mappers
 
 import com.example.data.network.models.users.UsersDto
-import com.example.domain.models.UsersModel
+import com.example.domain.models.users.UsersModel
 
 fun UsersDto.toDomain() = UsersModel(
     data = data?.map { it.toDomain() }, links = links?.toDomain(), meta = meta?.toDomain()

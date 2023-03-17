@@ -1,7 +1,7 @@
 package com.example.data.mappers
 
 import com.example.data.network.models.manga.MangaDto
-import com.example.domain.models.MangaModel
+import com.example.domain.models.manga.MangaModel
 
 fun MangaDto.toDomain() = MangaModel(
     data = data?.map { it.toDomain() }, meta = meta?.toDomain(), links = links?.toDomain()
