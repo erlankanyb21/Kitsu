@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/prime"
-    tools:context=".presentation.fragments.dialog.FilterDialogFragment"
+    tools:context=".presentation.fragments.dialogs.AnimeDialogFragment"
     android:padding="16dp">
 
     <TextView

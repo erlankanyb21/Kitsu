@@ -2,20 +2,18 @@ package com.example.kitsu.presentation.fragments.home.manga
 
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentMangaBinding
-import com.example.kitsu.presentation.activity.sharedvm.SharedViewModel
 import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.adapters.MangaAdapter
 import com.example.kitsu.presentation.base.BaseFragment
-import com.example.kitsu.presentation.fragments.dialog.FilterDialogFragment
+import com.example.kitsu.presentation.fragments.dialogs.MangaDialogFragment
+import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layout.fragment_manga) {
@@ -29,7 +27,7 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
             footer = MainLoadStateAdapter()
         )
         lifecycleScope.launch {
-            viewModel.pagingManga(defaultValue).collectPaging {
+            viewModel.pagingManga(null).collectPaging {
                 mangaAdapter.submitData(it)
             }
         }
@@ -45,12 +43,17 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
 
     private fun showFilter() {
         binding.btnFilter.setOnClickListener {
-            FilterDialogFragment().show(parentFragmentManager,"filter")
-
+            MangaDialogFragment().show(parentFragmentManager, "anime")
             lifecycleScope.launch {
-                sharedViewModel.data.collect{category->
-                    viewModel.pagingManga(category).collectPaging {
-                        mangaAdapter.submitData(it)
+                sharedViewModel.mangaState.collect {category->
+                    if (category.isNotEmpty()){
+                        viewModel.pagingManga(category).collectPaging { data->
+                            mangaAdapter.submitData(data)
+                        }
+                    }else{
+                        viewModel.pagingManga(null).collectPaging { data->
+                            mangaAdapter.submitData(data)
+                        }
                     }
                 }
             }
@@ -61,7 +64,4 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
         Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
     }
 
-    companion object {
-        const val defaultValue = "adventure"
-    }
 }

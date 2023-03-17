@@ -8,7 +8,7 @@ import com.example.domain.models.AnimeModel
 
 class AnimePagingSource(
     private val animeApiService: AnimeApiService,
-    private val category: String
+    private val category: String?
 ) : PagingSource<Int, AnimeModel.Data>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AnimeModel.Data> {
         val offset = params.key ?: 0
