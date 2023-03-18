@@ -62,5 +62,4 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
     private fun onItemClick(name: String?) {
         Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
     }
-
 }

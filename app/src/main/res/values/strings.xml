@@ -7,6 +7,8 @@
     <string name="search_manga">Search Manga</string>
     <string name="search_users">Search Users</string>
     <string name="cancel">cancel</string>
+    <string name="password">password</string>
+    <string name="email">Email</string>
 
     <string-array name="filters">
         <item>Comedy</item>
