@@ -50,6 +50,7 @@ dependencies {
 
 //    koin
     implementation(Dependencies.Koin.koinCore)
+    implementation(Dependencies.Koin.koinAndroid)
 
 //    retrofit
     implementation(Dependencies.Retrofit.retrofit)

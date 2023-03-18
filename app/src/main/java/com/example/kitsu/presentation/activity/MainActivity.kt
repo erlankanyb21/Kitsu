@@ -8,16 +8,17 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.data.local.Prefs
 import com.example.kitsu.R
 import com.example.kitsu.databinding.ActivityMainBinding
 import com.example.kitsu.presentation.base.BaseActivity
-import com.example.kitsu.presentation.fragments.signIn.UserData
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.koin.android.ext.android.inject
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     override val viewModel: MainViewModel by viewModels()
-
+    private val preferences by inject<Prefs>()
     override fun inflateViewBinding(inflater: LayoutInflater): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
@@ -56,10 +57,10 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
         when {
-            UserData.isAuthorized -> {
+            preferences.getToken().isNotEmpty() -> {
                 navGraph.setStartDestination(R.id.mainFlowFragment)
             }
-            !UserData.isAuthorized -> {
+            preferences.getToken().isEmpty() -> {
                 navGraph.setStartDestination(R.id.signFlowFragment)
             }
         }

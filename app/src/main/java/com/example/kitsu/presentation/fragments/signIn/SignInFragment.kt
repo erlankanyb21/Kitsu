@@ -1,50 +1,82 @@
 package com.example.kitsu.presentation.fragments.signIn
 
 import android.view.View
-import android.widget.Toast
+import android.view.animation.AnimationUtils
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.data.local.Prefs
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentSignInBinding
 import com.example.kitsu.presentation.base.BaseFragment
+import com.example.kitsu.presentation.custom.CustomToast
 import com.example.kitsu.presentation.extensions.activityNavController
 import com.example.kitsu.presentation.extensions.navigateSafely
 import com.example.kitsu.presentation.models.auth.SignUI
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SignInFragment : BaseFragment<SignInViewModel,FragmentSignInBinding>(R.layout.fragment_sign_in) {
+class SignInFragment :
+    BaseFragment<SignInViewModel, FragmentSignInBinding>(R.layout.fragment_sign_in) {
 
     override val viewModel by viewModel<SignInViewModel>()
     override val binding by viewBinding(FragmentSignInBinding::bind)
+    private val preferences by inject<Prefs>()
 
     override fun initialize() {
+        setupAnimation()
         clickSignIn()
     }
 
-    override fun setupListeners() {
-
+    private fun setupAnimation() {
+        val animation = AnimationUtils.loadAnimation(requireContext(),R.anim.logo_anim)
+        binding.logo.apply {
+            visibility = View.VISIBLE
+            startAnimation(animation)
+        }
     }
 
     private fun clickSignIn() {
         binding.btnEnter.setOnClickListener {
-            viewModel.signIn(SignUI(
-                username = binding.usernameEd.text.toString(),
-                password = binding.passwordEd.text.toString()
-            ))
+            viewModel.signIn(
+                SignUI(
+                    username = binding.usernameEd.text.toString(),
+                    password = binding.passwordEd.text.toString()
+                )
+            )
         }
+
         lifecycleScope.launch {
             viewModel.signState.collectStates(
-                onLoading = { binding.progress.visibility = View.VISIBLE},
+                onLoading = {
+                    binding.progress.isVisible = true
+                    stopRequest()
+                },
                 onError = {
-                    Toast.makeText(requireContext(), it.length, Toast.LENGTH_SHORT).show()},
+                    binding.progress.isVisible = false
+                    binding.btnEnter.isEnabled = true
+                    CustomToast.show(requireContext(), it)
+                },
                 onSuccess = {
-                    binding.progress.visibility = View.GONE
-                    it.let {
-                        activityNavController().navigateSafely(R.id.action_global_mainFlowFragment)
-                    }
+                    binding.progress.isVisible = false
+                    binding.btnEnter.isEnabled = true
+                    CustomToast.show(requireContext(), "Welcome to Kitsu \uD83D\uDE80")
+                    preferences.saveToken(it?.accessToken.toString())
+                    activityNavController().navigateSafely(R.id.action_global_mainFlowFragment)
                 }
             )
+        }
+    }
+
+    private fun stopRequest() {
+        viewModel.viewModelScope.launch {
+            delay(5000)
+            binding.progress.isVisible = false
+            binding.btnEnter.isEnabled = true
+            CustomToast.show(requireContext(),"Incorrect email or password")
         }
     }
 }

@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
-    <translate
-        android:fromYDelta="-300%"
-        android:toYDelta="0%"
-        android:duration="1000"
-        android:interpolator="@android:anim/decelerate_interpolator" />
+
+    <!-- Анимация изменения масштаба логотипа -->
+    <scale
+        android:duration="500"
+        android:fromXScale="0.0"
+        android:fromYScale="0.0"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:toXScale="1.0"
+        android:toYScale="1.0"/>
+
+    <!-- Анимация вращения логотипа -->
     <rotate
+        android:duration="2000"
         android:fromDegrees="0"
-        android:toDegrees="360"
-        android:duration="1000"
+        android:interpolator="@android:anim/linear_interpolator"
         android:pivotX="50%"
-        android:pivotY="50%" />
+        android:pivotY="50%"
+        android:repeatCount="1"
+        android:repeatMode="reverse"
+        android:toDegrees="360"/>
+
+    <!-- Анимация движения лисы -->
+    <translate
+        android:duration="2000"
+        android:fromXDelta="-50%"
+        android:fromYDelta="0"
+        android:interpolator="@android:anim/linear_interpolator"
+        android:toXDelta="0"
+        android:toYDelta="0"/>
+
 </set>

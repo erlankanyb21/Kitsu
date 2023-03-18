@@ -14,5 +14,4 @@ val viewModules: Module = module {
     viewModel { MangaViewModel(get()) }
     viewModel { UsersViewModel(get()) }
     viewModel { SignInViewModel(get()) }
-
 }
