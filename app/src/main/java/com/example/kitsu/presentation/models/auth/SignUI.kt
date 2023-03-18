@@ -1,5 +1,7 @@
 package com.example.kitsu.presentation.models.auth
 
+import com.example.data.network.models.auth.SignDto
+import com.example.data.network.models.auth.SignResponseDto
 import com.example.domain.models.auth.SignModel
 import com.example.domain.models.auth.SignResponseModel
 
@@ -17,6 +19,22 @@ data class SignResponseUI(
     val tokenType: String? = ""
 )
 
+fun SignModel.fromUItoDomain() = SignModel(
+    grantType = grantType,
+    password = password,
+    username = username
+)
+
+fun SignResponseModel.fromUItoDomain() = SignResponseModel(
+    accessToken = accessToken,
+    createdAt = createdAt,
+    expiresIn = expiresIn,
+    refreshToken = refreshToken,
+    scope = scope,
+    tokenType = tokenType
+)
+
+/*------------------------------------------------*/
 fun SignModel.toUI() = SignUI(
     grantType = grantType,
     password = password,
