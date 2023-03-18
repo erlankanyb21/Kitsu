@@ -6,14 +6,10 @@ import com.example.domain.models.auth.SignResponseModel
 import com.google.gson.annotations.SerializedName
 
 data class SignDto(
-    @SerializedName("grant_type")
-    val grantType: String = "password",
-    @SerializedName("password")
-    val password: String = "",
-    @SerializedName("username")
-    val username: String = ""
+    val grant_type: String? = "",
+    val password: String? = "",
+    val username: String? = ""
 )
-
 data class SignResponseDto(
     @SerializedName("access_token")
     val accessToken: String? = "",
@@ -30,22 +26,7 @@ data class SignResponseDto(
 )
 
 fun SignModel.fromDomainToDto() = SignDto(
-    grantType = grantType,
-    password = password,
-    username = username
-)
-
-fun SignResponseModel.fromDomainToDto() = SignResponseDto(
-    accessToken = accessToken,
-    createdAt = createdAt,
-    expiresIn = expiresIn,
-    refreshToken = refreshToken,
-    scope = scope,
-    tokenType = tokenType
-)
-/*------------------------------------------*/
-fun SignDto.toDomain() = SignModel(
-    grantType = grantType,
+    grant_type = grant_type,
     password = password,
     username = username
 )

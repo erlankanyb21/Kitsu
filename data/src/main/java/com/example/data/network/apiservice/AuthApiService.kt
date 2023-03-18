@@ -9,7 +9,7 @@ import retrofit2.http.POST
 interface AuthApiService {
 
     @POST("/api/oauth/token")
-    fun signIn(
+    suspend fun signIn(
         @Body signDto: SignDto
     ): Response<SignResponseDto?>
 
