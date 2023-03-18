@@ -21,9 +21,13 @@
         android:layout_width="match_parent"
         app:boxStrokeColor="@color/orange"
         android:hint="email"
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterTextColor="@color/orange"
         android:textColorHint="@color/orange"
         app:boxCornerRadiusTopStart="@dimen/element_margin"
         app:boxCornerRadiusBottomEnd="@dimen/element_margin"
+        app:counterMaxLength="50"
         app:hintTextColor="@color/orange"
         app:boxCornerRadiusBottomStart="@dimen/element_margin"
         app:boxCornerRadiusTopEnd="@dimen/element_margin"
@@ -32,6 +36,7 @@
             android:id="@+id/usernameEd"
             android:minEms="8"
             android:maxLength="50"
+            android:textColor="@color/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -44,6 +49,7 @@
         app:endIconMode="clear_text"
         app:boxStrokeColor="@color/orange"
         app:boxCornerRadiusTopStart="@dimen/element_margin"
+        app:errorEnabled="true"
         app:boxCornerRadiusBottomEnd="@dimen/element_margin"
         app:hintTextColor="@color/orange"
         android:textColorHint="@color/orange"
@@ -52,11 +58,15 @@
         android:layout_marginTop="@dimen/page_margin"
         android:layout_marginHorizontal="@dimen/page_margin"
         android:layout_width="match_parent"
+        app:counterEnabled="true"
+        app:counterTextColor="@color/orange"
+        app:counterMaxLength="50"
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEd"
             android:inputType="textPassword"
             android:maxLength="50"
+            android:textColor="@color/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
