@@ -16,6 +16,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/big_margin_70"
         android:layout_width="150dp"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
         android:layout_height="150dp"
         android:src="@drawable/kitsuicon" />
 

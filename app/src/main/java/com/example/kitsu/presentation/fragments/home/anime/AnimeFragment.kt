@@ -31,9 +31,9 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
         )
         lifecycleScope.launch {
             viewModel.pagingAnime(null)
-                .collectPaging { data->
-                animeAdapter.submitData(data)
-            }
+                .collectPaging { data ->
+                    animeAdapter.submitData(data)
+                }
         }
     }
 
@@ -47,7 +47,7 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
 
     private fun showFilter() {
         binding.btnFilter.setOnClickListener {
-            AnimeDialogFragment().show(parentFragmentManager,"manga")
+            AnimeDialogFragment().show(parentFragmentManager, "manga")
 
             lifecycleScope.launch {
                 sharedViewModel.animeState
@@ -59,6 +59,7 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
             }
         }
     }
+
     private fun onItemClick(name: String?) {
         Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
     }

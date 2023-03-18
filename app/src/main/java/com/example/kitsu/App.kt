@@ -3,6 +3,7 @@ package com.example.kitsu
 
 import android.app.Application
 import com.example.data.di.networkModule
+import com.example.data.di.preferencesModule
 import com.example.data.di.repoModules
 import com.example.domain.di.UseCaseModule
 import com.example.kitsu.presentation.di.viewModules
@@ -20,7 +21,8 @@ class App : Application() {
                 repoModules,
                 viewModules,
                 UseCaseModule,
-                networkModule
+                networkModule,
+                preferencesModule
             ))
         }
     }
