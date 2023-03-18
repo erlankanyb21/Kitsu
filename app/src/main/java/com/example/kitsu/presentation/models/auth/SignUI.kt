@@ -4,7 +4,7 @@ import com.example.domain.models.auth.SignModel
 import com.example.domain.models.auth.SignResponseModel
 
 data class SignUI(
-    val grant_type: String? = "",
+    val grant_type: String? = "password",
     val password: String? = "",
     val username: String? = ""
 )

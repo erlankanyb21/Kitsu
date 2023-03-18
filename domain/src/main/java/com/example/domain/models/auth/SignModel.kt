@@ -1,7 +1,7 @@
 package com.example.domain.models.auth
 
 data class SignModel(
-    val grant_type: String? = "",
+    val grant_type: String? = "password",
     val password: String? = "",
     val username: String? = ""
 )

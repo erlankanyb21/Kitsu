@@ -29,7 +29,6 @@ class SignInFragment : BaseFragment<SignInViewModel,FragmentSignInBinding>(R.lay
     private fun clickSignIn() {
         binding.btnEnter.setOnClickListener {
             viewModel.signIn(SignUI(
-                grant_type = "password",
                 username = binding.usernameEd.text.toString(),
                 password = binding.passwordEd.text.toString()
             ))
