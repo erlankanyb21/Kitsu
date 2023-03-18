@@ -3,6 +3,7 @@ package com.example.kitsu.presentation.fragments.home.anime
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -13,6 +14,7 @@ import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.fragments.dialogs.AnimeDialogFragment
 import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
+import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -45,12 +47,15 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
 
     private fun showFilter() {
         binding.btnFilter.setOnClickListener {
-            AnimeDialogFragment().show(parentFragmentManager, "anime")
+            AnimeDialogFragment().show(parentFragmentManager,"manga")
+
             lifecycleScope.launch {
-                sharedViewModel.animeState.collect { category ->
-                    viewModel.pagingAnime(category.takeUnless { it.isEmpty() })
-                        .collectPaging { data -> animeAdapter.submitData(data) }
-                }
+                sharedViewModel.mangaState
+                    .takeWhile { lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED) }
+                    .collect { category ->
+                        viewModel.pagingAnime(category.takeUnless { it.isEmpty() })
+                            .collectPaging { data -> animeAdapter.submitData(data) }
+                    }
             }
         }
     }

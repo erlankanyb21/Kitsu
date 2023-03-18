@@ -3,6 +3,7 @@ package com.example.kitsu.presentation.fragments.home.manga
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -11,10 +12,9 @@ import com.example.kitsu.databinding.FragmentMangaBinding
 import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.adapters.MangaAdapter
 import com.example.kitsu.presentation.base.BaseFragment
-import com.example.kitsu.presentation.fragments.dialogs.AnimeDialogFragment
 import com.example.kitsu.presentation.fragments.dialogs.MangaDialogFragment
 import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
-import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -46,12 +46,15 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
 
     private fun showFilter() {
         binding.btnFilter.setOnClickListener {
-            MangaDialogFragment().show(parentFragmentManager,"manga")
+            MangaDialogFragment().show(parentFragmentManager, "manga")
+
             lifecycleScope.launch {
-                sharedViewModel.mangaState.collect { category ->
-                    viewModel.pagingManga(category.takeUnless { it.isEmpty() })
-                        .collectPaging { data -> mangaAdapter.submitData(data) }
-                }
+                sharedViewModel.mangaState
+                    .takeWhile { lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED) }
+                    .collect { category ->
+                        viewModel.pagingManga(category.takeUnless { it.isEmpty() })
+                            .collectPaging { data -> mangaAdapter.submitData(data) }
+                    }
             }
         }
     }
