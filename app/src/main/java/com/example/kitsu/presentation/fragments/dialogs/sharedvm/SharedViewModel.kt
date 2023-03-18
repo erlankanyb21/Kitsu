@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.fragments.sharedvm
+package com.example.kitsu.presentation.fragments.dialogs.sharedvm
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

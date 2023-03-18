@@ -13,7 +13,7 @@ import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.adapters.MangaAdapter
 import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.fragments.dialogs.MangaDialogFragment
-import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
+import com.example.kitsu.presentation.fragments.dialogs.sharedvm.SharedViewModel
 import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel

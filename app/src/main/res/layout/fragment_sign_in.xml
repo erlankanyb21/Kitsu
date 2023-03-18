@@ -5,11 +5,19 @@
     android:layout_height="match_parent"
     android:background="@color/prime"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.fragments.signIn.SignInFragment">
 
 <!--  не забыть вынести в стили  -->
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/big_margin_70"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/kitsuicon" />
 
     <com.google.android.material.textfield.TextInputLayout
         app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +36,7 @@
         app:boxCornerRadiusTopStart="@dimen/element_margin"
         app:boxCornerRadiusBottomEnd="@dimen/element_margin"
         app:counterMaxLength="50"
+        app:endIconTint="@color/orange"
         app:hintTextColor="@color/orange"
         app:boxCornerRadiusBottomStart="@dimen/element_margin"
         app:boxCornerRadiusTopEnd="@dimen/element_margin"
@@ -47,6 +56,7 @@
         android:hint="password"
         app:layout_constraintTop_toBottomOf="@+id/userLayout"
         app:endIconMode="clear_text"
+        app:endIconTint="@color/orange"
         app:boxStrokeColor="@color/orange"
         app:boxCornerRadiusTopStart="@dimen/element_margin"
         app:errorEnabled="true"
@@ -78,7 +88,6 @@
         android:textSize="@dimen/regular_txt_18"
         android:id="@+id/btn_enter"
         android:layout_marginTop="@dimen/big_margin"
-        android:layout_marginBottom="@dimen/big_margin_135"
         android:layout_marginHorizontal="@dimen/page_margin"
         android:layout_width="match_parent"
         android:textColor="@color/prime"
@@ -87,4 +96,12 @@
         android:padding="@dimen/norm_btn_pad"
         android:layout_height="wrap_content"
         android:gravity="center" />
+
+    <ProgressBar
+        android:layout_marginTop="@dimen/page_margin"
+        android:id="@+id/progress"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

@@ -7,7 +7,7 @@ import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentFilterDialogBinding
 import com.example.kitsu.presentation.adapters.CategoriesAdapter
 import com.example.kitsu.presentation.base.BaseDialogFragment
-import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
+import com.example.kitsu.presentation.fragments.dialogs.sharedvm.SharedViewModel
 
 class AnimeDialogFragment : BaseDialogFragment<FragmentFilterDialogBinding>() {
 

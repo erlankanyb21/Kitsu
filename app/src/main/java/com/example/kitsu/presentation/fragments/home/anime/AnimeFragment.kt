@@ -13,7 +13,7 @@ import com.example.kitsu.presentation.adapters.AnimeAdapter
 import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.fragments.dialogs.AnimeDialogFragment
-import com.example.kitsu.presentation.fragments.sharedvm.SharedViewModel
+import com.example.kitsu.presentation.fragments.dialogs.sharedvm.SharedViewModel
 import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -50,7 +50,7 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
             AnimeDialogFragment().show(parentFragmentManager,"manga")
 
             lifecycleScope.launch {
-                sharedViewModel.mangaState
+                sharedViewModel.animeState
                     .takeWhile { lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED) }
                     .collect { category ->
                         viewModel.pagingAnime(category.takeUnless { it.isEmpty() })

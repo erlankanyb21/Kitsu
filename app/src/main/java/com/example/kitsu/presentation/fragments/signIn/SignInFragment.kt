@@ -1,31 +1,51 @@
 package com.example.kitsu.presentation.fragments.signIn
 
-import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentSignInBinding
+import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.extensions.activityNavController
 import com.example.kitsu.presentation.extensions.navigateSafely
+import com.example.kitsu.presentation.models.auth.SignUI
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SignInFragment : Fragment(R.layout.fragment_sign_in) {
+class SignInFragment : BaseFragment<SignInViewModel,FragmentSignInBinding>(R.layout.fragment_sign_in) {
 
-    private val binding by viewBinding(FragmentSignInBinding::bind)
+    override val viewModel by viewModel<SignInViewModel>()
+    override val binding by viewBinding(FragmentSignInBinding::bind)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setupListeners()
+    override fun initialize() {
+        clickSignIn()
     }
 
-    private fun setupListeners() {
-        clickSignIn()
+    override fun setupListeners() {
+
     }
 
     private fun clickSignIn() {
         binding.btnEnter.setOnClickListener {
-            activityNavController().navigateSafely(R.id.action_global_mainFlowFragment)
+            viewModel.signIn(SignUI(
+                grant_type = "password",
+                username = binding.usernameEd.text.toString(),
+                password = binding.passwordEd.text.toString()
+            ))
+        }
+        lifecycleScope.launch {
+            viewModel.signState.collectStates(
+                onLoading = { binding.progress.visibility = View.VISIBLE},
+                onError = {
+                    Toast.makeText(requireContext(), it.length, Toast.LENGTH_SHORT).show()},
+                onSuccess = {
+                    binding.progress.visibility = View.GONE
+                    it.let {
+                        activityNavController().navigateSafely(R.id.action_global_mainFlowFragment)
+                    }
+                }
+            )
         }
     }
 }

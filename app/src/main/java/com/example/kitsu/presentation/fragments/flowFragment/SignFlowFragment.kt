@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.fragments.flowFragment.auth
+package com.example.kitsu.presentation.fragments.flowFragment
 
 import com.example.kitsu.R
 import com.example.kitsu.presentation.base.BaseFlowFragment
