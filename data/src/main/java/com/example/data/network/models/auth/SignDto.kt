@@ -6,7 +6,7 @@ import com.example.domain.models.auth.SignResponseModel
 import com.google.gson.annotations.SerializedName
 
 data class SignDto(
-    val grant_type: String? = "",
+    val grant_type: String? = "password",
     val password: String? = "",
     val username: String? = ""
 )
