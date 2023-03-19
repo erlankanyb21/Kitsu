@@ -1,6 +1,6 @@
 package com.example.data.network.apiservice
 
-import com.example.data.network.models.anime.AnimeDto
+import com.example.data.network.models.AnimeDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

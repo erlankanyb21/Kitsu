@@ -1,7 +1,6 @@
-package com.example.kitsu.presentation.models.users
+package com.example.domain.models
 
-data class UsersUI(
-
+data class UsersModel(
     val `data`: List<Data>? = listOf(),
     val links: Links? = Links(),
     val meta: Meta? = Meta()
@@ -176,151 +175,114 @@ data class UsersUI(
             ) {
                 data class Links(
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class Following(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class LibraryEntries(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class LinkedAccounts(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class NotificationSettings(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class OneSignalPlayers(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class PinnedPost(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class ProfileLinks(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class Quotes(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class Reviews(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class Stats(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class UserRoles(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class Waifu(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
@@ -328,18 +290,13 @@ data class UsersUI(
     }
 
     data class Links(
-
         val first: String? = "",
-
         val last: String? = "",
-
         val next: String? = "",
-
         val prev: String? = ""
     )
 
     data class Meta(
-
         val count: Int? = 0
     )
 }

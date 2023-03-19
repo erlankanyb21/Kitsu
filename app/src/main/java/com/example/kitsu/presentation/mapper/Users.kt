@@ -1,8 +1,8 @@
 package com.example.kitsu.presentation.mapper
 
 
-import com.example.domain.models.users.UsersModel
-import com.example.kitsu.presentation.models.users.UsersUI
+import com.example.domain.models.UsersModel
+import com.example.kitsu.presentation.models.UsersUI
 
 fun UsersModel.toUI() = UsersUI(
     data = data?.map { it.toUI() }, links = links?.toUI(), meta = meta?.toUI()

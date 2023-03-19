@@ -13,7 +13,7 @@ import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.custom.CustomToast
 import com.example.kitsu.presentation.extensions.activityNavController
 import com.example.kitsu.presentation.extensions.navigateSafely
-import com.example.kitsu.presentation.models.auth.SignUI
+import com.example.kitsu.presentation.models.SignUI
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -53,6 +53,7 @@ class SignInFragment :
             viewModel.signState.collectStates(
                 onLoading = {
                     binding.progress.isVisible = true
+                    binding.btnEnter.isEnabled = false
                     stopRequest()
                 },
                 onError = {

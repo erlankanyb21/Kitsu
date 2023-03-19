@@ -1,37 +1,29 @@
-package com.example.data.network.models.auth
+package com.example.kitsu.presentation.models
 
+import com.example.domain.models.SignModel
+import com.example.domain.models.SignResponseModel
 
-import com.example.domain.models.auth.SignModel
-import com.example.domain.models.auth.SignResponseModel
-import com.google.gson.annotations.SerializedName
-
-data class SignDto(
+data class SignUI(
     val grant_type: String? = "password",
     val password: String? = "",
     val username: String? = ""
 )
-data class SignResponseDto(
-    @SerializedName("access_token")
+data class SignResponseUI(
     val accessToken: String? = "",
-    @SerializedName("created_at")
     val createdAt: Int? = 0,
-    @SerializedName("expires_in")
     val expiresIn: Int? = 0,
-    @SerializedName("refresh_token")
     val refreshToken: String? = "",
-    @SerializedName("scope")
     val scope: String? = "",
-    @SerializedName("token_type")
     val tokenType: String? = ""
 )
 
-fun SignModel.fromDomainToDto() = SignDto(
+fun SignUI.fromUItoDomain() = SignModel(
     grant_type = grant_type,
     password = password,
     username = username
 )
 
-fun SignResponseDto.toDomain() = SignResponseModel(
+fun SignResponseModel.toUI() = SignResponseUI(
     accessToken = accessToken,
     createdAt = createdAt,
     expiresIn = expiresIn,

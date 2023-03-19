@@ -1,7 +1,7 @@
 package com.example.data.mappers
 
-import com.example.data.network.models.anime.AnimeDto
-import com.example.domain.models.anime.AnimeModel
+import com.example.data.network.models.AnimeDto
+import com.example.domain.models.AnimeModel
 
 fun AnimeDto.toDomain() =
     AnimeModel(
