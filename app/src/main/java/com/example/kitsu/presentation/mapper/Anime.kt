@@ -1,7 +1,7 @@
 package com.example.kitsu.presentation.mapper
 
-import com.example.domain.models.anime.AnimeModel
-import com.example.kitsu.presentation.models.anime.AnimeUI
+import com.example.domain.models.AnimeModel
+import com.example.kitsu.presentation.models.AnimeUI
 
 fun AnimeModel.toUI() = AnimeUI(
     data = data?.map { it.toUI() }, meta = meta?.toUI(), links = links?.toUI()

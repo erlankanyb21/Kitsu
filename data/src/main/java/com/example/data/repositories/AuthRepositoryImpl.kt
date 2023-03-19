@@ -3,10 +3,10 @@ package com.example.data.repositories
 import android.util.Log
 import com.example.data.base.BaseRepository
 import com.example.data.network.apiservice.AuthApiService
-import com.example.data.network.models.auth.fromDomainToDto
-import com.example.data.network.models.auth.toDomain
-import com.example.domain.models.auth.SignModel
-import com.example.domain.models.auth.SignResponseModel
+import com.example.data.network.models.fromDomainToDto
+import com.example.data.network.models.toDomain
+import com.example.domain.models.SignModel
+import com.example.domain.models.SignResponseModel
 import com.example.domain.repositories.AuthRepository
 import com.example.domain.resource.Resource
 import kotlinx.coroutines.flow.Flow

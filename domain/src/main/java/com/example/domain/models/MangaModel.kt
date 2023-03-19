@@ -1,4 +1,4 @@
-package com.example.domain.models.manga
+package com.example.domain.models
 
 data class MangaModel(
     val `data`: List<Data>? = listOf(),

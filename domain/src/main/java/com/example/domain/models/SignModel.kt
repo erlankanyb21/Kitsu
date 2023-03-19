@@ -1,4 +1,4 @@
-package com.example.domain.models.auth
+package com.example.domain.models
 
 data class SignModel(
     val grant_type: String? = "password",

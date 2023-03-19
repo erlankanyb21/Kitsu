@@ -2,10 +2,10 @@ package com.example.kitsu.presentation.fragments.signIn
 
 import com.example.domain.usecases.SignInUseCase
 import com.example.kitsu.presentation.base.BaseViewModel
-import com.example.kitsu.presentation.models.auth.SignResponseUI
-import com.example.kitsu.presentation.models.auth.SignUI
-import com.example.kitsu.presentation.models.auth.fromUItoDomain
-import com.example.kitsu.presentation.models.auth.toUI
+import com.example.kitsu.presentation.models.SignResponseUI
+import com.example.kitsu.presentation.models.SignUI
+import com.example.kitsu.presentation.models.fromUItoDomain
+import com.example.kitsu.presentation.models.toUI
 import com.example.kitsu.presentation.state.UIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

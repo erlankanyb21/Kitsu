@@ -1,4 +1,4 @@
-package com.example.data.network.models.manga
+package com.example.data.network.models
 
 
 import com.google.gson.annotations.SerializedName
