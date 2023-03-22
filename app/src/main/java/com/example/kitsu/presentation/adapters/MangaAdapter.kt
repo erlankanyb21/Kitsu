@@ -7,8 +7,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kitsu.databinding.ItemMangaRvBinding
-import com.example.kitsu.presentation.models.MangaUI
 import com.example.kitsu.presentation.extensions.loadImage
+import com.example.kitsu.presentation.models.MangaUI
 
 class MangaAdapter(
     private val onItemClick: (name: String?) -> Unit

@@ -7,14 +7,11 @@ object Dependencies {
         const val kotlin = "org.jetbrains.kotlin.android"
     }
 
-    object Base_Url {
-        const val Base_Url = "https://kitsu.io/"
-    }
-
-    object idPlugins {
+    object Plugins {
         const val application = "com.android.application"
         const val kapt = "kotlin-kapt"
         const val jetbrainsAndroid = "org.jetbrains.kotlin.android"
+        const val navigationSafeArgs = "androidx.navigation.safeargs.kotlin"
     }
 
     object UIComponents {

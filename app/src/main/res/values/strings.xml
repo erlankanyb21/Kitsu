@@ -9,6 +9,7 @@
     <string name="cancel">cancel</string>
     <string name="password">password</string>
     <string name="email">Email</string>
+    <string name="this_post_contains_spoilers">This post contains spoilers.</string>
 
     <string-array name="filters">
         <item>Comedy</item>

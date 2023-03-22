@@ -8,7 +8,7 @@
         android:fromYScale="0.0"
         android:interpolator="@android:anim/linear_interpolator"
         android:toXScale="1.0"
-        android:toYScale="1.0"/>
+        android:toYScale="1.0" />
 
     <!-- Анимация вращения логотипа -->
     <rotate
@@ -19,7 +19,7 @@
         android:pivotY="50%"
         android:repeatCount="1"
         android:repeatMode="reverse"
-        android:toDegrees="360"/>
+        android:toDegrees="360" />
 
     <!-- Анимация движения лисы -->
     <translate
@@ -28,6 +28,6 @@
         android:fromYDelta="0"
         android:interpolator="@android:anim/linear_interpolator"
         android:toXDelta="0"
-        android:toYDelta="0"/>
+        android:toYDelta="0" />
 
 </set>

@@ -3,6 +3,7 @@ package com.example.kitsu.presentation.di
 
 import com.example.kitsu.presentation.fragments.home.anime.AnimeViewModel
 import com.example.kitsu.presentation.fragments.home.manga.MangaViewModel
+import com.example.kitsu.presentation.fragments.home.posts.PostsViewModel
 import com.example.kitsu.presentation.fragments.home.users.UsersViewModel
 import com.example.kitsu.presentation.fragments.signIn.SignInViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,4 +15,5 @@ val viewModules: Module = module {
     viewModel { MangaViewModel(get()) }
     viewModel { UsersViewModel(get()) }
     viewModel { SignInViewModel(get()) }
+    viewModel { PostsViewModel(get()) }
 }

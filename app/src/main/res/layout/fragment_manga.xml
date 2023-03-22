@@ -34,15 +34,15 @@
             tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/big_margin_70"
-                android:layout_marginStart="20dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
-                tools:ignore="SpeakableTextPresentCheck"
-                tools:listitem="@layout/item_manga_rv" />
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/big_margin_70"
+            android:layout_marginStart="20dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:listitem="@layout/item_manga_rv" />
 
         <ProgressBar
             android:id="@+id/progress"

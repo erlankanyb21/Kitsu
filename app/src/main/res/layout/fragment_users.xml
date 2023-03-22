@@ -22,14 +22,14 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="LabelFor,TextContrastCheck,TouchTargetSizeCheck" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview"
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/big_margin_70"
-                android:layout_marginHorizontal="8dp"
-                tools:listitem="@layout/item_users_rv"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:layout_height="match_parent"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/big_margin_70"
+            android:layout_marginHorizontal="8dp"
+            tools:listitem="@layout/item_users_rv"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="match_parent" />
 
         <ProgressBar
             android:id="@+id/progress"

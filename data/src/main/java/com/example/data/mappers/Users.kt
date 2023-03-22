@@ -210,29 +210,33 @@ fun UsersDto.Data.Attributes.Avatar.Meta.toDomain() = UsersModel.Data.Attributes
     dimensions = dimensions?.toDomain()
 )
 
-fun UsersDto.Data.Attributes.Avatar.Meta.Dimensions.toDomain() = UsersModel.Data.Attributes.Avatar.Meta.Dimensions(
-    large = large?.toDomain(),
-    medium = medium?.toDomain(),
-    small = small?.toDomain(),
-    tiny = tiny?.toDomain()
-)
+fun UsersDto.Data.Attributes.Avatar.Meta.Dimensions.toDomain() =
+    UsersModel.Data.Attributes.Avatar.Meta.Dimensions(
+        large = large?.toDomain(),
+        medium = medium?.toDomain(),
+        small = small?.toDomain(),
+        tiny = tiny?.toDomain()
+    )
 
 fun UsersDto.Data.Attributes.Avatar.Meta.Dimensions.Large.toDomain() =
     UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Large(
-    height= height, width = width
-)
+        height = height, width = width
+    )
+
 fun UsersDto.Data.Attributes.Avatar.Meta.Dimensions.Medium.toDomain() =
     UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Medium(
-    height= height, width = width
-)
+        height = height, width = width
+    )
+
 fun UsersDto.Data.Attributes.Avatar.Meta.Dimensions.Small.toDomain() =
     UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Small(
-    height= height, width = width
-)
+        height = height, width = width
+    )
+
 fun UsersDto.Data.Attributes.Avatar.Meta.Dimensions.Tiny.toDomain() =
     UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Tiny(
-    height= height, width = width
-)
+        height = height, width = width
+    )
 
 fun UsersDto.Data.Attributes.CoverImage.toDomain() = UsersModel.Data.Attributes.CoverImage(
     large = large,
@@ -243,27 +247,32 @@ fun UsersDto.Data.Attributes.CoverImage.toDomain() = UsersModel.Data.Attributes.
 )
 
 
-fun UsersDto.Data.Attributes.CoverImage.Meta.toDomain() = UsersModel.Data.Attributes.CoverImage.Meta(
-    dimensions = dimensions?.toDomain()
-)
+fun UsersDto.Data.Attributes.CoverImage.Meta.toDomain() =
+    UsersModel.Data.Attributes.CoverImage.Meta(
+        dimensions = dimensions?.toDomain()
+    )
 
-fun UsersDto.Data.Attributes.CoverImage.Meta.Dimensions.toDomain() = UsersModel.Data.Attributes.CoverImage.Meta.Dimensions(
-    large = large?.toDomain(),
-    small = small?.toDomain(),
-    tiny = tiny?.toDomain()
-)
+fun UsersDto.Data.Attributes.CoverImage.Meta.Dimensions.toDomain() =
+    UsersModel.Data.Attributes.CoverImage.Meta.Dimensions(
+        large = large?.toDomain(),
+        small = small?.toDomain(),
+        tiny = tiny?.toDomain()
+    )
 
-fun UsersDto.Data.Attributes.CoverImage.Meta.Dimensions.Large.toDomain() = UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Large(
-    height = height, width = width
-)
+fun UsersDto.Data.Attributes.CoverImage.Meta.Dimensions.Large.toDomain() =
+    UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Large(
+        height = height, width = width
+    )
 
-fun UsersDto.Data.Attributes.CoverImage.Meta.Dimensions.Small.toDomain() = UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Small(
-    height = height, width = width
-)
+fun UsersDto.Data.Attributes.CoverImage.Meta.Dimensions.Small.toDomain() =
+    UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Small(
+        height = height, width = width
+    )
 
-fun UsersDto.Data.Attributes.CoverImage.Meta.Dimensions.Tiny.toDomain() = UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Tiny(
-    height = height, width = width
-)
+fun UsersDto.Data.Attributes.CoverImage.Meta.Dimensions.Tiny.toDomain() =
+    UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Tiny(
+        height = height, width = width
+    )
 
 fun UsersDto.Data.Attributes.toDomain() = UsersModel.Data.Attributes(
     about = about,
@@ -299,5 +308,4 @@ fun UsersDto.Data.Attributes.toDomain() = UsersModel.Data.Attributes(
     updatedAt = updatedAt,
     waifuOrHusbando = waifuOrHusbando,
     website = website,
-
 )

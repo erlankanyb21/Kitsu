@@ -30,6 +30,10 @@ class AuthRepositoryImpl(
                     Log.e(
                         "Kitsu", "Sign: ${response.body()}"
                     )
+                } else {
+                    emit(
+                        Resource.Error("Invalid authentication credentials`")
+                    )
                 }
             } catch (e: IOException) {
                 emit(Resource.Error(e.localizedMessage as String))

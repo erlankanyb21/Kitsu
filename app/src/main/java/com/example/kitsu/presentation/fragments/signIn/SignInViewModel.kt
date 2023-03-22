@@ -17,10 +17,10 @@ class SignInViewModel(
     private val _signState = MutableStateFlow<UIState<SignResponseUI?>>(UIState.Empty())
     val signState = _signState.asStateFlow()
     fun signIn(signUI: SignUI) = signInUseCase(signUI.fromUItoDomain()).collectingStates({
-            _signState.value = UIState.Loading()
-        }, {
-            _signState.value = UIState.Error(it.toString())
-        }, {
-            _signState.value = UIState.Success(data = it!!.toUI())
-        })
+        _signState.value = UIState.Loading()
+    }, {
+        _signState.value = UIState.Error(it.toString())
+    }, {
+        _signState.value = UIState.Success(data = it!!.toUI())
+    })
 }

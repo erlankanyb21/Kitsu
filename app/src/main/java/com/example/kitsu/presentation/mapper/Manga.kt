@@ -238,7 +238,7 @@ fun MangaModel.Data.Attributes.PosterImage.toUI() = MangaUI.Data.Attributes.Post
     medium = medium,
     meta = meta?.toUI(),
     small = small,
-    original= original,
+    original = original,
     tiny = tiny
 )
 
@@ -246,29 +246,36 @@ fun MangaModel.Data.Attributes.PosterImage.Meta.toUI() = MangaUI.Data.Attributes
     dimensions = dimensions?.toUI()
 )
 
-fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.toUI() = MangaUI.Data.Attributes.PosterImage.Meta.Dimensions(
-    large = large?.toUI(),
-    medium = medium?.toUI(),
-    small = small?.toUI(),
-    tiny = tiny?.toUI()
-)
+fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.toUI() =
+    MangaUI.Data.Attributes.PosterImage.Meta.Dimensions(
+        large = large?.toUI(),
+        medium = medium?.toUI(),
+        small = small?.toUI(),
+        tiny = tiny?.toUI()
+    )
 
-fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Large.toUI() = MangaUI.Data.Attributes.PosterImage.Meta.Dimensions.Large(
-    height = height,
-    width = width
-)
-fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Medium.toUI() = MangaUI.Data.Attributes.PosterImage.Meta.Dimensions.Medium(
-    height = height,
-    width = width
-)
-fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Small.toUI() = MangaUI.Data.Attributes.PosterImage.Meta.Dimensions.Small(
-    height = height,
-    width = width
-)
+fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Large.toUI() =
+    MangaUI.Data.Attributes.PosterImage.Meta.Dimensions.Large(
+        height = height,
+        width = width
+    )
 
-fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Tiny.toUI() = MangaUI.Data.Attributes.PosterImage.Meta.Dimensions.Tiny(
-    height = height,
-    width = width
-)
+fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Medium.toUI() =
+    MangaUI.Data.Attributes.PosterImage.Meta.Dimensions.Medium(
+        height = height,
+        width = width
+    )
+
+fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Small.toUI() =
+    MangaUI.Data.Attributes.PosterImage.Meta.Dimensions.Small(
+        height = height,
+        width = width
+    )
+
+fun MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Tiny.toUI() =
+    MangaUI.Data.Attributes.PosterImage.Meta.Dimensions.Tiny(
+        height = height,
+        width = width
+    )
 
 

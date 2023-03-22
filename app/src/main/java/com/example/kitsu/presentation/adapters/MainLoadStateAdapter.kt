@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kitsu.databinding.ItemErrorBinding
 import com.example.kitsu.databinding.ItemProgressBinding
 
-class MainLoadStateAdapter() : LoadStateAdapter<MainLoadStateAdapter.ItemViewHolder>() {
+class MainLoadStateAdapter : LoadStateAdapter<MainLoadStateAdapter.ItemViewHolder>() {
 
     override fun getStateViewType(loadState: LoadState) = when (loadState) {
         is LoadState.NotLoading -> error("Not supported")
@@ -30,7 +30,6 @@ class MainLoadStateAdapter() : LoadStateAdapter<MainLoadStateAdapter.ItemViewHol
     }
 
     private companion object {
-
         private const val ERROR = 1
         private const val PROGRESS = 0
     }

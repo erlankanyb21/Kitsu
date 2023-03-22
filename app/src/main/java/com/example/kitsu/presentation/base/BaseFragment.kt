@@ -24,14 +24,9 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
-        setupListeners()
-        setupRequests()
-        setupSubscribers()
     }
+
     protected open fun initialize() {}
-    protected open fun setupListeners() {}
-    protected open fun setupRequests() {}
-    protected open fun setupSubscribers() {}
 
     protected fun <T> StateFlow<UIState<T>>.collectStates(
         onLoading: () -> Unit, onError: (msg: String) -> Unit, onSuccess: (data: T) -> Unit
@@ -57,12 +52,14 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
             }
         }
     }
+
     protected fun <T : Any> Flow<PagingData<T>>.collectPaging(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
         action: suspend (value: PagingData<T>) -> Unit
     ) {
         safeFlowGather(lifecycleState) { this.collectLatest { action(it) } }
     }
+
     protected fun safeFlowGather(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED, action: suspend () -> Unit
     ) {

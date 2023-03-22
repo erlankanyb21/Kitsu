@@ -1,8 +1,9 @@
- plugins {
-    id(Dependencies.idPlugins.application)
-    id(Dependencies.idPlugins.jetbrainsAndroid)
-    id(Dependencies.idPlugins.kapt)
- }
+plugins {
+    id(Dependencies.Plugins.application)
+    id(Dependencies.Plugins.jetbrainsAndroid)
+    id(Dependencies.Plugins.kapt)
+    id(Dependencies.Plugins.navigationSafeArgs)
+}
 
 android {
     namespace = "com.example.kitsu"
@@ -40,9 +41,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
     implementation(project(":data"))
-
+    implementation(project(":domain"))
 //    core
     implementation(Dependencies.Core.core)
 
@@ -54,9 +54,6 @@ dependencies {
 
 //    androidx
     implementation(Dependencies.Androidx.legacySupport)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0")
     testImplementation(Dependencies.Androidx.junit)
     androidTestImplementation(Dependencies.Androidx.testJunit)
     androidTestImplementation(Dependencies.Androidx.testEspresso)
@@ -96,7 +93,7 @@ dependencies {
     implementation(Dependencies.viewpager2.viewpager2)
 
     //Koin
-    implementation (Dependencies.Koin.koinAndroid)
+    implementation(Dependencies.Koin.koinAndroid)
     implementation(Dependencies.Koin.koinNav)
 
     //navigation components

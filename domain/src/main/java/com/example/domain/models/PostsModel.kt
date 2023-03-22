@@ -102,15 +102,12 @@ data class PostsModel(
                 val links: Links? = Links()
             ) {
                 data class Links(
-
                     val related: String? = "",
-
                     val self: String? = ""
                 )
             }
 
             data class SpoiledUnit(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
@@ -120,7 +117,6 @@ data class PostsModel(
             }
 
             data class TargetGroup(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
@@ -130,7 +126,6 @@ data class PostsModel(
             }
 
             data class TargetUser(
-
                 val links: Links? = Links()
             ) {
                 data class Links(
@@ -140,7 +135,6 @@ data class PostsModel(
             }
 
             data class Uploads(
-
                 val links: Links? = Links()
             ) {
                 data class Links(

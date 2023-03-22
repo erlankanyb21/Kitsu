@@ -17,13 +17,15 @@ class App : Application() {
 
         startKoin {
             androidContext(this@App)
-            modules(listOf(
-                repoModules,
-                viewModules,
-                UseCaseModule,
-                networkModule,
-                preferencesModule
-            ))
+            modules(
+                listOf(
+                    repoModules,
+                    viewModules,
+                    UseCaseModule,
+                    networkModule,
+                    preferencesModule
+                )
+            )
         }
     }
 }

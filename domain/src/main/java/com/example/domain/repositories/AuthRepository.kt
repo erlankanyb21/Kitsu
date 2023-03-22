@@ -6,6 +6,5 @@ import com.example.domain.resource.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
-
     fun signIn(signModel: SignModel): Flow<Resource<SignResponseModel?>>
 }

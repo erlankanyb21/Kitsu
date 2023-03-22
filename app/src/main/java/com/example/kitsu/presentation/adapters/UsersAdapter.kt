@@ -7,8 +7,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kitsu.databinding.ItemUsersRvBinding
-import com.example.kitsu.presentation.models.UsersUI
 import com.example.kitsu.presentation.extensions.loadImage
+import com.example.kitsu.presentation.models.UsersUI
 
 class UsersAdapter(
     private val onItemClick: (name: String?) -> Unit

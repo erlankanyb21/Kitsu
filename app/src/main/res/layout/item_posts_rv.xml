@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/posts_bg"
+    android:paddingVertical="@dimen/page_margin"
+    android:layout_marginVertical="@dimen/element_margin"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="@dimen/page_margin_2x"
+        android:layout_marginTop="@dimen/small_margin_10"
+        android:layout_marginEnd="@dimen/page_margin"
+        app:cardCornerRadius="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/user_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/ic_launcher_foreground" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/big_margin_110"
+        android:layout_marginEnd="@dimen/page_margin"
+        android:layout_marginBottom="@dimen/medium_margin"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/user_name"
+            style="@style/BaseMainTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:paddingBottom="@dimen/small_margin_10"
+            android:text="user_name"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/regular_txt_18"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/post_data_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/page_margin"
+            android:text="created_at"
+            android:textColor="@color/grey" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
