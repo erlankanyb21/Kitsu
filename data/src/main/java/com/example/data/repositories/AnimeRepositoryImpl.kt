@@ -11,7 +11,10 @@ import kotlinx.coroutines.flow.Flow
 class AnimeRepositoryImpl(
     private val animeApiService: AnimeApiService
 ) : AnimeRepository, BaseRepository() {
-    override fun fetchPagingAnime(category:String?): Flow<PagingData<AnimeModel.Data>> =
-        makePagingRequest(AnimePagingSource(
-                animeApiService = animeApiService,category))
+    override fun fetchPagingAnime(category: String?): Flow<PagingData<AnimeModel.Data>> =
+        makePagingRequest(
+            AnimePagingSource(
+                animeApiService = animeApiService, category
+            )
+        )
 }

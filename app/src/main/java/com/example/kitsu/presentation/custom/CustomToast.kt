@@ -17,7 +17,7 @@ class CustomToast(private val context: Context) {
         binding!!.toastMessage.text = message
 
         val toast = Toast(context)
-        toast.setGravity(Gravity.CENTER,0,0)
+        toast.setGravity(Gravity.CENTER, 0, 0)
         toast.duration = Toast.LENGTH_LONG
         toast.view = binding!!.root
 

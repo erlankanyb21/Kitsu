@@ -9,8 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.example.kitsu.presentation.fragments.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
-
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_mainDialogFragment"
+            app:destination="@id/mainDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_search"
         android:label="title_search"
@@ -26,7 +29,7 @@
         android:id="@+id/animeFragment"
         android:name="com.example.kitsu.presentation.fragments.home.anime.AnimeFragment"
         android:label="fragment_anime"
-        tools:layout="@layout/fragment_anime" />
+        tools:layout="@layout/fragment_anime"></fragment>
     <fragment
         android:id="@+id/mangaFragment"
         android:name="com.example.kitsu.presentation.fragments.home.manga.MangaFragment"
@@ -42,4 +45,13 @@
         android:name="com.example.kitsu.presentation.fragments.notifications.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <dialog
+        android:id="@+id/mainDialogFragment"
+        android:name="com.example.kitsu.presentation.fragments.dialog.MainDialogFragment"
+        android:label="fragment_main_filter_dialog"
+        tools:layout="@layout/fragment_main_filter_dialog">
+        <argument
+            android:name="whereToApplyFilter"
+            app:argType="integer" />
+    </dialog>
 </navigation>

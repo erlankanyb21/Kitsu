@@ -5,6 +5,7 @@ data class SignModel(
     val password: String? = "",
     val username: String? = ""
 )
+
 data class SignResponseModel(
     val accessToken: String? = "",
     val createdAt: Int? = 0,

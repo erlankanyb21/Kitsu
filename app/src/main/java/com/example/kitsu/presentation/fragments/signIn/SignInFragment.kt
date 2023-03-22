@@ -3,7 +3,6 @@ package com.example.kitsu.presentation.fragments.signIn
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.data.local.Prefs
@@ -14,7 +13,6 @@ import com.example.kitsu.presentation.custom.CustomToast
 import com.example.kitsu.presentation.extensions.activityNavController
 import com.example.kitsu.presentation.extensions.navigateSafely
 import com.example.kitsu.presentation.models.SignUI
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,11 +26,12 @@ class SignInFragment :
 
     override fun initialize() {
         setupAnimation()
+        checkState()
         clickSignIn()
     }
 
     private fun setupAnimation() {
-        val animation = AnimationUtils.loadAnimation(requireContext(),R.anim.logo_anim)
+        val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.logo_anim)
         binding.logo.apply {
             visibility = View.VISIBLE
             startAnimation(animation)
@@ -41,43 +40,50 @@ class SignInFragment :
 
     private fun clickSignIn() {
         binding.btnEnter.setOnClickListener {
-            viewModel.signIn(
-                SignUI(
-                    username = binding.usernameEd.text.toString(),
-                    password = binding.passwordEd.text.toString()
-                )
-            )
+            checkRequest()
         }
+    }
 
-        lifecycleScope.launch {
+    private fun checkState() {
+        viewModel.viewModelScope.launch {
             viewModel.signState.collectStates(
                 onLoading = {
                     binding.progress.isVisible = true
                     binding.btnEnter.isEnabled = false
-                    stopRequest()
                 },
                 onError = {
+                    CustomToast.show(requireContext(), it)
                     binding.progress.isVisible = false
                     binding.btnEnter.isEnabled = true
-                    CustomToast.show(requireContext(), it)
                 },
                 onSuccess = {
                     binding.progress.isVisible = false
                     binding.btnEnter.isEnabled = true
                     CustomToast.show(requireContext(), "Welcome to Kitsu \uD83D\uDE80")
-                    preferences.saveToken(it?.accessToken.toString())
+                    preferences.token = it?.accessToken.toString()
                     activityNavController().navigateSafely(R.id.action_global_mainFlowFragment)
                 }
             )
         }
     }
 
-    private fun stopRequest() {
-        viewModel.viewModelScope.launch {
-            delay(5000)
-            binding.progress.isVisible = false
-            binding.btnEnter.isEnabled = true
-            CustomToast.show(requireContext(),"Incorrect email or password")
+    private fun checkRequest() {
+        when {
+            binding.usernameEd.text.toString().isEmpty() -> {
+                CustomToast.show(requireContext(), "Please fill out your username")
+            }
+            binding.passwordEd.text.toString().isEmpty() -> {
+                CustomToast.show(requireContext(), "Please fill out your password")
+            }
+            else -> {
+                viewModel.signIn(
+                    SignUI(
+                        username = binding.usernameEd.text.toString(),
+                        password = binding.passwordEd.text.toString()
+                    )
+                )
+
+            }
         }
     }
 }

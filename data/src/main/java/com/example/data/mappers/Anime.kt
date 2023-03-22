@@ -5,8 +5,8 @@ import com.example.domain.models.AnimeModel
 
 fun AnimeDto.toDomain() =
     AnimeModel(
-    data = data?.map { it.toDomain() }, meta = meta?.toDomain(), links = links?.toDomain()
-)
+        data = data?.map { it.toDomain() }, meta = meta?.toDomain(), links = links?.toDomain()
+    )
 
 fun AnimeDto.Meta.toDomain() = AnimeModel.Meta(
     count = count
@@ -337,4 +337,3 @@ fun AnimeDto.Data.Attributes.PosterImage.Meta.Dimensions.Medium.toDomain() =
     AnimeModel.Data.Attributes.PosterImage.Meta.Dimensions.Medium(
         width = width, height = height
     )
-

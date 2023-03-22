@@ -211,62 +211,71 @@ fun MangaDto.Data.Attributes.Titles.toDomain() = MangaModel.Data.Attributes.Titl
     ja_jp = jaJp
 )
 
-fun MangaDto.Data.Attributes.RatingFrequencies.toDomain() = MangaModel.Data.Attributes.RatingFrequencies(
-    x2 = x2,
-    x3 = x3,
-    x4 = x4,
-    x5 = x5,
-    x6 = x6,
-    x7 = x7,
-    x8 = x8,
-    x9 = x9,
-    x10 = x10,
-    x11 = x11,
-    x12 = x12,
-    x13 = x13,
-    x14 = x14,
-    x15 = x15,
-    x16 = x16,
-    x17 = x17,
-    x18 = x18,
-    x19 = x19,
-    x20 = x20,
-)
+fun MangaDto.Data.Attributes.RatingFrequencies.toDomain() =
+    MangaModel.Data.Attributes.RatingFrequencies(
+        x2 = x2,
+        x3 = x3,
+        x4 = x4,
+        x5 = x5,
+        x6 = x6,
+        x7 = x7,
+        x8 = x8,
+        x9 = x9,
+        x10 = x10,
+        x11 = x11,
+        x12 = x12,
+        x13 = x13,
+        x14 = x14,
+        x15 = x15,
+        x16 = x16,
+        x17 = x17,
+        x18 = x18,
+        x19 = x19,
+        x20 = x20,
+    )
 
 fun MangaDto.Data.Attributes.PosterImage.toDomain() = MangaModel.Data.Attributes.PosterImage(
     large = tiny,
     medium = medium,
     meta = meta?.toDomain(),
     small = small,
-    original= original,
+    original = original,
     tiny = tiny
 )
 
-fun MangaDto.Data.Attributes.PosterImage.Meta.toDomain() = MangaModel.Data.Attributes.PosterImage.Meta(
-    dimensions = dimensions?.toDomain()
-)
+fun MangaDto.Data.Attributes.PosterImage.Meta.toDomain() =
+    MangaModel.Data.Attributes.PosterImage.Meta(
+        dimensions = dimensions?.toDomain()
+    )
 
-fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.toDomain() = MangaModel.Data.Attributes.PosterImage.Meta.Dimensions(
-    large = large?.toDomain(),
-    medium = medium?.toDomain(),
-    small = small?.toDomain(),
-    tiny = tiny?.toDomain()
-)
+fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.toDomain() =
+    MangaModel.Data.Attributes.PosterImage.Meta.Dimensions(
+        large = large?.toDomain(),
+        medium = medium?.toDomain(),
+        small = small?.toDomain(),
+        tiny = tiny?.toDomain()
+    )
 
-fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.Large.toDomain() = MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Large(
-    height = height,
-    width = width
-)
-fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.Medium.toDomain() = MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Medium(
-    height = height,
-    width = width
-)
-fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.Small.toDomain() = MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Small(
-    height = height,
-    width = width
-)
+fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.Large.toDomain() =
+    MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Large(
+        height = height,
+        width = width
+    )
 
-fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.Tiny.toDomain() = MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Tiny(
-    height = height,
-    width = width
-)
+fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.Medium.toDomain() =
+    MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Medium(
+        height = height,
+        width = width
+    )
+
+fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.Small.toDomain() =
+    MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Small(
+        height = height,
+        width = width
+    )
+
+fun MangaDto.Data.Attributes.PosterImage.Meta.Dimensions.Tiny.toDomain() =
+    MangaModel.Data.Attributes.PosterImage.Meta.Dimensions.Tiny(
+        height = height,
+        width = width
+    )

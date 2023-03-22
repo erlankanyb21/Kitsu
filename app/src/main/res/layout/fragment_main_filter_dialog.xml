@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/filter_bg"
-    tools:context=".presentation.fragments.dialogs.AnimeDialogFragment"
+    tools:context=".presentation.fragments.dialog.MainDialogFragment"
     android:padding="16dp">
 
     <TextView
@@ -17,11 +17,12 @@
         android:textColor="@color/orange"
         android:gravity="center"
         android:textStyle="bold" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
-        android:background="@color/orange"/>
+        android:background="@color/orange" />
 
     <Button
         android:id="@+id/btn_cancel"

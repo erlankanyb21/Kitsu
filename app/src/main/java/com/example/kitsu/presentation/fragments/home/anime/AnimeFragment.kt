@@ -3,8 +3,7 @@ package com.example.kitsu.presentation.fragments.home.anime
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
@@ -12,10 +11,8 @@ import com.example.kitsu.databinding.FragmentAnimeBinding
 import com.example.kitsu.presentation.adapters.AnimeAdapter
 import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.base.BaseFragment
-import com.example.kitsu.presentation.fragments.dialogs.AnimeDialogFragment
-import com.example.kitsu.presentation.fragments.dialogs.sharedvm.SharedViewModel
-import kotlinx.coroutines.flow.takeWhile
-import kotlinx.coroutines.launch
+import com.example.kitsu.presentation.fragments.dialog.sharedvm.SharedViewModel
+import com.example.kitsu.presentation.fragments.home.HomeFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layout.fragment_anime) {
@@ -25,39 +22,54 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
     private val animeAdapter = AnimeAdapter(this::onItemClick)
     private val sharedViewModel by activityViewModels<SharedViewModel>()
     override fun initialize() {
-        binding.recyclerview.adapter = animeAdapter.withLoadStateHeaderAndFooter(
-            header = MainLoadStateAdapter(),
-            footer = MainLoadStateAdapter()
-        )
-        lifecycleScope.launch {
-            viewModel.pagingAnime(null)
-                .collectPaging { data ->
-                    animeAdapter.submitData(data)
-                }
-        }
+        setupRecyclerView()
+        loadStateListener()
+        showAnimeList()
+        setupFilter()
     }
 
-    override fun setupListeners() {
+    private fun setupRecyclerView() {
+        binding.recyclerview.adapter = animeAdapter.withLoadStateFooter(
+            footer = MainLoadStateAdapter()
+        )
+    }
+
+    private fun loadStateListener() {
         animeAdapter.addLoadStateListener { state ->
             binding.recyclerview.isVisible = state.refresh != LoadState.Loading
             binding.progress.isVisible = state.refresh == LoadState.Loading
+        }
+    }
+
+    private fun setupFilter() {
+        binding.btnFilter.setOnClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionNavigationHomeToMainDialogFragment(
+                    1
+                )
+            )
         }
         showFilter()
     }
 
     private fun showFilter() {
-        binding.btnFilter.setOnClickListener {
-            AnimeDialogFragment().show(parentFragmentManager, "manga")
-
-            lifecycleScope.launch {
-                sharedViewModel.animeState
-                    .takeWhile { lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED) }
-                    .collect { category ->
-                        viewModel.pagingAnime(category.takeUnless { it.isEmpty() })
+        safeFlowGather {
+            sharedViewModel.animeState.collect { category ->
+                when {
+                    category.isNotEmpty() -> {
+                        viewModel.pagingAnime(category)
                             .collectPaging { data -> animeAdapter.submitData(data) }
                     }
+                    else -> {
+                        showAnimeList()
+                    }
+                }
             }
         }
+    }
+
+    private fun showAnimeList() {
+        viewModel.pagingAnime(null).collectPaging { data -> animeAdapter.submitData(data) }
     }
 
     private fun onItemClick(name: String?) {

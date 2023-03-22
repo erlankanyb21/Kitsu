@@ -9,7 +9,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.fragments.signIn.SignInFragment">
 
-<!--  не забыть вынести в стили  -->
+    <!--  не забыть вынести в стили  -->
 
     <ImageView
         android:id="@+id/logo"
@@ -39,13 +39,14 @@
         app:boxCornerRadiusBottomStart="@dimen/element_margin"
         app:boxCornerRadiusTopEnd="@dimen/element_margin"
         android:layout_height="wrap_content">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/usernameEd"
             android:minEms="8"
             android:maxLength="50"
             android:textColor="@color/orange"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,13 +67,14 @@
         android:layout_marginHorizontal="@dimen/page_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEd"
             android:inputType="textPassword"
             android:maxLength="50"
             android:textColor="@color/orange"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -96,6 +98,6 @@
         android:id="@+id/progress"
         android:visibility="gone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

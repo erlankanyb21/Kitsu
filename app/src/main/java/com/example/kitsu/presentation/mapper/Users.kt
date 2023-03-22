@@ -206,31 +206,39 @@ fun UsersModel.Data.Attributes.Avatar.toUI() = UsersUI.Data.Attributes.Avatar(
     small = small,
     tiny = tiny,
 
-)
+    )
 
 fun UsersModel.Data.Attributes.Avatar.Meta.toUI() = UsersUI.Data.Attributes.Avatar.Meta(
     dimensions = dimensions?.toUI()
 )
 
-fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.toUI() = UsersUI.Data.Attributes.Avatar.Meta.Dimensions(
-    large = large?.toUI(),
-    medium = medium?.toUI(),
-    small = small?.toUI(),
-    tiny = tiny?.toUI()
-)
+fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.toUI() =
+    UsersUI.Data.Attributes.Avatar.Meta.Dimensions(
+        large = large?.toUI(),
+        medium = medium?.toUI(),
+        small = small?.toUI(),
+        tiny = tiny?.toUI()
+    )
 
-fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Large.toUI() = UsersUI.Data.Attributes.Avatar.Meta.Dimensions.Large(
-    height= height, width = width
-)
-fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Medium.toUI() = UsersUI.Data.Attributes.Avatar.Meta.Dimensions.Medium(
-    height= height, width = width
-)
-fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Small.toUI() = UsersUI.Data.Attributes.Avatar.Meta.Dimensions.Small(
-    height= height, width = width
-)
-fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Tiny.toUI() = UsersUI.Data.Attributes.Avatar.Meta.Dimensions.Tiny(
-    height= height, width = width
-)
+fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Large.toUI() =
+    UsersUI.Data.Attributes.Avatar.Meta.Dimensions.Large(
+        height = height, width = width
+    )
+
+fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Medium.toUI() =
+    UsersUI.Data.Attributes.Avatar.Meta.Dimensions.Medium(
+        height = height, width = width
+    )
+
+fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Small.toUI() =
+    UsersUI.Data.Attributes.Avatar.Meta.Dimensions.Small(
+        height = height, width = width
+    )
+
+fun UsersModel.Data.Attributes.Avatar.Meta.Dimensions.Tiny.toUI() =
+    UsersUI.Data.Attributes.Avatar.Meta.Dimensions.Tiny(
+        height = height, width = width
+    )
 
 fun UsersModel.Data.Attributes.CoverImage.toUI() = UsersUI.Data.Attributes.CoverImage(
     large = large,
@@ -245,23 +253,27 @@ fun UsersModel.Data.Attributes.CoverImage.Meta.toUI() = UsersUI.Data.Attributes.
     dimensions = dimensions?.toUI()
 )
 
-fun UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.toUI() = UsersUI.Data.Attributes.CoverImage.Meta.Dimensions(
-    large = large?.toUI(),
-    small = small?.toUI(),
-    tiny = tiny?.toUI()
-)
+fun UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.toUI() =
+    UsersUI.Data.Attributes.CoverImage.Meta.Dimensions(
+        large = large?.toUI(),
+        small = small?.toUI(),
+        tiny = tiny?.toUI()
+    )
 
-fun UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Large.toUI() = UsersUI.Data.Attributes.CoverImage.Meta.Dimensions.Large(
-    height = height, width = width
-)
+fun UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Large.toUI() =
+    UsersUI.Data.Attributes.CoverImage.Meta.Dimensions.Large(
+        height = height, width = width
+    )
 
-fun UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Small.toUI() = UsersUI.Data.Attributes.CoverImage.Meta.Dimensions.Small(
-    height = height, width = width
-)
+fun UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Small.toUI() =
+    UsersUI.Data.Attributes.CoverImage.Meta.Dimensions.Small(
+        height = height, width = width
+    )
 
-fun UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Tiny.toUI() = UsersUI.Data.Attributes.CoverImage.Meta.Dimensions.Tiny(
-    height = height, width = width
-)
+fun UsersModel.Data.Attributes.CoverImage.Meta.Dimensions.Tiny.toUI() =
+    UsersUI.Data.Attributes.CoverImage.Meta.Dimensions.Tiny(
+        height = height, width = width
+    )
 
 fun UsersModel.Data.Attributes.toUI() = UsersUI.Data.Attributes(
     about = about,

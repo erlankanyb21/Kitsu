@@ -1,9 +1,6 @@
 package com.example.domain.di
 
-import com.example.domain.usecases.FetchPagingAnimeUseCase
-import com.example.domain.usecases.FetchPagingMangaUseCase
-import com.example.domain.usecases.FetchPagingUsersUseCase
-import com.example.domain.usecases.SignInUseCase
+import com.example.domain.usecases.*
 import org.koin.dsl.module
 
 val UseCaseModule = module {
@@ -18,5 +15,8 @@ val UseCaseModule = module {
     }
     factory {
         SignInUseCase(get())
+    }
+    factory {
+        FetchPagingPostsUseCase(get())
     }
 }

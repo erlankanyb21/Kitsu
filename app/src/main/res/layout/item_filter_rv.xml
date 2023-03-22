@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_margin="@dimen/element_margin"
     android:background="@drawable/shadow"
-    tools:context=".presentation.fragments.dialogs.AnimeDialogFragment"
+    tools:context=".presentation.fragments.dialog.MainDialogFragment"
     android:layout_height="wrap_content">
 
     <TextView

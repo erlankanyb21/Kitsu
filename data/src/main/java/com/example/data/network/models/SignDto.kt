@@ -10,6 +10,7 @@ data class SignDto(
     val password: String? = "",
     val username: String? = ""
 )
+
 data class SignResponseDto(
     @SerializedName("access_token")
     val accessToken: String? = "",

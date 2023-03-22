@@ -18,6 +18,7 @@ abstract class BasePagingSource<DomainModel : Any>(
             LoadResult.Error(exception)
         }
     }
+
     override fun getRefreshKey(state: PagingState<Int, DomainModel>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
