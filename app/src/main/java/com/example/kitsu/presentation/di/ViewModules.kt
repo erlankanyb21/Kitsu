@@ -1,6 +1,7 @@
 package com.example.kitsu.presentation.di
 
 
+import com.example.kitsu.presentation.fragments.add.AddViewModel
 import com.example.kitsu.presentation.fragments.home.anime.AnimeViewModel
 import com.example.kitsu.presentation.fragments.home.manga.MangaViewModel
 import com.example.kitsu.presentation.fragments.home.posts.PostsViewModel
@@ -16,4 +17,5 @@ val viewModules: Module = module {
     viewModel { UsersViewModel(get()) }
     viewModel { SignInViewModel(get()) }
     viewModel { PostsViewModel(get()) }
+    viewModel { AddViewModel(get()) }
 }

@@ -1,9 +1,11 @@
 package com.example.data.di
 
 import com.example.data.BuildConfig
+import com.example.data.local.Prefs
 import com.example.data.network.apiservice.*
 import com.example.data.repositories.*
 import com.example.domain.repositories.*
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.module.Module
@@ -13,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val networkModule: Module = module {
-    factory { provideOkhttpClient() }
+    factory { provideOkhttpClient(get()) }
     single { provideRetrofit(get()) }
     single { provideAnimeApi(get()) }
     single { provideMangaApi(get()) }
@@ -27,15 +29,24 @@ val networkModule: Module = module {
     single { providePostsRepository(get()) }
 }
 
-private fun provideOkhttpClient(): OkHttpClient {
+private fun provideOkhttpClient(prefs: Prefs): OkHttpClient {
     val interceptor = HttpLoggingInterceptor()
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+
+    val tokenInterceptor = Interceptor { chain ->
+        val request = chain.request()
+        val newRequest = request.newBuilder()
+            .header("Authorization", "Bearer ${prefs.token}")
+            .build()
+        chain.proceed(newRequest)
+    }
 
     return OkHttpClient.Builder()
         .readTimeout(30, TimeUnit.SECONDS)
         .writeTimeout(30, TimeUnit.SECONDS)
         .connectTimeout(30, TimeUnit.SECONDS)
         .addInterceptor(interceptor)
+        .addInterceptor(tokenInterceptor)
         .build()
 }
 

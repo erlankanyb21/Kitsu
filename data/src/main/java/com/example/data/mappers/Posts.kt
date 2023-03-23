@@ -4,11 +4,9 @@ package com.example.data.mappers
 import com.example.data.network.models.PostsDto
 import com.example.domain.models.PostsModel
 
-
 fun PostsDto.toDomain() = PostsModel(
     data = data?.map { it.toDomain() }, meta = meta?.toDomain(), links = links?.toDomain()
 )
-
 fun PostsDto.Data.toDomain() = PostsModel.Data(
     attributes = attributes?.toDomain(),
     id = id,
@@ -154,11 +152,9 @@ fun PostsDto.Data.Attributes.Embed.Image.toDomain() = PostsModel.Data.Attributes
     url = url,
     width = width
 )
-
 fun PostsDto.Meta.toDomain() = PostsModel.Meta(
     count = count
 )
-
 fun PostsDto.Links.toDomain() = PostsModel.Links(
     first = first, last = last, next = next
 )

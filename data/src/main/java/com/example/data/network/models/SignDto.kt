@@ -1,7 +1,6 @@
 package com.example.data.network.models
 
 
-import com.example.domain.models.SignModel
 import com.example.domain.models.SignResponseModel
 import com.google.gson.annotations.SerializedName
 
@@ -25,13 +24,6 @@ data class SignResponseDto(
     @SerializedName("token_type")
     val tokenType: String? = ""
 )
-
-fun SignModel.fromDomainToDto() = SignDto(
-    grant_type = grant_type,
-    password = password,
-    username = username
-)
-
 fun SignResponseDto.toDomain() = SignResponseModel(
     accessToken = accessToken,
     createdAt = createdAt,
