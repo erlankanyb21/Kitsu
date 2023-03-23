@@ -10,6 +10,14 @@
     <string name="password">password</string>
     <string name="email">Email</string>
     <string name="this_post_contains_spoilers">This post contains spoilers.</string>
+    <string name="created_at">created_at</string>
+    <string name="user_name">user_name</string>
+    <string name="users_comment">users_comment</string>
+    <string name="create_post">Create Post</string>
+    <string name="write_something">Write Something...</string>
+    <string name="post">Post</string>
+    <string name="nsfw">NSFW</string>
+    <string name="spoiler">Spoiler</string>
 
     <string-array name="filters">
         <item>Comedy</item>

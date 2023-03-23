@@ -1,11 +1,15 @@
 package com.example.kitsu.presentation.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kitsu.databinding.ItemPostsRvBinding
+import com.example.kitsu.presentation.extensions.loadImage
 import com.example.kitsu.presentation.models.PostsUI
 
 class PostsAdapter :
@@ -22,7 +26,26 @@ class PostsAdapter :
         RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(data: PostsUI.Data) = with(binding) {
+            Log.e("", "onBind: ${data.attributes?.content}")
             postDataTxt.text = data.attributes?.createdAt
+            usersComment.text = data.attributes?.content
+            if (data.attributes?.embed?.image?.url.toString().isNotEmpty())
+                postsImg.loadImage(data.attributes?.embed?.url.toString())
+
+            when {
+                data.attributes?.spoiler == true -> {
+                    binding.usersComment.isVisible = false
+                    binding.spoiler.visibility = View.VISIBLE
+                }
+                data.attributes?.spoiler != true -> {
+                    binding.usersComment.visibility = View.VISIBLE
+                    binding.spoiler.visibility = View.GONE
+                }
+            }
+            binding.spoiler.setOnClickListener {
+                binding.spoiler.isVisible = false
+                binding.usersComment.isVisible = true
+            }
         }
     }
 

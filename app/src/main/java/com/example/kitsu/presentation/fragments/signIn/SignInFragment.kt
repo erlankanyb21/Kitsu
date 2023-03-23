@@ -12,7 +12,6 @@ import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.custom.CustomToast
 import com.example.kitsu.presentation.extensions.activityNavController
 import com.example.kitsu.presentation.extensions.navigateSafely
-import com.example.kitsu.presentation.models.SignUI
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,8 +25,8 @@ class SignInFragment :
 
     override fun initialize() {
         setupAnimation()
-        checkState()
         clickSignIn()
+        checkState()
     }
 
     private fun setupAnimation() {
@@ -77,10 +76,8 @@ class SignInFragment :
             }
             else -> {
                 viewModel.signIn(
-                    SignUI(
-                        username = binding.usernameEd.text.toString(),
-                        password = binding.passwordEd.text.toString()
-                    )
+                    username = binding.usernameEd.text.toString(),
+                    password = binding.passwordEd.text.toString()
                 )
 
             }

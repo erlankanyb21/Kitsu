@@ -1,9 +1,10 @@
 package com.example.data.network.apiservice
 
+import com.example.data.network.models.CreatePostsDto
+import com.example.data.network.models.CreatePostsResponseDto
 import com.example.data.network.models.PostsDto
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.Response
+import retrofit2.http.*
 
 interface PostsApiService {
     @GET("/api/edge/posts")
@@ -13,6 +14,8 @@ interface PostsApiService {
     ): PostsDto?
 
     @POST("/api/edge/posts")
-    suspend fun createPost()
-
+    suspend fun createPost(
+        @Body createPostsDto: CreatePostsDto,
+        @Header("Content-Type") contentType: String = "application/vnd.api+json"
+    ): Response<CreatePostsResponseDto>
 }

@@ -1,7 +1,6 @@
 package com.example.kitsu.presentation.custom
 
 import android.content.Context
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.Toast
 import com.example.kitsu.databinding.ToastGreetingBinding
@@ -17,7 +16,6 @@ class CustomToast(private val context: Context) {
         binding!!.toastMessage.text = message
 
         val toast = Toast(context)
-        toast.setGravity(Gravity.CENTER, 0, 0)
         toast.duration = Toast.LENGTH_LONG
         toast.view = binding!!.root
 

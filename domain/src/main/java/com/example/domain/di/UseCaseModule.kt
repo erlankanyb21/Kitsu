@@ -19,4 +19,7 @@ val UseCaseModule = module {
     factory {
         FetchPagingPostsUseCase(get())
     }
+    factory {
+        CreatePostsUseCase(get())
+    }
 }

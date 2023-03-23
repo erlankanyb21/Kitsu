@@ -1,40 +1,70 @@
 package com.example.kitsu.presentation.fragments.add
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.core.view.isVisible
+import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentAddBinding
+import com.example.kitsu.presentation.base.BaseFragment
+import com.example.kitsu.presentation.custom.CustomToast
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AddFragment : Fragment() {
-
-    private var _binding: FragmentAddBinding? = null
-
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val addViewModel =
-            ViewModelProvider(this).get(AddViewModel::class.java)
-
-        _binding = FragmentAddBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textNotifications
-        addViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+class AddFragment : BaseFragment<AddViewModel, FragmentAddBinding>(R.layout.fragment_add) {
+    override val viewModel by viewModel<AddViewModel>()
+    override val binding by viewBinding(FragmentAddBinding::bind)
+    override fun initialize() {
+        checkState()
+        clickPost()
+        clickBack()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun clickBack() {
+        binding.tvBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+
+    private fun checkState() {
+        viewModel.viewModelScope.launch {
+            viewModel.postState.collectStates(
+                onLoading = {
+                    binding.progress.isVisible = true
+                    binding.tvPost.isEnabled = false
+                },
+                onError = {
+                    CustomToast.show(requireContext(), it)
+                    binding.progress.isVisible = false
+                    binding.tvPost.isEnabled = true
+                },
+                onSuccess = {
+                    binding.progress.isVisible = false
+                    binding.tvPost.isEnabled = true
+                    CustomToast.show(requireContext(), "Your comment $it was completely posted")
+                }
+            )
+        }
+    }
+
+    private fun clickPost() {
+        binding.tvPost.setOnClickListener {
+            createPostRequest()
+        }
+    }
+
+    private fun createPostRequest() {
+        when {
+            binding.commentEd.text.toString().isEmpty() -> {
+                CustomToast.show(requireContext(), "Please write something")
+            }
+            else -> {
+                viewModel.createPost(
+                    binding.commentEd.text.toString(),
+                    binding.nsfwBtn.isChecked,
+                    binding.spoilerBtn.isChecked
+                )
+            }
+        }
     }
 }
