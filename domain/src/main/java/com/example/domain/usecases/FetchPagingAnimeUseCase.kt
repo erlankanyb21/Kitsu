@@ -5,5 +5,6 @@ import com.example.domain.repositories.AnimeRepository
 class FetchPagingAnimeUseCase(
     private val animeRepository: AnimeRepository
 ) {
-    operator fun invoke(category: String?) = animeRepository.fetchPagingAnime(category)
+    operator fun invoke(category: String?, text: String?) =
+        animeRepository.fetchPagingAnime(category, text)
 }

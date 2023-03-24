@@ -9,6 +9,6 @@ import kotlinx.coroutines.flow.map
 class MangaViewModel(
     private val pagingMangaUseCase: FetchPagingMangaUseCase
 ) : BaseViewModel() {
-    fun pagingManga(query: String?) =
-        pagingMangaUseCase(query).map { pagingData -> pagingData.map { it.toUI() } }
+    fun pagingManga(category: String?, text: String?) =
+        pagingMangaUseCase(category, text).map { pagingData -> pagingData.map { it.toUI() } }
 }

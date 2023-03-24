@@ -2,6 +2,7 @@ package com.example.kitsu.presentation.fragments.home.manga
 
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
@@ -26,6 +27,23 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
         loadStateListener()
         showMangaList()
         setupFilter()
+        setupSearch()
+    }
+
+    private fun setupSearch() {
+        binding.searchView.addTextChangedListener {
+            when {
+                binding.searchView.text.isEmpty() -> {
+                    showMangaList()
+                }
+                else -> {
+                    viewModel.pagingManga(null, it.toString()).collectPaging { data ->
+                        mangaAdapter.submitData(data)
+                    }
+                }
+            }
+
+        }
     }
 
     private fun setupRecyclerView() {
@@ -57,7 +75,7 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
             sharedViewModel.mangaState.collect { category ->
                 when {
                     category.isNotEmpty() -> {
-                        viewModel.pagingManga(category)
+                        viewModel.pagingManga(category, null)
                             .collectPaging { data -> mangaAdapter.submitData(data) }
                     }
                     else -> {
@@ -69,7 +87,7 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
     }
 
     private fun showMangaList() {
-        viewModel.pagingManga(null).collectPaging { data -> mangaAdapter.submitData(data) }
+        viewModel.pagingManga(null, null).collectPaging { data -> mangaAdapter.submitData(data) }
     }
 
     private fun onItemClick(name: String?) {

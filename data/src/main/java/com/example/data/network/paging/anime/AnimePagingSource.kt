@@ -8,13 +8,15 @@ import com.example.domain.models.AnimeModel
 
 class AnimePagingSource(
     private val animeApiService: AnimeApiService,
-    private val category: String?
+    private val category: String?,
+    private val text: String?
 ) : PagingSource<Int, AnimeModel.Data>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, AnimeModel.Data> {
         val offset = params.key ?: 0
 
         return try {
-            val response = animeApiService.fetchAnimeList(offset = offset, category = category)
+            val response =
+                animeApiService.fetchAnimeList(offset = offset, category = category, text = text)
 
             val data = response?.toDomain()
             val nextKey = if (data?.data!!.isEmpty()) null else offset + 20

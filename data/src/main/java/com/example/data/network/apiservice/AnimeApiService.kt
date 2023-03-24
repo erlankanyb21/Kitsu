@@ -10,5 +10,6 @@ interface AnimeApiService {
         @Query("page[limit]") limit: Int = 20,
         @Query("page[offset]") offset: Int,
         @Query("filter[categories]") category: String? = null,
+        @Query("filter[text]") text: String? = null,
     ): AnimeDto?
 }
