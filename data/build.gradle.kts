@@ -1,22 +1,29 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(libs.plugins.android.library.get().pluginId)
+    id(libs.plugins.jetbrinsKotlin.android.get().pluginId)
 }
 
 android {
     namespace = "com.example.data"
-    compileSdk = 33
+    compileSdk = config.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
-        targetSdk = 33
+        minSdk = config.versions.minSdk.get().toInt()
+        targetSdk = config.versions.targetSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        debug {
+        getByName(config.versions.releaseBuildType.get()) {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            )
+        }
+
+        getByName(config.versions.debugBuildType.get()){
             buildConfigField("String", "BASE_URL", "\"https://kitsu.io/\"")
         }
         release {
@@ -38,30 +45,26 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    //androidxCore
+    implementation(libs.androidx.core)
 
-    implementation(Dependencies.Core.core)
+    //ui-Components
+    implementation(libs.bundles.uicomponents)
 
-    implementation(Dependencies.UIComponents.appCompat)
-    implementation(Dependencies.UIComponents.material)
-
-    testImplementation(Dependencies.Androidx.junit)
-    androidTestImplementation(Dependencies.Androidx.testJunit)
-    androidTestImplementation(Dependencies.Androidx.testEspresso)
+    //test
+    testImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.testJunit)
+    androidTestImplementation(libs.androidx.testEspresso)
 
 //    koin
-    implementation(Dependencies.Koin.koinCore)
-    implementation(Dependencies.Koin.koinAndroid)
+    implementation(libs.bundles.koin)
 
 //    retrofit
-    implementation(Dependencies.Retrofit.retrofit)
-    implementation(Dependencies.Retrofit.converterGson)
+    implementation(libs.bundles.retrofit)
 
 //    okhttp-interceptor
-    implementation(Dependencies.OkHttp.okHttp)
-    implementation(Dependencies.OkHttp.loggingInterceptor)
+    implementation(libs.bundles.okHttp)
 
     //Paging 3
-    implementation(Dependencies.Paging.common)
-    implementation(Dependencies.Paging.runtime)
-
+    implementation(libs.bundles.paging)
 }

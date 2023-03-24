@@ -1,18 +1,18 @@
 plugins {
-    id(Dependencies.Plugins.application)
-    id(Dependencies.Plugins.jetbrainsAndroid)
-    id(Dependencies.Plugins.kapt)
-    id(Dependencies.Plugins.navigationSafeArgs)
+    id(libs.plugins.android.application.get().pluginId)
+    id(libs.plugins.jetbrinsKotlin.android.get().pluginId)
+    id(libs.plugins.kotlin.kapt.get().pluginId)
+    id(libs.plugins.navSafeArgs.get().pluginId)
 }
 
 android {
     namespace = "com.example.kitsu"
-    compileSdk = 33
+    compileSdk = config.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.example.kitsu"
-        minSdk = 24
-        targetSdk = 33
+        minSdk = config.versions.minSdk.get().toInt()
+        targetSdk = config.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -20,12 +20,15 @@ android {
     }
 
     buildTypes {
-        debug {
+        getByName(config.versions.releaseBuildType.get()) {
             isMinifyEnabled = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
+        }
+        getByName(config.versions.debugBuildType.get()){
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
         }
     }
     compileOptions {
@@ -43,61 +46,46 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
-//    core
-    implementation(Dependencies.Core.core)
 
 //    ui
-    implementation(Dependencies.UIComponents.appCompat)
-    implementation(Dependencies.UIComponents.material)
-    implementation(Dependencies.UIComponents.constraintLayout)
-    implementation(Dependencies.UIComponents.viewBindingPropertyDelegate)
+    implementation(libs.bundles.uicomponents)
+    implementation(libs.uicomponents.constraintLayout)
+    implementation(libs.uicomponents.viewBindingPropertyDelegate)
 
 //    androidx
-    implementation(Dependencies.Androidx.legacySupport)
-    testImplementation(Dependencies.Androidx.junit)
-    androidTestImplementation(Dependencies.Androidx.testJunit)
-    androidTestImplementation(Dependencies.Androidx.testEspresso)
+    implementation(libs.bundles.androidxlegacyAndCore)
+    testImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.bundles.test)
 
     // Retrofit
-    implementation(Dependencies.Retrofit.retrofit)
-    implementation(Dependencies.Retrofit.converterGson)
+    implementation(libs.bundles.retrofit)
 
     //Glide
-    implementation(Dependencies.Glide.glide)
+    implementation(libs.glide)
 
     // Lifecycle
-    implementation(Dependencies.Lifecycle.liveData)
-    implementation(Dependencies.Lifecycle.viewModel)
-    implementation(Dependencies.Lifecycle.runtime)
-    implementation(Dependencies.Lifecycle.lifecycleCommon)
+    implementation(libs.bundles.lifecycle)
 
     // okhttp-Interceptor
-    implementation(Dependencies.OkHttp.okHttp)
-    implementation(Dependencies.OkHttp.loggingInterceptor)
+    implementation(libs.bundles.okHttp)
 
     //room
-    implementation(Dependencies.Room.runtime)
-    annotationProcessor(Dependencies.Room.compiler)
-    implementation(Dependencies.Room.room_ktx)
-    kapt(Dependencies.Room.kapt)
+    implementation(libs.bundles.room)
+    annotationProcessor(libs.room.compiler)
+    kapt(libs.room.kapt)
 
     //Paging 3
-    implementation(Dependencies.Paging.common)
-    implementation(Dependencies.Paging.runtime)
+    implementation(libs.bundles.paging)
 
     //Kotlin Coroutine
-    implementation(Dependencies.Kotlin.coroutinesAndroid)
-    implementation(Dependencies.Kotlin.coroutineCore)
+    implementation(libs.bundles.coroutine)
 
     // viewPager2
-    implementation(Dependencies.viewpager2.viewpager2)
+    implementation(libs.uicomponents.viewpager)
 
     //Koin
-    implementation(Dependencies.Koin.koinAndroid)
-    implementation(Dependencies.Koin.koinNav)
+    implementation(libs.bundles.koin)
 
     //navigation components
-    implementation(Dependencies.Navigation.fragment)
-    implementation(Dependencies.Navigation.ui)
-
+    implementation(libs.bundles.navigation)
 }

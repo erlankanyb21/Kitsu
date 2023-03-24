@@ -42,8 +42,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/usernameEd"
-            android:minEms="8"
-            android:maxLength="50"
+            android:maxLines="1"
             android:textColor="@color/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -71,7 +70,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEd"
             android:inputType="textPassword"
-            android:maxLength="50"
+            android:maxLines="1"
             android:textColor="@color/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

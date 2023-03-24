@@ -2,9 +2,8 @@ object Dependencies {
     object Kotlin {
         private const val version = "1.6.4"
 
-        const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+        const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
-        const val kotlin = "org.jetbrains.kotlin.android"
     }
 
     object Plugins {
@@ -15,11 +14,13 @@ object Dependencies {
     }
 
     object UIComponents {
-        const val material = "com.google.android.material:material:1.6.1"
+        private const val version = "1.6.1"
+
+        const val material = "com.google.android.material:material:$version"
+        const val appCompat = "androidx.appcompat:appcompat:$version"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
         const val viewBindingPropertyDelegate =
             "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6"
-        const val appCompat = "androidx.appcompat:appcompat:1.6.1"
     }
 
     object Core {
@@ -68,10 +69,10 @@ object Dependencies {
     }
 
     object OkHttp {
-        private const val version = "5.0.0-alpha.5"
+        private const val version = "5.0.0-alpha.10"
 
         const val okHttp = "com.squareup.okhttp3:okhttp"
-        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10"
     }
 
     object Room {
