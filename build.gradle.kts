@@ -2,7 +2,7 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.jetbrinsKotlin.android) apply false
-    alias(libs.plugins.jetbrinsKotlin.jvm) apply false
+    alias(libs.plugins.jetbrainsKotlin.android) apply false
+    alias(libs.plugins.jetbrainsKotlin.jvm) apply false
     alias(libs.plugins.navSafeArgs) apply false
 }

@@ -128,9 +128,9 @@ kotlin-kapt = { id = "kotlin-kapt"}
 #java
 javaLibrary-library = { id = "java-library"}
 
-#jetbrinsKotlin
-jetbrinsKotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrainsKotlin" }
-jetbrinsKotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlin" }
+#jetbrainsKotlin
+jetbrainsKotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrainsKotlin" }
+jetbrainsKotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlin" }
 
 #navSafeArgs
 navSafeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navSafeArgs" }
@@ -159,7 +159,7 @@ androidxlegacyAndCore = ["androidx-legacySupport","androidx-core"]
 test = ["androidx-testJunit","androidx-testEspresso"]
 
 #uicomponents
-uicomponents = ["uicomponents-material","uicomponents-appCompat", "uicomponents-viewpager"]
+uicomponents = ["uicomponents-material","uicomponents-appCompat", "uicomponents-viewpager", "uicomponents-constraintLayout", "uicomponents-viewBindingPropertyDelegate"]
 
 #koin
 koin = ["koin-koinCore","koin-koinAndroid","koin-koinNav"]

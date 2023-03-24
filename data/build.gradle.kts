@@ -1,6 +1,6 @@
 plugins {
     id(libs.plugins.android.library.get().pluginId)
-    id(libs.plugins.jetbrinsKotlin.android.get().pluginId)
+    id(libs.plugins.jetbrainsKotlin.android.get().pluginId)
 }
 
 android {
@@ -48,23 +48,13 @@ dependencies {
     //androidxCore
     implementation(libs.androidx.core)
 
-    //ui-Components
-    implementation(libs.bundles.uicomponents)
-
-    //test
-    testImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.testJunit)
-    androidTestImplementation(libs.androidx.testEspresso)
-
-//    koin
-    implementation(libs.bundles.koin)
-
 //    retrofit
     implementation(libs.bundles.retrofit)
 
 //    okhttp-interceptor
     implementation(libs.bundles.okHttp)
+    api(libs.bundles.room)
 
     //Paging 3
-    implementation(libs.bundles.paging)
+    api(libs.paging.runtime)
 }

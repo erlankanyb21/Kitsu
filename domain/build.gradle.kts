@@ -1,6 +1,6 @@
 plugins {
     id(libs.plugins.javaLibrary.library.get().pluginId)
-    id(libs.plugins.jetbrinsKotlin.jvm.get().pluginId)
+    id(libs.plugins.jetbrainsKotlin.jvm.get().pluginId)
 }
 
 java {
@@ -11,7 +11,7 @@ java {
 dependencies {
 
     //koin
-    implementation(libs.koin.koinCore)
+    api(libs.koin.koinCore)
     //paging
     implementation(libs.paging.common)
 

@@ -1,6 +1,6 @@
 plugins {
     id(libs.plugins.android.application.get().pluginId)
-    id(libs.plugins.jetbrinsKotlin.android.get().pluginId)
+    id(libs.plugins.jetbrainsKotlin.android.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.navSafeArgs.get().pluginId)
 }
@@ -49,13 +49,9 @@ dependencies {
 
 //    ui
     implementation(libs.bundles.uicomponents)
-    implementation(libs.uicomponents.constraintLayout)
-    implementation(libs.uicomponents.viewBindingPropertyDelegate)
 
 //    androidx
     implementation(libs.bundles.androidxlegacyAndCore)
-    testImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.bundles.test)
 
     // Retrofit
     implementation(libs.bundles.retrofit)
@@ -70,18 +66,10 @@ dependencies {
     implementation(libs.bundles.okHttp)
 
     //room
-    implementation(libs.bundles.room)
-    annotationProcessor(libs.room.compiler)
     kapt(libs.room.kapt)
-
-    //Paging 3
-    implementation(libs.bundles.paging)
 
     //Kotlin Coroutine
     implementation(libs.bundles.coroutine)
-
-    // viewPager2
-    implementation(libs.uicomponents.viewpager)
 
     //Koin
     implementation(libs.bundles.koin)
