@@ -8,6 +8,7 @@ import com.example.domain.models.MangaModel
 
 class MangaPagingSource(
     private val mangaApiService: MangaApiService,
+    private val category: String?,
     private val text: String?
 ) : PagingSource<Int, MangaModel.Data>() {
 
@@ -15,7 +16,8 @@ class MangaPagingSource(
         val offset = params.key ?: 0
 
         return try {
-            val response = mangaApiService.fetchMangaList(offset = offset, text = text)
+            val response =
+                mangaApiService.fetchMangaList(offset = offset, category = category, text = text)
 
             val data = response?.toDomain()
             val nextKey = if (data?.data!!.isEmpty()) null else offset + 20
