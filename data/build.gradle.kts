@@ -27,7 +27,7 @@ android {
             buildConfigField("String", "BASE_URL", "\"https://kitsu.io/\"")
         }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -47,6 +47,9 @@ dependencies {
     implementation(project(":domain"))
     //androidxCore
     implementation(libs.androidx.core)
+
+//    koin
+    implementation(libs.bundles.koin)
 
 //    retrofit
     implementation(libs.bundles.retrofit)

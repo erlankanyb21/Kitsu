@@ -28,31 +28,6 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
 
     protected open fun initialize() {}
 
-    protected fun <T> StateFlow<UIState<T>>.collectStates(
-        onLoading: () -> Unit, onError: (msg: String) -> Unit, onSuccess: (data: T) -> Unit
-    ) {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                this@collectStates.collect {
-                    when (it) {
-                        is UIState.Loading -> {
-                            onLoading()
-                        }
-                        is UIState.Error -> {
-                            onError(it.error)
-                        }
-                        is UIState.Success -> {
-                            onSuccess(it.data)
-                        }
-                        else -> {
-                            it.toString()
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     protected fun <T : Any> Flow<PagingData<T>>.collectPaging(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
         action: suspend (value: PagingData<T>) -> Unit
@@ -66,6 +41,35 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {
                 action()
+            }
+        }
+    }
+
+    protected fun <T> StateFlow<UIState<T>>.spectateUiState(
+        lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
+        success: ((data: T) -> Unit)? = null,
+        loading: ((data: UIState.Loading<T>) -> Unit)? = null,
+        error: ((error: String) -> Unit)? = null,
+        idle: ((idle: UIState.Idle<T>) -> Unit)? = null,
+        gatherIfSucceed: ((state: UIState<T>) -> Unit)? = null,
+    ) {
+        safeFlowGather(lifecycleState) {
+            collect {
+                gatherIfSucceed?.invoke(it)
+                when (it) {
+                    is UIState.Idle -> {
+                        idle?.invoke(it)
+                    }
+                    is UIState.Loading -> {
+                        loading?.invoke(it)
+                    }
+                    is UIState.Error -> {
+                        error?.invoke(it.error)
+                    }
+                    is UIState.Success -> {
+                        success?.invoke(it.data)
+                    }
+                }
             }
         }
     }

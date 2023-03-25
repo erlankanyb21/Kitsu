@@ -45,24 +45,18 @@ class SignInFragment :
 
     private fun checkState() {
         viewModel.viewModelScope.launch {
-            viewModel.signState.collectStates(
-                onLoading = {
-                    binding.progress.isVisible = true
-                    binding.btnEnter.isEnabled = false
-                },
-                onError = {
+            viewModel.signState.spectateUiState(
+                error = {
                     CustomToast.show(requireContext(), it)
                     binding.progress.isVisible = false
                     binding.btnEnter.isEnabled = true
-                },
-                onSuccess = {
+                }, success = {
                     binding.progress.isVisible = false
                     binding.btnEnter.isEnabled = true
                     CustomToast.show(requireContext(), "Welcome to Kitsu \uD83D\uDE80")
-                    preferences.token = it?.accessToken.toString()
+                    preferences.token = it.accessToken.toString()
                     activityNavController().navigateSafely(R.id.action_global_mainFlowFragment)
-                }
-            )
+                })
         }
     }
 

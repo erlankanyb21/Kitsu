@@ -7,4 +7,7 @@ class Prefs(private val sharedPreferences: SharedPreferences) {
     var token: String
         get() = sharedPreferences.getString("token", "") ?: ""
         set(value) = sharedPreferences.edit { putString("token", value) }
+    var data: String
+        get() = sharedPreferences.getString("data", "") ?: ""
+        set(value) = sharedPreferences.edit { putString("data", value) }
 }
