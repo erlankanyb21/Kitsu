@@ -3,7 +3,6 @@ package com.example.data.network.apiservice
 import com.example.data.network.models.CreatePostsDto
 import com.example.data.network.models.CreatePostsResponseDto
 import com.example.data.network.models.PostsDto
-import retrofit2.Response
 import retrofit2.http.*
 
 interface PostsApiService {
@@ -17,5 +16,5 @@ interface PostsApiService {
     suspend fun createPost(
         @Body createPostsDto: CreatePostsDto,
         @Header("Content-Type") contentType: String = "application/vnd.api+json"
-    ): Response<CreatePostsResponseDto>
+    ): CreatePostsResponseDto
 }
