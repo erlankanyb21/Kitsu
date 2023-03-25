@@ -16,29 +16,23 @@ class PostsRepositoryImpl(
     private val postsApiService: PostsApiService
 ) : PostsRepository, BaseRepository() {
 
-    override fun fetchPosts(): Flow<PagingData<PostsModel.Data>> =
-        makePagingRequest(
-            PostsPagingSource(
-                postsApiService = postsApiService
-            )
+    override fun fetchPosts(): Flow<PagingData<PostsModel.Data>> = makePagingRequest(
+        PostsPagingSource(
+            postsApiService = postsApiService
         )
+    )
 
     override fun createPosts(
-        content: String,
-        nsfw: Boolean,
-        spoiler: Boolean
-    ): Flow<Either<String, CreatePostsResponseModel?>> =
-        makeNetworkRequest(null) {
-            postsApiService.createPost(
-                createPostsDto = CreatePostsDto(
-                    CreatePostsDto.Data(
-                        CreatePostsDto.Data.Attributes(
-                            content = content,
-                            nsfw = nsfw,
-                            spoiler = spoiler
-                        )
+        content: String, nsfw: Boolean, spoiler: Boolean
+    ): Flow<Either<String, CreatePostsResponseModel?>> = makeNetworkRequest(null) {
+        postsApiService.createPost(
+            createPostsDto = CreatePostsDto(
+                CreatePostsDto.Data(
+                    CreatePostsDto.Data.Attributes(
+                        content = content, nsfw = nsfw, spoiler = spoiler
                     )
                 )
-            ).toDomain()
-        }
+            )
+        ).toDomain()
+    }
 }

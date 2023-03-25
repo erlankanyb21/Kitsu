@@ -28,21 +28,18 @@ class AddFragment : BaseFragment<AddViewModel, FragmentAddBinding>(R.layout.frag
 
     private fun checkState() {
         viewModel.viewModelScope.launch {
-            viewModel.postState.spectateUiState(
-                error = {
-                    CustomToast.show(requireContext(), it)
-                    binding.progress.isVisible = false
-                    binding.tvPost.isEnabled = true
-                },
-                success = {
-                    binding.progress.isVisible = false
-                    binding.tvPost.isEnabled = true
-                    CustomToast.show(
-                        requireContext(),
-                        "Your comment ${it.data?.attributes?.content} was completely posted"
-                    )
-                }
-            )
+            viewModel.postState.spectateUiState(error = {
+                CustomToast.show(requireContext(), it)
+                binding.progress.isVisible = false
+                binding.tvPost.isEnabled = true
+            }, success = {
+                binding.progress.isVisible = false
+                binding.tvPost.isEnabled = true
+                CustomToast.show(
+                    requireContext(),
+                    "Your comment ${it.data?.attributes?.content} was completely posted"
+                )
+            })
         }
     }
 

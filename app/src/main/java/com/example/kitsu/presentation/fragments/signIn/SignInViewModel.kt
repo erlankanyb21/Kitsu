@@ -13,10 +13,9 @@ class SignInViewModel(
     private val _signState = mutableUiStateFlow<SignResponseUI>()
     val signState = _signState.asStateFlow()
 
-    fun signIn(username: String, password: String) =
-        signInUseCase(
-            username,
-            password,
-        ).gatherRequest(_signState) { it!!.toUI() }
+    fun signIn(username: String, password: String) = signInUseCase(
+        username,
+        password,
+    ).gatherRequest(_signState) { it!!.toUI() }
 
 }

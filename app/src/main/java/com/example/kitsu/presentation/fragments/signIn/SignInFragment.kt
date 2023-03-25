@@ -24,13 +24,14 @@ class SignInFragment :
     private val preferences by inject<Prefs>()
 
     override fun initialize() {
-        setupAnimation()
+        setupAnimationViaSound()
         clickSignIn()
         checkState()
     }
 
-    private fun setupAnimation() {
+    private fun setupAnimationViaSound() {
         val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.logo_anim)
+
         binding.logo.apply {
             visibility = View.VISIBLE
             startAnimation(animation)
@@ -45,18 +46,17 @@ class SignInFragment :
 
     private fun checkState() {
         viewModel.viewModelScope.launch {
-            viewModel.signState.spectateUiState(
-                error = {
-                    CustomToast.show(requireContext(), it)
-                    binding.progress.isVisible = false
-                    binding.btnEnter.isEnabled = true
-                }, success = {
-                    binding.progress.isVisible = false
-                    binding.btnEnter.isEnabled = true
-                    CustomToast.show(requireContext(), "Welcome to Kitsu \uD83D\uDE80")
-                    preferences.token = it.accessToken.toString()
-                    activityNavController().navigateSafely(R.id.action_global_mainFlowFragment)
-                })
+            viewModel.signState.spectateUiState(error = {
+                CustomToast.show(requireContext(), it)
+                binding.progress.isVisible = false
+                binding.btnEnter.isEnabled = true
+            }, success = {
+                binding.progress.isVisible = false
+                binding.btnEnter.isEnabled = true
+                CustomToast.show(requireContext(), "Welcome to Kitsu \uD83D\uDE80")
+                preferences.token = it.accessToken.toString()
+                activityNavController().navigateSafely(R.id.action_global_mainFlowFragment)
+            })
         }
     }
 
