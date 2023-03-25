@@ -4,7 +4,6 @@ package com.example.kitsu.presentation.models
 data class AnimeUI(
     val `data`: List<Data>? = listOf(), val links: Links? = Links(), val meta: Meta? = Meta()
 ) {
-
     data class Data(
         val attributes: Attributes? = Attributes(),
         val id: String? = "",

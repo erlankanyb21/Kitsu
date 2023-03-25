@@ -13,11 +13,8 @@ class AuthRepositoryImpl(
     private val authApiService: AuthApiService,
 ) : AuthRepository, BaseRepository() {
     override fun signIn(
-        username: String,
-        password: String
-    ): Flow<Either<String, SignResponseModel?>> =
-        makeNetworkRequest(null) {
-            authApiService.signIn(SignDto(password = password, username = username))
-                .toDomain()
-        }
+        username: String, password: String
+    ): Flow<Either<String, SignResponseModel?>> = makeNetworkRequest(null) {
+        authApiService.signIn(SignDto(password = password, username = username)).toDomain()
+    }
 }
