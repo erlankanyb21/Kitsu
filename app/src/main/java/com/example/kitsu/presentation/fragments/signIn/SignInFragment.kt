@@ -24,13 +24,14 @@ class SignInFragment :
     private val preferences by inject<Prefs>()
 
     override fun initialize() {
-        setupAnimation()
+        setupAnimationViaSound()
         clickSignIn()
         checkState()
     }
 
-    private fun setupAnimation() {
+    private fun setupAnimationViaSound() {
         val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.logo_anim)
+
         binding.logo.apply {
             visibility = View.VISIBLE
             startAnimation(animation)
