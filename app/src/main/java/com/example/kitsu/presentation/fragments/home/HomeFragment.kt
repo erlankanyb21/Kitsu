@@ -9,14 +9,25 @@ import com.example.kitsu.databinding.FragmentHomeBinding
 import com.example.kitsu.presentation.adapters.FragmentViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
+/**
+ * Класс [HomeFragment] отвечает за главный экран приложения,
+ * который содержит ViewPager с четырьмя фрагментами
+ */
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val binding by viewBinding(FragmentHomeBinding::bind)
+
+    /**
+     * Вызывается после того, как фрагмент был создан.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewPagerAndTabs()
     }
 
+    /**
+     * Настройка ViewPager и вкладки.
+     */
     private fun setupViewPagerAndTabs() {
         val adapter = FragmentViewPagerAdapter(this)
         binding.viewPager.adapter = adapter

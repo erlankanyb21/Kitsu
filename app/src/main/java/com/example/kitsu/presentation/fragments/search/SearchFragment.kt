@@ -9,6 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.kitsu.databinding.FragmentSearchBinding
 
+/**
+ * Фрагмент, без функционала
+ *
+ * @author Erlan
+ * @since 1.0v
+ */
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null

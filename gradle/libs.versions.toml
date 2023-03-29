@@ -59,11 +59,21 @@ android = "7.4.2"
 
 #jetbrainsKotlin
 jetbrainsKotlin = "1.8.0"
+kotlin = "1.7.20"
+dokka = "0.9.18"
 
 #navSafeArgs
 navSafeArgs = "2.5.3"
-
+#----------------------------------------------------------------
 [libraries]
+
+#JetBrains
+jetBrains-kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+jetBrains-dokka-base = { module = "org.jetbrains.dokka:dokka-base", version.ref = "kotlin" }
+jetBrains-dokka-gradle = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "kotlin" }
+jetBrains-dokka-android-documentation = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "kotlin" }
+jetBrains-dokka-android-gradle = { module = "org.jetbrains.dokka:dokka-android-gradle-plugin", version.ref = "dokka" }
+
 #Retrofit
 retrofit-Realretrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-gsonConverter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -117,7 +127,7 @@ navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref 
 #coroutine
 coroutine-coroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutine"}
 coroutine-coroutineCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutine"}
-
+#----------------------------------------------------------------
 [plugins]
 
 #android
@@ -131,10 +141,11 @@ javaLibrary-library = { id = "java-library"}
 #jetbrainsKotlin
 jetbrainsKotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrainsKotlin" }
 jetbrainsKotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlin" }
+jetbrainsKotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 
 #navSafeArgs
 navSafeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navSafeArgs" }
-
+#----------------------------------------------------------------
 [bundles]
 
 #coroutine

@@ -6,13 +6,28 @@ import com.example.kitsu.presentation.models.SignResponseUI
 import com.example.kitsu.presentation.models.toUI
 import kotlinx.coroutines.flow.asStateFlow
 
+/**
+ * ViewModel для фрагмента SignInFragment.
+ * @param signInUseCase use case для входа в систему.
+ *
+ * @author Erlan
+ * @since 1.0v
+ */
 class SignInViewModel(
     private val signInUseCase: SignInUseCase
 ) : BaseViewModel() {
-
     private val _signState = mutableUiStateFlow<SignResponseUI>()
+
+    /**
+     * Состояние процесса входа в систему.
+     */
     val signState = _signState.asStateFlow()
 
+    /**
+     * Метод для выполнения входа в систему.
+     * @param username имя пользователя.
+     * @param password пароль пользователя.
+     */
     fun signIn(username: String, password: String) = signInUseCase(
         username,
         password,

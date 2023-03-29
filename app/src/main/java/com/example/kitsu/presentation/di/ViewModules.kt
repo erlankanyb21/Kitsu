@@ -11,6 +11,13 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
+/**
+ * Здесь определен модуль Koin, который объявляет зависимости для ViewModel-классов.
+ *
+ * @author Erlan
+ * @since 1.0v
+ */
+
 val viewModules: Module = module {
     viewModel { AnimeViewModel(get()) }
     viewModel { MangaViewModel(get()) }

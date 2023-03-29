@@ -11,20 +11,41 @@ import com.example.kitsu.presentation.custom.CustomToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * Фрагмент для добавления нового поста.
+ * Использует [AddViewModel] для взаимодействия с данными и логики.
+ * Имеет [FragmentAddBinding] для управления разметкой фрагмента.
+ *
+ * @author Erlan
+ * @since 1.0v
+ */
 class AddFragment : BaseFragment<AddViewModel, FragmentAddBinding>(R.layout.fragment_add) {
     override val viewModel by viewModel<AddViewModel>()
     override val binding by viewBinding(FragmentAddBinding::bind)
+
+    /**
+     * Инициализация фрагмента.
+     * Вызывает методы для настройки интерфейса и обработки событий нажатия кнопок.
+     */
     override fun initialize() {
         checkState()
         clickPost()
         clickBack()
     }
 
+    /**
+     * Обработчик события нажатия кнопки "Назад".
+     * Возвращает на предыдущий фрагмент в стеке навигации.
+     */
     private fun clickBack() {
         binding.tvBack.setOnClickListener {
             findNavController().navigateUp()
         }
     }
+
+    /**
+     * Проверка состояния [AddViewModel.postState] и отображение сообщений об ошибках или успешной отправке поста.
+     */
 
     private fun checkState() {
         viewModel.viewModelScope.launch {
@@ -43,12 +64,21 @@ class AddFragment : BaseFragment<AddViewModel, FragmentAddBinding>(R.layout.frag
         }
     }
 
+    /**
+     * [clickPost] - Обработчик события нажатия кнопки "Отправить".
+     * Создает запрос на добавление нового поста, передавая введенный текст и значения флажков NSFW и Spoiler.
+     * В случае некорректных данных выводит соответствующее сообщение об ошибке.
+     */
     private fun clickPost() {
         binding.tvPost.setOnClickListener {
             createPostRequest()
         }
     }
 
+    /**
+     * [createPostRequest] - Создает запрос на добавление нового поста с указанными параметрами.
+     * Если поле комментария пустое, выводит сообщение об ошибке.
+     */
     private fun createPostRequest() {
         when {
             binding.commentEd.text.toString().isEmpty() -> {

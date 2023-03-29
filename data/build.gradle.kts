@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 plugins {
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.jetbrainsKotlin.android.get().pluginId)

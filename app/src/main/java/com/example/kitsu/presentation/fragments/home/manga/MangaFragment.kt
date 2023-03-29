@@ -16,12 +16,22 @@ import com.example.kitsu.presentation.fragments.dialog.sharedvm.SharedViewModel
 import com.example.kitsu.presentation.fragments.home.HomeFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * Фрагмент, отображающий список манги
+ *
+ * @author Erlan
+ * @since 1.0v
+ */
 class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layout.fragment_manga) {
 
     override val binding by viewBinding(FragmentMangaBinding::bind)
     override val viewModel by viewModel<MangaViewModel>()
     private val mangaAdapter = MangaAdapter(this::onItemClick)
     private val sharedViewModel by activityViewModels<SharedViewModel>()
+
+    /**
+     * Инициализация вью фрагмента
+     */
     override fun initialize() {
         setupRecyclerView()
         loadStateListener()
@@ -30,6 +40,9 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
         setupSearch()
     }
 
+    /**
+     * Настройка функционала поиска
+     */
     private fun setupSearch() {
         binding.searchView.addTextChangedListener {
             when {
@@ -46,12 +59,18 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
         }
     }
 
+    /**
+     * Настройка RecyclerView и адаптера
+     */
     private fun setupRecyclerView() {
         binding.recyclerview.adapter = mangaAdapter.withLoadStateFooter(
             footer = MainLoadStateAdapter()
         )
     }
 
+    /**
+     * Настройка прогрессбара
+     */
     private fun loadStateListener() {
         mangaAdapter.addLoadStateListener { state ->
             binding.recyclerview.isVisible = state.refresh != LoadState.Loading
@@ -59,6 +78,9 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
         }
     }
 
+    /**
+     * Настройка функционала фильтрации
+     */
     private fun setupFilter() {
         binding.btnFilter.setOnClickListener {
             findNavController().navigate(
@@ -70,6 +92,9 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
         showFilter()
     }
 
+    /**
+     * Отображение списка манги в соответствии с выбранным фильтром
+     */
     private fun showFilter() {
         safeFlowGather {
             sharedViewModel.mangaState.collect { category ->
@@ -86,10 +111,17 @@ class MangaFragment : BaseFragment<MangaViewModel, FragmentMangaBinding>(R.layou
         }
     }
 
+    /**
+     * Отображение списка манги
+     */
     private fun showMangaList() {
         viewModel.pagingManga(null, null).collectPaging { data -> mangaAdapter.submitData(data) }
     }
 
+    /**
+     * Обработка клика на элемент списка аниме
+     * @param name Название элемента, на котором произошел клик
+     */
     private fun onItemClick(name: String?) {
         Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
     }

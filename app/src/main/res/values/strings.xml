@@ -18,6 +18,7 @@
     <string name="post">Post</string>
     <string name="nsfw">NSFW</string>
     <string name="spoiler">Spoiler</string>
+    <string name="categories">Categories</string>
 
     <string-array name="filters">
         <item>Comedy</item>

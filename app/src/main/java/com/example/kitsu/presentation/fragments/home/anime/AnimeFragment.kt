@@ -16,12 +16,23 @@ import com.example.kitsu.presentation.fragments.dialog.sharedvm.SharedViewModel
 import com.example.kitsu.presentation.fragments.home.HomeFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * Фрагмент, отображающий список аниме
+ *
+ * @author Erlan
+ * @since 1.0v
+ */
+
 class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layout.fragment_anime) {
 
     override val binding by viewBinding(FragmentAnimeBinding::bind)
     override val viewModel by viewModel<AnimeViewModel>()
     private val animeAdapter = AnimeAdapter(this::onItemClick)
     private val sharedViewModel by activityViewModels<SharedViewModel>()
+
+    /**
+     * Инициализация вью фрагмента
+     */
     override fun initialize() {
         setupRecyclerView()
         loadStateListener()
@@ -30,6 +41,9 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
         setupSearch()
     }
 
+    /**
+     * Настройка функционала поиска
+     */
     private fun setupSearch() {
         binding.searchView.addTextChangedListener {
             when {
@@ -46,12 +60,18 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
         }
     }
 
+    /**
+     * Настройка RecyclerView и адаптера
+     */
     private fun setupRecyclerView() {
         binding.recyclerview.adapter = animeAdapter.withLoadStateFooter(
             footer = MainLoadStateAdapter()
         )
     }
 
+    /**
+     * Настройка прогрессбара
+     */
     private fun loadStateListener() {
         animeAdapter.addLoadStateListener { state ->
             binding.recyclerview.isVisible = state.refresh != LoadState.Loading
@@ -59,6 +79,9 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
         }
     }
 
+    /**
+     * Настройка функционала фильтрации
+     */
     private fun setupFilter() {
         binding.btnFilter.setOnClickListener {
             findNavController().navigate(
@@ -70,6 +93,9 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
         showFilter()
     }
 
+    /**
+     * Отображение списка аниме в соответствии с выбранным фильтром
+     */
     private fun showFilter() {
         safeFlowGather {
             sharedViewModel.animeState.collect { category ->
@@ -86,10 +112,17 @@ class AnimeFragment : BaseFragment<AnimeViewModel, FragmentAnimeBinding>(R.layou
         }
     }
 
+    /**
+     * Отображение списка аниме
+     */
     private fun showAnimeList() {
         viewModel.pagingAnime(null, null).collectPaging { data -> animeAdapter.submitData(data) }
     }
 
+    /**
+     * Обработка клика на элемент списка аниме
+     * @param name Название элемента, на котором произошел клик
+     */
     private fun onItemClick(name: String?) {
         Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
     }
