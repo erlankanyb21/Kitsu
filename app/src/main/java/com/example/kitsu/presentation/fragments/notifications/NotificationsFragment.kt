@@ -7,6 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.kitsu.R
 
+/**
+ * Фрагмент, без функционала
+ *
+ * @author Erlan
+ * @since 1.0v
+ */
 class NotificationsFragment : Fragment() {
 
     companion object {

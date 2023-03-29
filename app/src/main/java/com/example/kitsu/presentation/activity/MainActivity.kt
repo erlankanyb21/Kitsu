@@ -13,16 +13,29 @@ import com.example.kitsu.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.ext.android.inject
 
+/**
+ * Класс [MainActivity] отвечает за управление пользовательским интерфейсом и навигацией в приложении.
+ * Он использует библиотеку Koin для внедрения зависимостей и библиотеку Android Navigation для
+ * навигации между фрагментами.
+ *
+ * @author Erlan
+ * @since 1.0v
+ */
 class MainActivity : AppCompatActivity() {
-
     private val preferences by inject<Prefs>()
     private var binding: ActivityMainBinding? = null
 
+    /**
+     * [onCreate] - вызывается при создании экземпляра
+     * [MainActivity]. Он устанавливает макет для активности, скрывает панель действий, настраивает
+     * нижнюю навигационную панель и устанавливает начальное назначение навигации.
+     *
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-
+        // панель дейстивий
         supportActionBar?.hide()
 
         val navView: BottomNavigationView = binding?.navView!!
@@ -45,6 +58,11 @@ class MainActivity : AppCompatActivity() {
         setupNavigation()
     }
 
+    /**
+     * [setupNavigation] - определяет начальное назначение навигации в зависимости
+     * от того, авторизован ли пользователь (наличие токена в preferences).
+     *
+     */
     private fun setupNavigation() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
@@ -63,6 +81,11 @@ class MainActivity : AppCompatActivity() {
         navController.graph = navGraph
     }
 
+    /**
+     * [onDestroy] -  вызывается при уничтожении экземпляра [MainActivity] и
+     * освобождает ресурсы, связанные с binding.
+     *
+     */
     override fun onDestroy() {
         super.onDestroy()
         binding = null

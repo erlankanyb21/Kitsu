@@ -1,10 +1,9 @@
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
-        gradlePluginPortal()
 
-        maven { url = uri("https://jitpack.io") }
     }
 }
 enableFeaturePreview("VERSION_CATALOGS")
@@ -14,7 +13,6 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
 
-        maven { url = uri("https://jitpack.io") }
     }
     versionCatalogs {
         create("config"){

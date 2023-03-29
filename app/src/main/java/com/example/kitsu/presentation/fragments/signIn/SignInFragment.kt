@@ -16,6 +16,16 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * Фрагмент для экрана входа в приложение.
+ * При инициализации настраивает интерфейс и обрабатывает события нажатия кнопок.
+ * @property viewModel ViewModel для SignInFragment.
+ * @property binding Связующий класс для фрагмента Sign In.
+ * @property preferences Объект для работы с сохранением настроек приложения.
+ *
+ * @author Erlan
+ * @since 1.0v
+ */
 class SignInFragment :
     BaseFragment<SignInViewModel, FragmentSignInBinding>(R.layout.fragment_sign_in) {
 
@@ -23,13 +33,20 @@ class SignInFragment :
     override val binding by viewBinding(FragmentSignInBinding::bind)
     private val preferences by inject<Prefs>()
 
+    /**
+     * Инициализация фрагмента.
+     * Вызывает методы для настройки интерфейса и обработки событий нажатия кнопок.
+     */
     override fun initialize() {
-        setupAnimationViaSound()
+        setupAnimation()
         clickSignIn()
         checkState()
     }
 
-    private fun setupAnimationViaSound() {
+    /**
+     * Настраивает анимацию.
+     */
+    private fun setupAnimation() {
         val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.logo_anim)
 
         binding.logo.apply {
@@ -38,12 +55,22 @@ class SignInFragment :
         }
     }
 
+    /**
+     * Обрабатывает событие нажатия кнопки "Sign In".
+     * В зависимости от заполненности полей "Username" и "Password", либо показывает Toast с просьбой заполнить
+     * необходимые поля, либо выполняет метод [SignInViewModel.signIn] с передачей значений полей входа.
+     */
     private fun clickSignIn() {
         binding.btnEnter.setOnClickListener {
             checkRequest()
         }
     }
 
+    /**
+     * Проверяет состояние входа пользователя.
+     * В зависимости от состояния пользователя выполняет различные действия: либо показывает ошибку, полученную от
+     * сервера, либо сохраняет токен доступа в настройках приложения и переходит на главный экран.
+     */
     private fun checkState() {
         viewModel.viewModelScope.launch {
             viewModel.signState.spectateUiState(error = {
@@ -60,6 +87,11 @@ class SignInFragment :
         }
     }
 
+    /**
+     * Проверяет заполненность полей "Username" и "Password".
+     * Если оба поля заполнены, то выполняет метод [SignInViewModel.signIn] с передачей значений полей входа.
+     * Если хотя бы одно поле пустое, то показывает Toast с просьбой заполнить необходимые поля.
+     */
     private fun checkRequest() {
         when {
             binding.usernameEd.text.toString().isEmpty() -> {
