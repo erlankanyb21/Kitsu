@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 navGraph.setStartDestination(R.id.splashFragment)
             }
             preferences.splash -> {
-                navGraph.setStartDestination(R.id.boardFragment)
+                navGraph.setStartDestination(R.id.splashFragment)
             }
             !preferences.board -> {
                 navGraph.setStartDestination(R.id.boardFragment)
