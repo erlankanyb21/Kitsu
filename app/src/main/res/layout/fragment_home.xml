@@ -40,33 +40,31 @@
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
-            android:text="Anime"
+            android:text="@string/anime"
             android:layout_height="wrap_content">
 
         </com.google.android.material.tabs.TabItem>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
-            android:text="Manga"
+            android:text="@string/manga"
             android:layout_height="wrap_content">
 
         </com.google.android.material.tabs.TabItem>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
-            android:text="Users"
+            android:text="@string/users"
             android:layout_height="wrap_content">
 
         </com.google.android.material.tabs.TabItem>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
-            android:text="Posts"
+            android:text="@string/posts"
             android:layout_height="wrap_content">
 
         </com.google.android.material.tabs.TabItem>
 
     </com.google.android.material.tabs.TabLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

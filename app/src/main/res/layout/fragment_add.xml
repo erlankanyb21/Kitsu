@@ -19,13 +19,10 @@
             style="@style/BaseClickableText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:clickable="true"
             android:text="@string/cancel"
             android:layout_marginStart="@dimen/page_margin"
-            android:textSize="@dimen/regular_txt_16"
             android:textColor="@color/white"
             android:gravity="center"
-            android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,8 +43,6 @@
             style="@style/BaseClickableText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
             android:gravity="center"
             android:text="@string/post"
             android:textColor="@color/orange"
@@ -58,9 +53,8 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="80dp"
         android:id="@+id/user_card"
-        android:layout_height="80dp"
+        style="@style/BaseCircleCardView"
         android:layout_marginStart="@dimen/page_margin"
         android:layout_marginTop="@dimen/small_margin_10"
         android:layout_marginEnd="@dimen/page_margin"
@@ -70,12 +64,10 @@
 
         <ImageView
             android:id="@+id/user_img"
+            style="@style/BaseImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            tools:ignore="ContentDescription,ImageContrastCheck"
-            tools:src="@drawable/ic_launcher_foreground" />
+            tools:ignore="ContentDescription,ImageContrastCheck" />
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
@@ -98,7 +90,6 @@
             android:layout_marginTop="12dp"
             android:paddingBottom="@dimen/small_margin_10"
             android:text="@string/user_name"
-            android:textColor="@color/black"
             android:textSize="@dimen/regular_txt_18"
             android:textStyle="bold" />
     </LinearLayout>
@@ -109,15 +100,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/page_margin"
         android:layout_marginTop="@dimen/page_margin"
-        android:autofillHints=""
-        android:background="#1AFFFFFF"
+        android:background="@color/transparent"
         android:hint="@string/write_something"
-        android:inputType="text"
         android:textColorHint="#A1887F"
         android:textSize="@dimen/regular_txt_20"
         app:layout_constraintTop_toBottomOf="@+id/user_card"
-        tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize"
-        tools:layout_editor_absoluteX="20dp" />
+        tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
     <RadioGroup
         android:layout_marginTop="@dimen/page_margin"
@@ -131,7 +119,7 @@
         <RadioButton
             android:id="@+id/nsfw_btn"
             android:text="@string/nsfw"
-            android:background="@drawable/shadow"
+            android:background="@drawable/bg_shadow"
             android:layout_marginEnd="@dimen/page_margin"
             android:layout_width="150dp"
             android:layout_height="wrap_content" />
@@ -139,7 +127,7 @@
         <RadioButton
             android:id="@+id/spoiler_btn"
             android:text="@string/spoiler"
-            android:background="@drawable/shadow"
+            android:background="@drawable/bg_shadow"
             android:layout_marginStart="@dimen/page_margin"
             android:layout_width="150dp"
             android:layout_height="wrap_content" />

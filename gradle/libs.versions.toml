@@ -64,7 +64,13 @@ dokka = "0.9.18"
 
 #navSafeArgs
 navSafeArgs = "2.5.3"
-#----------------------------------------------------------------
+
+#lottie
+lottie = "3.4.0"
+
+#dotsindicator
+dotsindicator = "4.3"
+
 [libraries]
 
 #JetBrains
@@ -107,6 +113,8 @@ uicomponents-viewpager = { module = "androidx.viewpager2:viewpager2", version.re
 uicomponents-appCompat = { module = "androidx.appcompat:appcompat", version.ref = "uicomponents" }
 uicomponents-constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintLayout" }
 uicomponents-viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version.ref = "viewbindingpropertydelegate" }
+uicomponents-lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+uicomponents-dotsIndicators = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsindicator" }
 
 #koin
 koin-koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
@@ -127,7 +135,7 @@ navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref 
 #coroutine
 coroutine-coroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutine"}
 coroutine-coroutineCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutine"}
-#----------------------------------------------------------------
+
 [plugins]
 
 #android
@@ -145,7 +153,7 @@ jetbrainsKotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 
 #navSafeArgs
 navSafeArgs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navSafeArgs" }
-#----------------------------------------------------------------
+
 [bundles]
 
 #coroutine
@@ -170,7 +178,9 @@ androidxlegacyAndCore = ["androidx-legacySupport","androidx-core"]
 test = ["androidx-testJunit","androidx-testEspresso"]
 
 #uicomponents
-uicomponents = ["uicomponents-material","uicomponents-appCompat", "uicomponents-viewpager", "uicomponents-constraintLayout", "uicomponents-viewBindingPropertyDelegate"]
+uicomponents = ["uicomponents-material", "uicomponents-appCompat",
+    "uicomponents-viewpager", "uicomponents-constraintLayout",
+    "uicomponents-viewBindingPropertyDelegate", "uicomponents-lottie", "uicomponents-dotsIndicators"]
 
 #koin
 koin = ["koin-koinCore","koin-koinAndroid","koin-koinNav"]

@@ -76,4 +76,5 @@ dependencies {
 
     //navigation components
     implementation(libs.bundles.navigation)
+
 }

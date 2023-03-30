@@ -71,18 +71,30 @@ class MainActivity : AppCompatActivity() {
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
 
         when {
-            preferences.token.isNotEmpty() -> {
-                navGraph.setStartDestination(R.id.mainFlowFragment)
+            !preferences.splash -> {
+                navGraph.setStartDestination(R.id.splashFragment)
+            }
+            preferences.splash -> {
+                navGraph.setStartDestination(R.id.boardFragment)
+            }
+            !preferences.board -> {
+                navGraph.setStartDestination(R.id.boardFragment)
+            }
+            preferences.board -> {
+                navGraph.setStartDestination(R.id.signFlowFragment)
             }
             preferences.token.isEmpty() -> {
                 navGraph.setStartDestination(R.id.signFlowFragment)
+            }
+            preferences.token.isNotEmpty() -> {
+                navGraph.setStartDestination(R.id.mainFlowFragment)
             }
         }
         navController.graph = navGraph
     }
 
     /**
-     * [onDestroy] -  вызывается при уничтожении экземпляра [MainActivity] и
+     * [onDestroy] - вызывается при уничтожении экземпляра [MainActivity] и
      * освобождает ресурсы, связанные с binding.
      *
      */

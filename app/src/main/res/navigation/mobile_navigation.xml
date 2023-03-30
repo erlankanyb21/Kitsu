@@ -29,7 +29,9 @@
         android:id="@+id/animeFragment"
         android:name="com.example.kitsu.presentation.fragments.home.anime.AnimeFragment"
         android:label="fragment_anime"
-        tools:layout="@layout/fragment_anime"></fragment>
+        tools:layout="@layout/fragment_anime">
+
+    </fragment>
     <fragment
         android:id="@+id/mangaFragment"
         android:name="com.example.kitsu.presentation.fragments.home.manga.MangaFragment"
@@ -54,4 +56,14 @@
             android:name="whereToApplyFilter"
             app:argType="integer" />
     </dialog>
+    <fragment
+        android:id="@+id/boardFragment2"
+        android:name="com.example.kitsu.presentation.fragments.greeting.board.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" />
+    <fragment
+        android:id="@+id/splashFragment2"
+        android:name="com.example.kitsu.presentation.fragments.greeting.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" />
 </navigation>
