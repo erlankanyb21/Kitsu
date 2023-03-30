@@ -37,12 +37,12 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
                 mediaPlayer.stop()
                 mediaPlayer.release()
                 when {
-                    preferences.splash -> {
-                        findNavController().navigate(R.id.mainFlowFragment)
+                    preferences.token.isEmpty() -> {
+                        findNavController().navigate(R.id.action_global_signFlowFragment)
+
                     }
-                    else -> {
-                        findNavController().navigate(R.id.boardFragment)
-                        preferences.splash = true
+                    preferences.token.isNotEmpty() -> {
+                        findNavController().navigate(R.id.action_global_mainFlowFragment)
                     }
                 }
             }

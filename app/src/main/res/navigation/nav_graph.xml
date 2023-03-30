@@ -3,8 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/mainFlowFragment">
-
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.kitsu.presentation.fragments.greeting.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" />
     <action
         android:id="@+id/action_global_signFlowFragment"
         app:destination="@id/signFlowFragment"
@@ -25,14 +29,4 @@
         android:name="com.example.kitsu.presentation.fragments.flowFragment.MainFlowFragment"
         android:label="fragment_main_flow"
         tools:layout="@layout/fragment_main_flow" />
-    <fragment
-        android:id="@+id/boardFragment"
-        android:name="com.example.kitsu.presentation.fragments.greeting.board.BoardFragment"
-        android:label="fragment_board"
-        tools:layout="@layout/fragment_board" />
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.example.kitsu.presentation.fragments.greeting.splash.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
 </navigation>

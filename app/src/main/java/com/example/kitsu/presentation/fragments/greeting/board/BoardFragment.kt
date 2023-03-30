@@ -16,7 +16,6 @@ class BoardFragment : Fragment(R.layout.fragment_board) {
     private val binding by viewBinding(FragmentBoardBinding::bind)
     private val preferences by inject<Prefs>()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapterViaIndicators()
@@ -30,14 +29,14 @@ class BoardFragment : Fragment(R.layout.fragment_board) {
     }
 
     private fun setupClick() {
-        findNavController().navigate(R.id.signFlowFragment)
+        findNavController().navigate(R.id.signInFragment)
         preferences.board = true
     }
 
     private fun nextScreen() {
         val texts = resources.getStringArray(R.array.text).toList()
         if (binding.viewPager.currentItem < texts.size - 1) {
-            binding.viewPager.setCurrentItem(binding.viewPager.currentItem + 1, true)
+            binding.viewPager.setCurrentItem(binding.viewPager.currentItem + 1, false)
         }
 
     }
