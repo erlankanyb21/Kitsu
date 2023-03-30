@@ -17,7 +17,4 @@ class Prefs(private val sharedPreferences: SharedPreferences) {
     var board: Boolean
         get() = sharedPreferences.getBoolean("board", false)
         set(value) = sharedPreferences.edit { putBoolean("board", value) }
-    var splash: Boolean
-        get() = sharedPreferences.getBoolean("splash", false)
-        set(value) = sharedPreferences.edit { putBoolean("splash", value) }
 }
