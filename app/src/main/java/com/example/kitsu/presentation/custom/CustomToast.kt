@@ -29,11 +29,13 @@ class CustomToast(private val context: Context) {
         binding!!.toastMessage.text = message
 
         val toast = Toast(context)
-        toast.setGravity(Gravity.CENTER, 21, 21)
-        toast.duration = Toast.LENGTH_LONG
-        toast.view = binding!!.root
+        toast.apply {
+            setGravity(Gravity.CENTER, 21, 21)
+            duration = Toast.LENGTH_LONG
+            view = binding!!.root
 
-        toast.show()
+            show()
+        }
     }
 
     companion object {

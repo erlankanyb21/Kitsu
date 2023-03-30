@@ -9,7 +9,8 @@ import com.example.kitsu.databinding.BoardPagerBinding
 
 class BoardAdapter(
     private val desc: List<String>,
-    private val startClick: () -> Unit
+    private val startClick: () -> Unit,
+    private val nextScreen: () -> Unit
 ) : RecyclerView.Adapter<BoardAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: BoardPagerBinding) :
@@ -38,6 +39,8 @@ class BoardAdapter(
                 4 -> {
                     lottieAnim.setAnimation(R.raw.gorgoes_progress)
                     btnSkip.isVisible = false
+                    btnNext.isVisible = false
+                    btnGetStarted.isVisible = true
                 }
             }
             text.text = desc[position]
@@ -46,6 +49,9 @@ class BoardAdapter(
             }
             btnGetStarted.setOnClickListener {
                 startClick()
+            }
+            btnNext.setOnClickListener {
+                nextScreen()
             }
         }
     }

@@ -36,9 +36,15 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             override fun onAnimationEnd(p0: Animation?) {
                 mediaPlayer.stop()
                 mediaPlayer.release()
-
-                findNavController().navigate(R.id.boardFragment)
-                preferences.splash = true
+                when {
+                    preferences.splash -> {
+                        findNavController().navigate(R.id.mainFlowFragment)
+                    }
+                    else -> {
+                        findNavController().navigate(R.id.boardFragment)
+                        preferences.splash = true
+                    }
+                }
             }
 
             override fun onAnimationRepeat(p0: Animation?) {
