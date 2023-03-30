@@ -2,7 +2,6 @@ package com.example.kitsu.presentation.fragments.signIn
 
 import android.view.View
 import android.view.animation.AnimationUtils
-import androidx.core.view.isVisible
 import androidx.lifecycle.viewModelScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.data.local.Prefs
@@ -75,10 +74,8 @@ class SignInFragment :
         viewModel.viewModelScope.launch {
             viewModel.signState.spectateUiState(error = {
                 CustomToast.show(requireContext(), it)
-                binding.progress.isVisible = false
                 binding.btnEnter.isEnabled = true
             }, success = {
-                binding.progress.isVisible = false
                 binding.btnEnter.isEnabled = true
                 CustomToast.show(requireContext(), "Welcome to Kitsu \uD83D\uDE80")
                 preferences.token = it.accessToken.toString()

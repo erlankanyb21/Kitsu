@@ -23,21 +23,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/BaseTextInputLayout"
         android:layout_marginHorizontal="@dimen/page_margin"
-        app:endIconMode="clear_text"
         android:id="@+id/userLayout"
         android:layout_marginTop="@dimen/big_margin"
         android:layout_width="match_parent"
-        app:boxStrokeColor="@color/orange"
         android:hint="@string/email"
-        android:textColorHint="@color/orange"
-        app:boxCornerRadiusTopStart="@dimen/element_margin"
-        app:boxCornerRadiusBottomEnd="@dimen/element_margin"
         app:endIconTint="@color/orange"
         app:hintTextColor="@color/orange"
-        app:boxCornerRadiusBottomStart="@dimen/element_margin"
-        app:boxCornerRadiusTopEnd="@dimen/element_margin"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -50,18 +43,9 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/BaseTextInputLayout"
         android:hint="@string/password"
         app:layout_constraintTop_toBottomOf="@+id/userLayout"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/orange"
-        app:boxStrokeColor="@color/orange"
-        app:boxCornerRadiusTopStart="@dimen/element_margin"
-        app:boxCornerRadiusBottomEnd="@dimen/element_margin"
-        app:hintTextColor="@color/orange"
-        android:textColorHint="@color/orange"
-        app:boxCornerRadiusBottomStart="@dimen/element_margin"
-        app:boxCornerRadiusTopEnd="@dimen/element_margin"
         android:layout_marginTop="@dimen/page_margin"
         android:layout_marginHorizontal="@dimen/page_margin"
         android:layout_width="match_parent"
@@ -76,9 +60,8 @@
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.button.MaterialButton
-        android:text="Sign in to your account"
+        android:text="@string/sign_in_to_your_account"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="@dimen/regular_txt_18"
         android:id="@+id/btn_enter"
@@ -91,12 +74,4 @@
         android:padding="@dimen/norm_btn_pad"
         android:layout_height="wrap_content"
         android:gravity="center" />
-
-    <ProgressBar
-        android:layout_marginTop="@dimen/page_margin"
-        android:id="@+id/progress"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 </LinearLayout>

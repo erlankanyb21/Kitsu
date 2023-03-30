@@ -19,6 +19,21 @@
     <string name="nsfw">NSFW</string>
     <string name="spoiler">Spoiler</string>
     <string name="categories">Categories</string>
+    <string name="anime">Anime</string>
+    <string name="manga">Manga</string>
+    <string name="users">Users</string>
+    <string name="posts">Posts</string>
+    <string name="sign_in_to_your_account">Sign in to your account</string>
+    <string name="category">category</string>
+    <string name="title">title</string>
+
+    <string-array name="text">
+        <item>Notice: You can also visit our site </item>
+        <item>But we made this app especially for you</item>
+        <item>Where you can read and also post</item>
+        <item>Your favorite manga &amp; anime</item>
+        <item>Let\'s get started 🚀</item>
+    </string-array>
 
     <string-array name="filters">
         <item>Comedy</item>
@@ -53,4 +68,9 @@
         <item>Demon</item>
         <item>Parody</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="geekstudio">By GeekStudio</string>
+    <string name="skip">skip</string>
+    <string name="get_started">Get started</string>
 </resources>

@@ -8,8 +8,7 @@
     android:paddingVertical="@dimen/page_margin"
     android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        style="@style/BaseCircleCardView"
         android:layout_marginStart="@dimen/page_margin_2x"
         android:layout_marginTop="@dimen/small_margin_10"
         android:layout_marginEnd="@dimen/page_margin"
@@ -20,10 +19,9 @@
 
         <ImageView
             android:id="@+id/user_img"
+            style="@style/BaseImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
             tools:ignore="ContentDescription,ImageContrastCheck"
             tools:src="@drawable/ic_launcher_foreground" />
 
@@ -89,7 +87,7 @@
             android:id="@+id/spoiler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shadow"
+            android:background="@drawable/bg_shadow"
             android:gravity="center"
             android:padding="@dimen/page_margin"
             android:text="@string/this_post_contains_spoilers"
