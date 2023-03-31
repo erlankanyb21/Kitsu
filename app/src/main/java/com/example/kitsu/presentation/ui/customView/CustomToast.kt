@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.custom
+package com.example.kitsu.presentation.ui.customView
 
 import android.content.Context
 import android.view.Gravity

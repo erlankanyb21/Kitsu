@@ -7,7 +7,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentAddBinding
 import com.example.kitsu.presentation.base.BaseFragment
-import com.example.kitsu.presentation.custom.CustomToast
+import com.example.kitsu.presentation.ui.customView.CustomToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -38,7 +38,7 @@ abstract class BaseFlowFragment(
     }
 
     /**
-     * [setupNavigation] - метод, который переопределяется в дочерних классах, чтобы настроить
+     * [setupNavigation] - метод переопределяется в дочерних классах, чтобы настроить
      * навигацию с помощью переданного экземпляра NavController.
      */
     protected open fun setupNavigation(navController: NavController) {}

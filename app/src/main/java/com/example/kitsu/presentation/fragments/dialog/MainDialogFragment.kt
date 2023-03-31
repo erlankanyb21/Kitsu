@@ -9,8 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentMainFilterDialogBinding
-import com.example.kitsu.presentation.adapters.CategoriesAdapter
 import com.example.kitsu.presentation.fragments.dialog.sharedvm.SharedViewModel
+import com.example.kitsu.presentation.ui.adapters.CategoriesAdapter
 
 /**
  * Фрагмент, который отображает диалоговое окно с выбором категорий.

@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.state
+package com.example.kitsu.presentation.ui.state
 
 sealed class UIState<T> {
     class Idle<T> : UIState<T>()

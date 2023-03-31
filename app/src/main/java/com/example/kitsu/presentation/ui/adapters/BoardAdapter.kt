@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.adapters
+package com.example.kitsu.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

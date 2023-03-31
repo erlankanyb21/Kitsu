@@ -1,7 +1,7 @@
 package com.example.data.network.paging.manga
 
-import com.example.data.mappers.toDomain
 import com.example.data.network.apiservice.MangaApiService
+import com.example.data.network.models.toDomain
 import com.example.data.network.paging.base.BasePagingSource
 import com.example.domain.models.MangaModel
 

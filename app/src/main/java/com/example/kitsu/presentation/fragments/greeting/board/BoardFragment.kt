@@ -8,7 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.data.local.Prefs
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentBoardBinding
-import com.example.kitsu.presentation.adapters.BoardAdapter
+import com.example.kitsu.presentation.ui.adapters.BoardAdapter
 import org.koin.android.ext.android.inject
 
 class BoardFragment : Fragment(R.layout.fragment_board) {

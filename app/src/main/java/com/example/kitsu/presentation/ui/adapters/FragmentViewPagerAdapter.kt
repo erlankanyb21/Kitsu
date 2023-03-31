@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.adapters
+package com.example.kitsu.presentation.ui.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -6,6 +6,7 @@ import com.example.kitsu.presentation.fragments.home.anime.AnimeFragment
 import com.example.kitsu.presentation.fragments.home.manga.MangaFragment
 import com.example.kitsu.presentation.fragments.home.posts.PostsFragment
 import com.example.kitsu.presentation.fragments.home.users.UsersFragment
+
 
 /**
  * Класс [FragmentViewPagerAdapter] - Адаптер для ViewPager, управляющий фрагментами внутри Fragment.

@@ -8,9 +8,9 @@ import com.example.data.local.Prefs
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentSignInBinding
 import com.example.kitsu.presentation.base.BaseFragment
-import com.example.kitsu.presentation.custom.CustomToast
 import com.example.kitsu.presentation.extensions.activityNavController
 import com.example.kitsu.presentation.extensions.navigateSafely
+import com.example.kitsu.presentation.ui.customView.CustomToast
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
