@@ -9,11 +9,11 @@ import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentAnimeBinding
-import com.example.kitsu.presentation.adapters.AnimeAdapter
-import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
 import com.example.kitsu.presentation.base.BaseFragment
 import com.example.kitsu.presentation.fragments.dialog.sharedvm.SharedViewModel
 import com.example.kitsu.presentation.fragments.home.HomeFragmentDirections
+import com.example.kitsu.presentation.ui.adapters.AnimeAdapter
+import com.example.kitsu.presentation.ui.adapters.MainLoadStateAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**

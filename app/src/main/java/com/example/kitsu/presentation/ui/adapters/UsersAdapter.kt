@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.adapters
+package com.example.kitsu.presentation.ui.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,12 +7,12 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kitsu.databinding.ItemUsersRvBinding
-import com.example.kitsu.presentation.adapters.AnimeAdapter.Companion.areContentsTheSame
-import com.example.kitsu.presentation.adapters.AnimeAdapter.Companion.areItemsTheSame
-import com.example.kitsu.presentation.adapters.PostsAdapter.Companion.areContentsTheSame
-import com.example.kitsu.presentation.adapters.PostsAdapter.Companion.areItemsTheSame
 import com.example.kitsu.presentation.extensions.loadImage
 import com.example.kitsu.presentation.models.UsersUI
+import com.example.kitsu.presentation.ui.adapters.AnimeAdapter.Companion.areContentsTheSame
+import com.example.kitsu.presentation.ui.adapters.AnimeAdapter.Companion.areItemsTheSame
+import com.example.kitsu.presentation.ui.adapters.PostsAdapter.Companion.areContentsTheSame
+import com.example.kitsu.presentation.ui.adapters.PostsAdapter.Companion.areItemsTheSame
 
 /**
  * Класс [UsersAdapter] является адаптером для RecyclerView и отвечает за отображение элементов

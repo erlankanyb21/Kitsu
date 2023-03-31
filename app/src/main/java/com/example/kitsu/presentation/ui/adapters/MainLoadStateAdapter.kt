@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.adapters
+package com.example.kitsu.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kitsu.databinding.ItemErrorBinding
 import com.example.kitsu.databinding.ItemProgressBinding
-import com.example.kitsu.presentation.adapters.MainLoadStateAdapter.ProgressViewHolder.Companion.invoke
+import com.example.kitsu.presentation.ui.adapters.MainLoadStateAdapter.ProgressViewHolder.Companion.invoke
 
 /**
  * [MainLoadStateAdapter] - Адаптер для обработки состояний загрузки данных внутри RecyclerView.

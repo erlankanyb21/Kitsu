@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentHomeBinding
-import com.example.kitsu.presentation.adapters.FragmentViewPagerAdapter
+import com.example.kitsu.presentation.ui.adapters.FragmentViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 /**

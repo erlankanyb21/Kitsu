@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.adapters
+package com.example.kitsu.presentation.ui.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,10 +9,10 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kitsu.databinding.ItemPostsRvBinding
-import com.example.kitsu.presentation.adapters.AnimeAdapter.Companion.areContentsTheSame
-import com.example.kitsu.presentation.adapters.AnimeAdapter.Companion.areItemsTheSame
 import com.example.kitsu.presentation.extensions.loadImage
 import com.example.kitsu.presentation.models.PostsUI
+import com.example.kitsu.presentation.ui.adapters.AnimeAdapter.Companion.areContentsTheSame
+import com.example.kitsu.presentation.ui.adapters.AnimeAdapter.Companion.areItemsTheSame
 
 /**
  * Класс [PostsAdapter] является адаптером для RecyclerView и отвечает за отображение элементов

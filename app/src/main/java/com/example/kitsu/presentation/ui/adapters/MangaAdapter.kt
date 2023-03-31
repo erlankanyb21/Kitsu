@@ -1,4 +1,4 @@
-package com.example.kitsu.presentation.adapters
+package com.example.kitsu.presentation.ui.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,60 +6,61 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kitsu.databinding.ItemAnimeRvBinding
+import com.example.kitsu.databinding.ItemMangaRvBinding
 import com.example.kitsu.presentation.extensions.loadImage
-import com.example.kitsu.presentation.models.AnimeUI
-
+import com.example.kitsu.presentation.models.MangaUI
+import com.example.kitsu.presentation.ui.adapters.AnimeAdapter.Companion.areContentsTheSame
+import com.example.kitsu.presentation.ui.adapters.AnimeAdapter.Companion.areItemsTheSame
 
 /**
- * Класс [AnimeAdapter] является адаптером для RecyclerView и отвечает за отображение элементов
- * списка в пользовательском интерфейсе. Он принимает анонимную функцию onItemClick в конструкторе,
- * которое будет вызываться при щелчке на элементе списка. Класс [AnimeAdapter] использует библиотеку
+ * Класс [MangaAdapter] является адаптером для RecyclerView и отвечает за отображение элементов
+ * списка в пользовательском интерфейсе. Он принимает лямбда-выражение onItemClick в конструкторе,
+ * которое будет вызываться при щелчке на элементе списка. Класс [MangaAdapter] использует библиотеку
  * Glide для загрузки изображений и библиотеку DiffUtil для оптимизации обновления элементов списка.
  *
  * @author Erlan
  * @since 1.0v
  */
-class AnimeAdapter(
+class MangaAdapter(
     private val onItemClick: (name: String?) -> Unit
 ) :
-    PagingDataAdapter<AnimeUI.Data, AnimeAdapter.AnimeViewHolder>(Companion) {
+    PagingDataAdapter<MangaUI.Data, MangaAdapter.MangaViewHolder>(Companion) {
     /**
      * [onCreateViewHolder] создает и возвращает
-     * экземпляр [AnimeViewHolder], связанный с макетом элемента списка.
+     * экземпляр [MangaViewHolder], связанный с макетом элемента списка.
      *
      */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AnimeViewHolder(
-        ItemAnimeRvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MangaViewHolder(
+        ItemMangaRvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     /**
      * [onBindViewHolder] связывает данные
-     * с экземпляром [AnimeViewHolder] в указанной позиции.
+     * с экземпляром AnimeViewHolder в указанной позиции.
      *
      */
-    override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MangaViewHolder, position: Int) {
         getItem(position)?.let { holder.onBind(it) }
     }
 
     /**
-     * [AnimeViewHolder] - внутренний класс, который представляет элемент
+     * [MangaViewHolder] - внутренний класс, который представляет элемент
      * списка и содержит метод [onBind], который связывает данные с макетом элемента списка.
      */
-    inner class AnimeViewHolder(private val binding: ItemAnimeRvBinding) :
+    inner class MangaViewHolder(private val binding: ItemMangaRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         /**
          * [onBind] - метод в котором данные из модели  присваиваются к элементам в
-         * присоединённый макет [ItemAnimeRvBinding]
+         * присоединённый макет [ItemMangaRvBinding]
          */
-        fun onBind(data: AnimeUI.Data) = with(binding) {
+        fun onBind(data: MangaUI.Data) = with(binding) {
             Log.e("", "onBind: ${data.attributes?.posterImage?.medium}")
             if (data.attributes?.posterImage?.medium?.isNotEmpty() == true) {
-                animeItemImg.loadImage(data.attributes.posterImage.medium)
+                mangaItemImg.loadImage(data.attributes.posterImage.medium)
             }
             itemView.setOnClickListener {
-                onItemClick(data.attributes?.canonicalTitle)
+                onItemClick(data.attributes?.titles?.en_jp)
             }
         }
     }
@@ -68,12 +69,12 @@ class AnimeAdapter(
      * [Companion] - объект-компаньон, который содержит методы для
      * сравнения элементов списка в DiffUtil.
      */
-    companion object : DiffUtil.ItemCallback<AnimeUI.Data>() {
+    companion object : DiffUtil.ItemCallback<MangaUI.Data>() {
         /**
          * [areItemsTheSame] - статический метод,
          * который проверяет, являются ли два элемента списка идентичными.
          */
-        override fun areItemsTheSame(oldItem: AnimeUI.Data, newItem: AnimeUI.Data) =
+        override fun areItemsTheSame(oldItem: MangaUI.Data, newItem: MangaUI.Data) =
             oldItem.id == newItem.id
 
         /**
@@ -81,8 +82,8 @@ class AnimeAdapter(
          * который проверяет, содержат ли два элемента списка одинаковые данные.
          */
         override fun areContentsTheSame(
-            oldItem: AnimeUI.Data,
-            newItem: AnimeUI.Data
+            oldItem: MangaUI.Data,
+            newItem: MangaUI.Data
         ) = oldItem == newItem
     }
 }

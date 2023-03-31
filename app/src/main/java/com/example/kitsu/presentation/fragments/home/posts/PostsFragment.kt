@@ -5,10 +5,11 @@ import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
 import com.example.kitsu.databinding.FragmentPostsBinding
-import com.example.kitsu.presentation.adapters.MainLoadStateAdapter
-import com.example.kitsu.presentation.adapters.PostsAdapter
 import com.example.kitsu.presentation.base.BaseFragment
+import com.example.kitsu.presentation.ui.adapters.MainLoadStateAdapter
+import com.example.kitsu.presentation.ui.adapters.PostsAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 /**
  * Фрагмент, отображающий список постов
  *

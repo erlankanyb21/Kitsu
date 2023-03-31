@@ -1,6 +1,9 @@
 package com.example.kitsu.presentation.fragments.flowFragment
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kitsu.R
@@ -27,5 +30,19 @@ class MainFlowFragment : BaseFlowFragment(
      */
     override fun setupNavigation(navController: NavController) {
         binding.navView.setupWithNavController(navController)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home,
+                R.id.navigation_search,
+                R.id.navigation_add,
+                R.id.notificationsFragment,
+                R.id.libraryFragment
+            )
+        )
+        setupActionBarWithNavController(
+            requireActivity() as AppCompatActivity,
+            navController,
+            appBarConfiguration
+        )
     }
 }
