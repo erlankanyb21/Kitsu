@@ -8,6 +8,8 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,18 +23,18 @@ import java.util.concurrent.TimeUnit
  * @since 1.0v
  */
 val networkModule: Module = module {
-    factory { provideOkhttpClient(get()) }
-    single { provideRetrofit(get()) }
-    single { provideAnimeApi(get()) }
-    single { provideMangaApi(get()) }
-    single { provideUsersApi(get()) }
-    single { provideAuthApi(get()) }
-    single { providePostsApi(get()) }
-    single { provideAnimeRepository(get()) }
-    single { provideMangaRepository(get()) }
-    single { provideUsersRepository(get()) }
-    single { provideAuthRepository(get()) }
-    single { providePostsRepository(get()) }
+    factoryOf(::provideOkhttpClient)
+    singleOf(::provideRetrofit)
+    singleOf(::provideAnimeApi)
+    singleOf(::provideMangaApi)
+    singleOf(::provideUsersApi)
+    singleOf(::provideAuthApi)
+    singleOf(::providePostsApi)
+    singleOf(::provideAnimeRepository)
+    singleOf(::provideMangaRepository)
+    singleOf(::provideUsersRepository)
+    singleOf(::provideAuthRepository)
+    singleOf(::providePostsRepository)
 }
 
 private const val base_url = "https://kitsu.io/"
