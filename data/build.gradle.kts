@@ -52,6 +52,7 @@ dependencies {
 
 //    koin
     implementation(libs.bundles.koin)
+    implementation(libs.koin.koinAnnotations)
 
 //    retrofit
     implementation(libs.bundles.retrofit)

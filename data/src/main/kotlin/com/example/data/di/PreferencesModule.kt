@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.data.local.Prefs
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 /**
@@ -19,7 +20,5 @@ val preferencesModule = module {
         androidContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
     }
     // Предоставление объекта Prefs, использующего SharedPreferences
-    single {
-        Prefs(get())
-    }
+    singleOf(::Prefs)
 }

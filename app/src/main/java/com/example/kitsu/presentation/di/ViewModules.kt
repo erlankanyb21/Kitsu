@@ -8,6 +8,7 @@ import com.example.kitsu.presentation.fragments.home.posts.PostsViewModel
 import com.example.kitsu.presentation.fragments.home.users.UsersViewModel
 import com.example.kitsu.presentation.fragments.signIn.SignInViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -19,10 +20,10 @@ import org.koin.dsl.module
  */
 
 val viewModules: Module = module {
-    viewModel { AnimeViewModel(get()) }
-    viewModel { MangaViewModel(get()) }
-    viewModel { UsersViewModel(get()) }
-    viewModel { SignInViewModel(get()) }
-    viewModel { PostsViewModel(get()) }
-    viewModel { AddViewModel(get()) }
+    viewModelOf(::AnimeViewModel)
+    viewModelOf(::MangaViewModel)
+    viewModelOf(::UsersViewModel)
+    viewModelOf(::SignInViewModel)
+    viewModelOf(::PostsViewModel)
+    viewModelOf(::AddViewModel)
 }

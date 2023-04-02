@@ -1,7 +1,10 @@
 package com.example.data.di
 
 import com.example.data.repositories.*
+import com.example.domain.repositories.*
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 /**
@@ -17,9 +20,9 @@ import org.koin.dsl.module
  * @since 1.0v
  */
 val repoModules: Module = module {
-    single { AnimeRepositoryImpl(get()) }
-    single { MangaRepositoryImpl(get()) }
-    single { UsersRepositoryImpl(get()) }
-    single { AuthRepositoryImpl(get()) }
-    single { PostsRepositoryImpl(get()) }
+    singleOf(::AnimeRepositoryImpl) { bind<AnimeRepository>() }
+    singleOf(::MangaRepositoryImpl) { bind<MangaRepository>() }
+    singleOf(::UsersRepositoryImpl) { bind<UsersRepository>() }
+    singleOf(::AuthRepositoryImpl) { bind<AuthRepository>() }
+    singleOf(::PostsRepositoryImpl) { bind<PostsRepository>() }
 }
