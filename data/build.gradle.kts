@@ -3,6 +3,8 @@
 plugins {
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.jetbrainsKotlin.android.get().pluginId)
+    // KSP
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -53,6 +55,7 @@ dependencies {
 //    koin
     implementation(libs.bundles.koin)
     implementation(libs.koin.koinAnnotations)
+    ksp(libs.koin.compiler)
 
 //    retrofit
     implementation(libs.bundles.retrofit)
@@ -63,4 +66,13 @@ dependencies {
 
     //Paging 3
     api(libs.paging.runtime)
+}
+
+kotlin {
+    sourceSets.debug {
+        kotlin.srcDir("build/generated/ksp/debug/kotlin")
+    }
+    sourceSets.release {
+        kotlin.srcDir("build/generated/ksp/release/kotlin")
+    }
 }

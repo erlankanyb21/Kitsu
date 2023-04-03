@@ -1,8 +1,7 @@
 package com.example.domain.di
 
-import com.example.domain.usecases.*
-import org.koin.core.module.dsl.factoryOf
-import org.koin.dsl.module
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Module
 
 /**
  * Конфигурационный модуль, предоставляющий фабрики для создания экземпляров use case'ов.
@@ -10,11 +9,6 @@ import org.koin.dsl.module
  * @author Erlan
  * @since 1.0v
  */
-val UseCaseModule = module {
-    factoryOf(::FetchPagingAnimeUseCase)
-    factoryOf(::FetchPagingMangaUseCase)
-    factoryOf(::FetchPagingUsersUseCase)
-    factoryOf(::SignInUseCase)
-    factoryOf(::FetchPagingPostsUseCase)
-    factoryOf(::CreatePostsUseCase)
-}
+@Module
+@ComponentScan("com.example.domain")
+class UseCaseModule

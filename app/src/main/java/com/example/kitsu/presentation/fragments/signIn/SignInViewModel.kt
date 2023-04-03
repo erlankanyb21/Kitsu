@@ -5,6 +5,7 @@ import com.example.kitsu.presentation.base.BaseViewModel
 import com.example.kitsu.presentation.models.SignResponseUI
 import com.example.kitsu.presentation.models.toUI
 import kotlinx.coroutines.flow.asStateFlow
+import org.koin.android.annotation.KoinViewModel
 
 /**
  * ViewModel для фрагмента SignInFragment.
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
  * @author Erlan
  * @since 1.0v
  */
+@KoinViewModel
 class SignInViewModel(
     private val signInUseCase: SignInUseCase
 ) : BaseViewModel() {

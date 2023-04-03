@@ -5,6 +5,7 @@ import com.example.kitsu.presentation.base.BaseViewModel
 import com.example.kitsu.presentation.models.CreatePostsResponseUI
 import com.example.kitsu.presentation.models.toUI
 import kotlinx.coroutines.flow.asStateFlow
+import org.koin.android.annotation.KoinViewModel
 
 /**
  * ViewModel для фрагмента добавления поста.
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.asStateFlow
  * @author Erlan
  * @since 1.0v
  */
+@KoinViewModel
 class AddViewModel(
     private val createPostsUseCase: CreatePostsUseCase
 ) : BaseViewModel() {

@@ -5,6 +5,7 @@ import com.example.domain.usecases.FetchPagingMangaUseCase
 import com.example.kitsu.presentation.base.BaseViewModel
 import com.example.kitsu.presentation.models.toUI
 import kotlinx.coroutines.flow.map
+import org.koin.android.annotation.KoinViewModel
 
 /**
  * ViewModel для экрана "Манга".
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.map
  * @author Erlan
  * @since 1.0v
  */
+@KoinViewModel
 class MangaViewModel(
     private val pagingMangaUseCase: FetchPagingMangaUseCase
 ) : BaseViewModel() {

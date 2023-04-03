@@ -1,4 +1,4 @@
-package com.example.data.di
+package com.example.data.network
 
 import com.example.data.local.Prefs
 import com.example.data.network.apiservice.*
@@ -7,10 +7,10 @@ import com.example.domain.repositories.*
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.core.module.Module
-import org.koin.core.module.dsl.factoryOf
-import org.koin.core.module.dsl.singleOf
-import org.koin.dsl.module
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Factory
+import org.koin.core.annotation.Module
+import org.koin.core.annotation.Single
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -21,28 +21,21 @@ import java.util.concurrent.TimeUnit
  *
  * @author Erlan
  * @since 1.0v
+ *
  */
-val networkModule: Module = module {
-    factoryOf(::provideOkhttpClient)
-    singleOf(::provideRetrofit)
-    singleOf(::provideAnimeApi)
-    singleOf(::provideMangaApi)
-    singleOf(::provideUsersApi)
-    singleOf(::provideAuthApi)
-    singleOf(::providePostsApi)
-    singleOf(::provideAnimeRepository)
-    singleOf(::provideMangaRepository)
-    singleOf(::provideUsersRepository)
-    singleOf(::provideAuthRepository)
-    singleOf(::providePostsRepository)
-}
 
-private const val base_url = "https://kitsu.io/"
+@Module
+@ComponentScan
+class NetworkModule
+
+val base_url = "https://kitsu.io/"
 
 /**
  * предоставляет OkHttpClient, который используется для выполнения запросов к серверу
  */
-private fun provideOkhttpClient(prefs: Prefs): OkHttpClient {
+
+@Factory
+fun provideOkhttpClient(prefs: Prefs): OkHttpClient {
     val interceptor = HttpLoggingInterceptor()
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
@@ -66,7 +59,8 @@ private fun provideOkhttpClient(prefs: Prefs): OkHttpClient {
 /**
  * предоставляет объект Retrofit, который используется для создания интерфейсов API
  */
-private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+@Single
+fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
         .baseUrl(base_url)
         .addConverterFactory(GsonConverterFactory.create())
@@ -78,31 +72,36 @@ private fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
 /**
  * предоставляет интерфейс для взаимодействия с API, связанным с аниме
  */
-private fun provideAnimeApi(retrofit: Retrofit): AnimeApiService =
+@Single
+fun provideAnimeApi(retrofit: Retrofit): AnimeApiService =
     retrofit.create(AnimeApiService::class.java)
 
 /**
  * предоставляет интерфейс для взаимодействия с API, связанным с мангой
  */
-private fun provideMangaApi(retrofit: Retrofit): MangaApiService =
+@Single
+fun provideMangaApi(retrofit: Retrofit): MangaApiService =
     retrofit.create(MangaApiService::class.java)
 
 /**
  * предоставляет интерфейс для взаимодействия с API, связанным с пользователями
  */
-private fun provideUsersApi(retrofit: Retrofit): UsersApiService =
+@Single
+fun provideUsersApi(retrofit: Retrofit): UsersApiService =
     retrofit.create(UsersApiService::class.java)
 
 /**
  * предоставляет интерфейс для взаимодействия с API, связанным с авторицазцией
  */
-private fun provideAuthApi(retrofit: Retrofit): AuthApiService =
+@Single
+fun provideAuthApi(retrofit: Retrofit): AuthApiService =
     retrofit.create(AuthApiService::class.java)
 
 /**
  * предоставляет интерфейс для взаимодействия с API, связанным с постом
  */
-private fun providePostsApi(retrofit: Retrofit): PostsApiService =
+@Single
+fun providePostsApi(retrofit: Retrofit): PostsApiService =
     retrofit.create(PostsApiService::class.java)
 /*---------------------------------------------------------------------------*/
 
@@ -110,31 +109,36 @@ private fun providePostsApi(retrofit: Retrofit): PostsApiService =
 /**
  * предоставляет репозиторий для работы с данными, связанными с аниме
  */
-private fun provideAnimeRepository(animeApiService: AnimeApiService): AnimeRepository =
+@Single
+fun provideAnimeRepository(animeApiService: AnimeApiService): AnimeRepository =
     AnimeRepositoryImpl(animeApiService = animeApiService)
 
 /**
  * предоставляет репозиторий для работы с данными, связанными с мангой
  */
-private fun provideMangaRepository(mangaApiService: MangaApiService): MangaRepository =
+@Single
+fun provideMangaRepository(mangaApiService: MangaApiService): MangaRepository =
     MangaRepositoryImpl(mangaApiService = mangaApiService)
 
 /**
  * предоставляет репозиторий для работы с данными, связанными с пользователями
  */
-private fun provideUsersRepository(usersApiService: UsersApiService): UsersRepository =
+@Single
+fun provideUsersRepository(usersApiService: UsersApiService): UsersRepository =
     UsersRepositoryImpl(usersApiService = usersApiService)
 
 /**
  * предоставляет репозиторий для работы с данными, связанными с авторизацией
  */
-private fun provideAuthRepository(authApiService: AuthApiService): AuthRepository =
+@Single
+fun provideAuthRepository(authApiService: AuthApiService): AuthRepository =
     AuthRepositoryImpl(authApiService = authApiService)
 
 /**
  * предоставляет репозиторий для работы с данными, связанными с постам
  */
-private fun providePostsRepository(postsApiService: PostsApiService): PostsRepository =
+@Single
+fun providePostsRepository(postsApiService: PostsApiService): PostsRepository =
     PostsRepositoryImpl(postsApiService = postsApiService)
 
 

@@ -7,6 +7,8 @@ import com.example.data.network.paging.manga.MangaPagingSource
 import com.example.domain.models.MangaModel
 import com.example.domain.repositories.MangaRepository
 import kotlinx.coroutines.flow.Flow
+import org.koin.core.annotation.Single
+
 /**
  * Реализация репозитория Magnga.
  *
@@ -15,6 +17,7 @@ import kotlinx.coroutines.flow.Flow
  * @author Erlan
  * @since 1.0v
  */
+@Single
 class MangaRepositoryImpl(
     private val mangaApiService: MangaApiService
 ) : MangaRepository, BaseRepository() {

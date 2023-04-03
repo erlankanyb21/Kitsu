@@ -8,6 +8,7 @@ import com.example.domain.either.Either
 import com.example.domain.models.SignResponseModel
 import com.example.domain.repositories.AuthRepository
 import kotlinx.coroutines.flow.Flow
+import org.koin.core.annotation.Single
 
 /**
  * Реализация репозитория аутентификации.
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.Flow
  * @author Erlan
  * @since 1.0v
  */
+@Single
 class AuthRepositoryImpl(
     private val authApiService: AuthApiService,
 ) : AuthRepository, BaseRepository() {
