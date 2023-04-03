@@ -7,6 +7,7 @@ import com.example.data.network.paging.anime.AnimePagingSource
 import com.example.domain.models.AnimeModel
 import com.example.domain.repositories.AnimeRepository
 import kotlinx.coroutines.flow.Flow
+import org.koin.core.annotation.Single
 
 /**
  * Реализация репозитория Anime.
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.Flow
  * @author Erlan
  * @since 1.0v
  */
+@Single
 class AnimeRepositoryImpl(
     private val animeApiService: AnimeApiService
 ) : AnimeRepository, BaseRepository() {

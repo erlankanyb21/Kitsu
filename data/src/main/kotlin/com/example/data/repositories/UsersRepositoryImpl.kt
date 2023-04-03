@@ -7,6 +7,7 @@ import com.example.data.network.paging.users.UsersPagingSource
 import com.example.domain.models.UsersModel
 import com.example.domain.repositories.UsersRepository
 import kotlinx.coroutines.flow.Flow
+import org.koin.core.annotation.Single
 
 /**
  * Реализация интерфейса [UsersRepository], предоставляющего доступ к данным пользователей.
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.Flow
  * @author Erlan
  * @since 1.0v
  */
+@Single
 class UsersRepositoryImpl(
     private val usersApiService: UsersApiService
 ) : UsersRepository, BaseRepository() {

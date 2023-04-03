@@ -11,6 +11,8 @@ import com.example.domain.models.CreatePostsResponseModel
 import com.example.domain.models.PostsModel
 import com.example.domain.repositories.PostsRepository
 import kotlinx.coroutines.flow.Flow
+import org.koin.core.annotation.Single
+
 /**
  * Реализация [PostsRepository], использующая [PostsApiService] для выполнения запросов.
  * Использует [BaseRepository] для выполнения запросов и обработки ошибок.
@@ -19,6 +21,7 @@ import kotlinx.coroutines.flow.Flow
  * @author Erlan
  * @since 1.0v
  */
+@Single
 class PostsRepositoryImpl(
     private val postsApiService: PostsApiService
 ) : PostsRepository, BaseRepository() {

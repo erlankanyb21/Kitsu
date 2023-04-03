@@ -3,6 +3,8 @@ plugins {
     id(libs.plugins.jetbrainsKotlin.android.get().pluginId)
     id(libs.plugins.kotlin.kapt.get().pluginId)
     id(libs.plugins.navSafeArgs.get().pluginId)
+    // KSP
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -72,8 +74,15 @@ dependencies {
 
     //Koin
     implementation(libs.bundles.koin)
+    implementation(libs.koin.koinAnnotations)
+    ksp(libs.koin.compiler)
 
     //navigation components
     implementation(libs.bundles.navigation)
+}
 
+kotlin {
+    sourceSets.release {
+        kotlin.srcDir("build/generated/ksp/release/kotlin")
+    }
 }

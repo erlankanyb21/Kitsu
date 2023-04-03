@@ -14,6 +14,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlin.jvm) apply false
     alias(libs.plugins.navSafeArgs) apply false
     alias(libs.plugins.jetbrainsKotlin.dokka)
+    alias(libs.plugins.ksp)
+
 }
 buildscript {
     dependencies {

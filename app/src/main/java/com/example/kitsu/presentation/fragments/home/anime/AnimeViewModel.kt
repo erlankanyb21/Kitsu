@@ -5,6 +5,7 @@ import com.example.domain.usecases.FetchPagingAnimeUseCase
 import com.example.kitsu.presentation.base.BaseViewModel
 import com.example.kitsu.presentation.models.toUI
 import kotlinx.coroutines.flow.map
+import org.koin.android.annotation.KoinViewModel
 
 /**
  * ViewModel для экрана "Аниме".
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.map
  * @author Erlan
  * @since 1.0v
  */
+@KoinViewModel
 class AnimeViewModel(
     private val fetchAnimeUseCase: FetchPagingAnimeUseCase
 ) : BaseViewModel() {

@@ -52,9 +52,9 @@ kotlinCoroutine = "1.6.4"
 viewpager = "view_pager_version"
 
 #koin
-koin = "3.3.3"
-koin_annotations = "1.0.3"
-ksp = "1.7.21-1.0.8"
+koin = "3.2.2"
+koin_annotations = "1.2.0"
+ksp = "1.8.10-1.0.9"
 
 #android
 android = "7.4.2"
@@ -122,8 +122,12 @@ uicomponents-dotsIndicators = { module = "com.tbuonomo:dotsindicator", version.r
 koin-koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-koinAndroid = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-koinNav = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin" }
+koin-compiler = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koin_annotations" }
+koin-workManager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin" }
 
-koin-koinAnnotations = { module = "io.insert-koin:koin-annotations", version.ref ="koin_annotations" }
+koin-koinAnnotations = { module = "io.insert-koin:koin-annotations", version.ref = "koin_annotations" }
+koinKsp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "ksp" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 #glide
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
@@ -142,13 +146,15 @@ coroutine-coroutineCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 
 [plugins]
 
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
 #android
-android-application = { id = "com.android.application", version.ref = "android"}
-android-library = { id = "com.android.library", version.ref = "android"}
-kotlin-kapt = { id = "kotlin-kapt"}
+android-application = { id = "com.android.application", version.ref = "android" }
+android-library = { id = "com.android.library", version.ref = "android" }
+kotlin-kapt = { id = "kotlin-kapt" }
 
 #java
-javaLibrary-library = { id = "java-library"}
+javaLibrary-library = { id = "java-library" }
 
 #jetbrainsKotlin
 jetbrainsKotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrainsKotlin" }
@@ -187,7 +193,7 @@ uicomponents = ["uicomponents-material", "uicomponents-appCompat",
     "uicomponents-viewBindingPropertyDelegate", "uicomponents-lottie", "uicomponents-dotsIndicators"]
 
 #koin
-koin = ["koin-koinCore","koin-koinAndroid","koin-koinNav"]
+koin = ["koin-koinCore", "koin-koinAndroid", "koin-koinNav", "koin-workManager"]
 
 #paging
 paging = ["paging-runtime","paging-common"]

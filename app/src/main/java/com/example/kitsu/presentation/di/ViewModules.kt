@@ -1,16 +1,8 @@
 package com.example.kitsu.presentation.di
 
 
-import com.example.kitsu.presentation.fragments.add.AddViewModel
-import com.example.kitsu.presentation.fragments.home.anime.AnimeViewModel
-import com.example.kitsu.presentation.fragments.home.manga.MangaViewModel
-import com.example.kitsu.presentation.fragments.home.posts.PostsViewModel
-import com.example.kitsu.presentation.fragments.home.users.UsersViewModel
-import com.example.kitsu.presentation.fragments.signIn.SignInViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.androidx.viewmodel.dsl.viewModelOf
-import org.koin.core.module.Module
-import org.koin.dsl.module
+import org.koin.core.annotation.ComponentScan
+import org.koin.core.annotation.Module
 
 /**
  * Здесь определен модуль Koin, который объявляет зависимости для ViewModel-классов.
@@ -18,12 +10,17 @@ import org.koin.dsl.module
  * @author Erlan
  * @since 1.0v
  */
+@Module
+@ComponentScan("com.example.kitsu.presentation")
+class ViewModules {
 
-val viewModules: Module = module {
-    viewModelOf(::AnimeViewModel)
-    viewModelOf(::MangaViewModel)
-    viewModelOf(::UsersViewModel)
-    viewModelOf(::SignInViewModel)
-    viewModelOf(::PostsViewModel)
-    viewModelOf(::AddViewModel)
 }
+
+//val viewModules: Module = module {
+//    viewModelOf(::AnimeViewModel)
+//    viewModelOf(::MangaViewModel)
+//    viewModelOf(::UsersViewModel)
+//    viewModelOf(::SignInViewModel)
+//    viewModelOf(::PostsViewModel)
+//    viewModelOf(::AddViewModel)
+//}
