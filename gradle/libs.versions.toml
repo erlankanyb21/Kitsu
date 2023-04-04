@@ -1,5 +1,8 @@
 [versions]
 
+#Coil
+coil = "2.3.0"
+
 #retro
 retrofit = "2.9.0"
 
@@ -117,6 +120,9 @@ uicomponents-constraintLayout = { module = "androidx.constraintlayout:constraint
 uicomponents-viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection", version.ref = "viewbindingpropertydelegate" }
 uicomponents-lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 uicomponents-dotsIndicators = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsindicator" }
+
+#Coil
+coil-coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 
 #koin
 koin-koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
