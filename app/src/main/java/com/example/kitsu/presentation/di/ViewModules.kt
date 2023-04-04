@@ -12,15 +12,4 @@ import org.koin.core.annotation.Module
  */
 @Module
 @ComponentScan("com.example.kitsu.presentation")
-class ViewModules {
-
-}
-
-//val viewModules: Module = module {
-//    viewModelOf(::AnimeViewModel)
-//    viewModelOf(::MangaViewModel)
-//    viewModelOf(::UsersViewModel)
-//    viewModelOf(::SignInViewModel)
-//    viewModelOf(::PostsViewModel)
-//    viewModelOf(::AddViewModel)
-//}
+class ViewModules

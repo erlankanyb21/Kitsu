@@ -46,8 +46,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":domain"))
 //    ui
     implementation(libs.bundles.uicomponents)
 
@@ -79,6 +79,8 @@ dependencies {
 
     //navigation components
     implementation(libs.bundles.navigation)
+
+    implementation(libs.coil.coil)
 }
 
 kotlin {

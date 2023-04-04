@@ -7,28 +7,6 @@
     android:background="@color/prime"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_skip"
-        android:text="@string/skip"
-        android:fontFamily="@font/berkshire_swash"
-        android:layout_margin="@dimen/page_margin_3x"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/orange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btn_next"
-        android:text="@string/next"
-        android:fontFamily="@font/berkshire_swash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text"
-        android:backgroundTint="@color/orange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,20 +28,6 @@
         style="@style/BaseMainTextView"
         android:text="@string/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btn_get_started"
-        android:text="@string/get_started"
-        android:backgroundTint="@color/orange"
-        android:padding="@dimen/page_margin"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/text"
-        android:fontFamily="@font/berkshire_swash"
-        android:textSize="@dimen/regular_txt_18"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

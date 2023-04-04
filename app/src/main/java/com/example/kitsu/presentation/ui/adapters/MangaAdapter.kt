@@ -1,13 +1,19 @@
 package com.example.kitsu.presentation.ui.adapters
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.kitsu.databinding.ItemMangaRvBinding
-import com.example.kitsu.presentation.extensions.loadImage
 import com.example.kitsu.presentation.models.MangaUI
 import com.example.kitsu.presentation.ui.adapters.AnimeAdapter.Companion.areContentsTheSame
 import com.example.kitsu.presentation.ui.adapters.AnimeAdapter.Companion.areItemsTheSame
@@ -55,9 +61,14 @@ class MangaAdapter(
          * присоединённый макет [ItemMangaRvBinding]
          */
         fun onBind(data: MangaUI.Data) = with(binding) {
+            animateItemView(itemView)
             Log.e("", "onBind: ${data.attributes?.posterImage?.medium}")
             if (data.attributes?.posterImage?.medium?.isNotEmpty() == true) {
-                mangaItemImg.loadImage(data.attributes.posterImage.medium)
+                mangaItemImg.load(data.attributes.posterImage.medium) {
+                    listener { request, result ->
+                        progress.isVisible = false
+                    }
+                }
             }
             itemView.setOnClickListener {
                 onItemClick(data.attributes?.titles?.en_jp)
@@ -85,5 +96,36 @@ class MangaAdapter(
             oldItem: MangaUI.Data,
             newItem: MangaUI.Data
         ) = oldItem == newItem
+    }
+
+    fun animateItemView(itemView: View) {
+        //hide the itemView
+        itemView.alpha = 0f
+
+        //moving the itemView down 400f
+        ObjectAnimator.ofFloat(itemView, "translationY", 0f, 400f)
+            .apply { duration = 1L }.start()
+
+        //show
+        //itemView.alpha = 1f
+
+        //moving the itemView up 400f
+        val translateUp = ObjectAnimator.ofFloat(itemView, "translationY", 400f, 0f)
+            .apply {
+                duration = 1000L
+                interpolator = AnticipateOvershootInterpolator(2f)
+            }
+
+        //animating alpha
+        val fade = ValueAnimator.ofFloat(0f, 1f)
+            .apply {
+                addUpdateListener {
+                    itemView.alpha = this.animatedValue as Float
+                }
+                duration = 400L
+            }
+
+        //applying
+        AnimatorSet().apply { playTogether(translateUp, fade) }.start()
     }
 }
