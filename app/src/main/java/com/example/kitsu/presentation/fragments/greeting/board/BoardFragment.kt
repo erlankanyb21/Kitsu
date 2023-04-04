@@ -35,9 +35,16 @@ class BoardFragment : Fragment(R.layout.fragment_board) {
 
     private fun setupClick() {
         binding.btnSkip.setOnClickListener {
-            findNavController().navigate(R.id.signInFragment)
-            preferences.board = true
+            navigateToSign()
         }
+        binding.btnGetStarted.setOnClickListener {
+            navigateToSign()
+        }
+    }
+
+    private fun navigateToSign() {
+        findNavController().navigate(R.id.signInFragment)
+        preferences.board = true
     }
 
     private fun nextScreen() {
